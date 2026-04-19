@@ -189,4 +189,4 @@ MIT — see [LICENSE](LICENSE)
 
 ---
 
-*Built with ❤️ using [Claude Code](https://claude.ai/code) by Anthropic*
+*Built by Yassine lasraoui*
