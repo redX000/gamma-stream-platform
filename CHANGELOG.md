@@ -6,7 +6,28 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] — Phase 4: Analytics
+## [2.0.0] — 2026-04-19 — Phase 5: GitHub Actions CI/CD (Platform Complete)
+
+**This release marks Gamma Stream Platform v2.0.0 — all five build phases complete.**
+The platform is now fully autonomous: content generates and publishes daily, social
+channels are updated automatically, analytics reports arrive every Monday, and every
+pull request is reviewed by Claude Code.
+
+### Added
+- `.github/workflows/content-generation.yml` — Daily cron at 06:00 UTC; runs `scheduler.js`; passes all required GitHub Secrets as env vars; queues state persisted between runs via `actions/cache`; uploads generated articles as workflow artifacts (30-day retention); sends failure notification email via SMTP on pipeline error; `workflow_dispatch` with `force` and `dry_run` inputs for manual override
+- `.github/workflows/social-posting.yml` — Daily cron at 09:00 UTC; runs Reddit and Pinterest jobs as independent parallel jobs so one failing platform does not block the other; `workflow_dispatch` with platform selector (`reddit | pinterest | all`)
+- `.github/workflows/analytics-report.yml` — Every Monday at 08:00 UTC; runs `dashboard.js --report --weekly`; commits the generated JSON report to `analytics/reports/` with `[skip ci]` tag to prevent feedback loops; uploads report as artifact (90-day retention); `workflow_dispatch` with `send_email` toggle
+- `.github/workflows/claude-review.yml` — Triggers on every PR opened, updated, or reopened; uses `anthropics/claude-code-action@v1`; reviews for security (no hardcoded secrets), code quality (ES modules, JSDoc, error handling), CLAUDE.md compliance (fileoverview, commit format, .env.example completeness), and workflow config (secrets, timeouts, continue-on-error); posts inline comments and a summary table on the PR
+- `docs/content-strategy.md` — Full 10-section SEO strategy: 50 target keywords organized by category and month, 3-month content calendar (36 articles), content type specs (reviews/comparisons/tutorials/top-lists), on-page SEO checklist, internal linking strategy with pillar page structure, post-publish promotion checklist, seasonal content calendar, and content quality standards
+
+### Changed
+- `package.json` — Bumped to v2.0.0
+- `README.md` — Added "System Status: LIVE" badge; all phases marked complete in build status table; expanded Quick Start with per-phase commands; updated project structure tree; corrected documentation links
+- `CHANGELOG.md` — Promoted all Unreleased entries to versioned releases; v2.0.0 marks platform completion
+
+---
+
+## [1.3.0] — Phase 4: Analytics
 
 ### Added
 - `analytics/dashboard.js` — Unified analytics dashboard; fetches data from GA4 (BetaAnalyticsDataClient), ConvertKit API v3, WordPress REST API, and local affiliate ledger in parallel; renders formatted console summary with KPI progress bars; `--report` flag saves timestamped JSON to `analytics/reports/`; `--weekly` flag emails full HTML report via nodemailer; graceful fallback for each data source when credentials are absent
@@ -37,7 +58,6 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ## [1.1.0] — Phase 2: Content Pipeline
 
-
 ### Added
 - `content-pipeline/generator.js` — Claude API article generator with prompt caching; supports review, comparison, top-list, and tutorial content types; saves articles with YAML front matter
 - `content-pipeline/seo-optimizer.js` — SEO scoring engine (0–100), keyword density analysis, Claude Haiku-powered title and meta description generation
@@ -56,7 +76,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.0.0] — Phase 1: Foundation
+## [1.0.0] — 2026-04-19 — Phase 1: Foundation
 
 ### Added
 - `CLAUDE.md` — Master blueprint and Claude Code operating manual

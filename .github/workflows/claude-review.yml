@@ -1,0 +1,79 @@
+name: Claude Code PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    # Review all file types used in this project
+    paths:
+      - '**/*.js'
+      - '**/*.yml'
+      - '**/*.yaml'
+      - '**/*.md'
+      - '**/*.json'
+      - '.env.example'
+
+  # Allow manual trigger for reviewing a specific PR
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  claude-review:
+    name: Claude Code Review
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run Claude Code review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Focused review prompt — checks security, code quality, and CLAUDE.md compliance
+          direct_prompt: |
+            Review this pull request for the Gamma Stream Platform — an autonomous AI affiliate content platform.
+
+            Check for the following in every changed file and leave inline comments where issues are found:
+
+            **Security**
+            - No hardcoded secrets, API keys, tokens, or passwords in any file
+            - .env variables are always loaded via `dotenv` — never accessed via `process.env` without a guard
+            - No `rm -rf` commands or unguarded destructive operations
+            - No SQL/shell injection vectors in any string interpolation
+            - .gitignore correctly excludes `.env`, `node_modules/`, `commissions.json`, `queue.json`
+
+            **Code Quality (JavaScript)**
+            - All files use ES modules (`import`/`export`) — no `require()` calls
+            - Every exported function has a JSDoc comment with `@param` and `@returns`
+            - Every async function has try/catch error handling
+            - `console.log` present for major operations (for debugging in GitHub Actions)
+            - No unused variables or imports
+
+            **CLAUDE.md Compliance**
+            - All JavaScript files have a JSDoc `@fileoverview` header comment
+            - No direct pushes implied — changes are on a `feature/` branch
+            - Commit messages follow the format: `type(scope): description`
+            - `.env.example` is up to date with any new environment variables used in changed files
+
+            **Workflow Files (.yml)**
+            - Secrets are passed via `${{ secrets.SECRET_NAME }}` — never hardcoded
+            - `timeout-minutes` is set on all jobs
+            - `continue-on-error` is used appropriately (social posting is non-fatal; content pipeline failure should fail the job)
+            - `[skip ci]` tag is used on automated commits to prevent feedback loops
+
+            **Summary**
+            End your review with a brief summary table:
+            | Check | Result |
+            |-------|--------|
+            | Security | ✅ / ⚠️ issues found |
+            | Code quality | ✅ / ⚠️ issues found |
+            | CLAUDE.md compliance | ✅ / ⚠️ issues found |
+            | Workflow config | ✅ / ⚠️ issues found |
+            | Overall | ✅ Approve / ⚠️ Request changes |
