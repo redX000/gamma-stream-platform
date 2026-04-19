@@ -72,11 +72,27 @@ npm install
 cp .env.example .env
 # Fill in your API keys in .env
 
-# 4. Start Claude Code
-claude
+# 4. Test the content pipeline (dry run — no WordPress required)
+node content-pipeline/scheduler.js --dry-run --force
 
-# 5. Tell Claude Code to build Phase 1
-# > "Build Phase 1 foundation and push to GitHub"
+# 5. Generate a single article manually
+node content-pipeline/generator.js review "best Jasper AI review" "Jasper AI"
+```
+
+### Content Pipeline Commands
+
+```bash
+# Run full pipeline (publishes if today is Mon/Wed/Fri)
+npm run schedule
+
+# Dry run — generate + SEO score, no WordPress publish
+npm run schedule:dry
+
+# Force run today regardless of day
+node content-pipeline/scheduler.js --force
+
+# Generate SEO title options for a keyword
+npm run seo -- titles "Jasper AI" "best Jasper AI review"
 ```
 
 ---
@@ -85,14 +101,26 @@ claude
 
 ```
 gamma-stream-platform/
-├── CLAUDE.md                  ← Claude Code master instructions
-├── README.md                  ← This file
-├── docs/                      ← Full documentation
-├── content-pipeline/          ← AI content generation engine
-├── automation/                ← Social, email & affiliate automation
-├── analytics/                 ← Revenue tracking & reporting
-├── site/                      ← Site configuration
-└── .github/workflows/         ← GitHub Actions CI/CD
+├── CLAUDE.md                        ← Claude Code master instructions
+├── README.md                        ← This file
+├── CHANGELOG.md                     ← Version history
+├── package.json                     ← Node.js dependencies
+├── .env.example                     ← Environment variable template
+├── docs/                            ← Full documentation
+├── content-pipeline/                ← AI content generation engine (Phase 2)
+│   ├── generator.js                 ← Claude API article generator
+│   ├── seo-optimizer.js             ← SEO scoring and title generation
+│   ├── publisher.js                 ← WordPress REST API publisher
+│   ├── scheduler.js                 ← Daily cron pipeline runner
+│   └── templates/                   ← Article templates by type
+│       ├── review.md
+│       ├── comparison.md
+│       ├── top-list.md
+│       └── tutorial.md
+├── automation/                      ← Social, email & affiliate automation
+├── analytics/                       ← Revenue tracking & reporting
+├── site/                            ← Site configuration
+└── .github/workflows/               ← GitHub Actions CI/CD
 ```
 
 ---
