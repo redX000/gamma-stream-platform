@@ -1,0 +1,101 @@
+name: Analytics Report
+
+on:
+  schedule:
+    # Every Monday at 08:00 UTC
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+    inputs:
+      send_email:
+        description: 'Send email report to NOTIFICATION_EMAIL'
+        required: false
+        default: 'true'
+        type: boolean
+
+concurrency:
+  group: analytics-report
+  cancel-in-progress: false
+
+jobs:
+  generate-report:
+    name: Generate Weekly Analytics Report
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # Need write access to commit the report JSON
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run analytics dashboard (weekly report mode)
+        id: dashboard
+        env:
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
+          CONVERTKIT_API_KEY: ${{ secrets.CONVERTKIT_API_KEY }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          # Inline JSON credentials for GA4 service account
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          NOTIFICATION_EMAIL: ${{ secrets.NOTIFICATION_EMAIL }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: |
+          WEEKLY_FLAG="--weekly"
+          if [ "${{ inputs.send_email }}" = "false" ]; then
+            WEEKLY_FLAG=""
+          fi
+          node analytics/dashboard.js --report $WEEKLY_FLAG
+
+      - name: Commit report JSON to repository
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Stage only the newly generated report files
+          git add analytics/reports/
+
+          # Only commit if there are actual changes (idempotent)
+          if git diff --cached --quiet; then
+            echo "No new report files to commit."
+          else
+            REPORT_DATE=$(date -u '+%Y-%m-%d')
+            git commit -m "chore(analytics): weekly report ${REPORT_DATE} [skip ci]"
+            git push
+            echo "✅ Report committed and pushed"
+          fi
+
+      - name: Upload report as workflow artifact
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: analytics-report-${{ github.run_number }}
+          path: analytics/reports/
+          retention-days: 90
+          if-no-files-found: ignore
+
+      - name: Summary
+        if: always()
+        run: |
+          echo "### Analytics Report — $(date -u '+%Y-%m-%d')" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Item | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|------|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Dashboard run | ${{ steps.dashboard.outcome }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Report saved | analytics/reports/ |" >> $GITHUB_STEP_SUMMARY
+          echo "| Email sent | ${{ inputs.send_email != 'false' && 'yes' || 'skipped' }} |" >> $GITHUB_STEP_SUMMARY

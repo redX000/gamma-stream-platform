@@ -1,0 +1,107 @@
+name: Social Posting
+
+on:
+  schedule:
+    # Daily at 09:00 UTC — 3 hours after content pipeline runs
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+    inputs:
+      platform:
+        description: 'Platform to post to'
+        required: false
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - reddit
+          - pinterest
+
+concurrency:
+  group: social-posting
+  cancel-in-progress: false
+
+jobs:
+  post-to-reddit:
+    name: Post to Reddit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Only post to Reddit if platform is 'all' or 'reddit'
+    if: |
+      github.event_name == 'schedule' ||
+      inputs.platform == 'all' ||
+      inputs.platform == 'reddit'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Post to Reddit
+        id: reddit
+        env:
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_SECRET: ${{ secrets.REDDIT_SECRET }}
+          REDDIT_USERNAME: ${{ secrets.REDDIT_USERNAME }}
+          REDDIT_PASSWORD: ${{ secrets.REDDIT_PASSWORD }}
+          REDDIT_USER_AGENT: ${{ secrets.REDDIT_USER_AGENT }}
+        run: node automation/social-poster.js --platform reddit
+        continue-on-error: true
+
+      - name: Log Reddit result
+        if: always()
+        run: |
+          if [ "${{ steps.reddit.outcome }}" = "success" ]; then
+            echo "✅ Reddit post submitted successfully"
+          else
+            echo "⚠️ Reddit post failed — check logs above. Non-fatal."
+          fi
+
+  post-to-pinterest:
+    name: Post to Pinterest
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Runs independently of Reddit — a Reddit failure does not block Pinterest
+    if: |
+      github.event_name == 'schedule' ||
+      inputs.platform == 'all' ||
+      inputs.platform == 'pinterest'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Post to Pinterest
+        id: pinterest
+        env:
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          PINTEREST_ACCESS_TOKEN: ${{ secrets.PINTEREST_ACCESS_TOKEN }}
+          PINTEREST_BOARD_ID: ${{ secrets.PINTEREST_BOARD_ID }}
+        run: node automation/social-poster.js --platform pinterest
+        continue-on-error: true
+
+      - name: Log Pinterest result
+        if: always()
+        run: |
+          if [ "${{ steps.pinterest.outcome }}" = "success" ]; then
+            echo "✅ Pinterest pin created successfully"
+          else
+            echo "⚠️ Pinterest pin failed — check logs above. Non-fatal."
+          fi
