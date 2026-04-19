@@ -50,6 +50,18 @@ Once deployed, the system runs daily without manual input:
 
 ---
 
+## Build Status
+
+| Phase | Description | Status |
+|-------|-------------|--------|
+| Phase 1 — Foundation | Project structure, docs, .env, README | ✅ Complete |
+| Phase 2 — Content Pipeline | generator.js, templates, seo-optimizer.js, publisher.js, scheduler.js | ✅ Complete |
+| Phase 3 — Automation | social-poster.js, email sequences, affiliate-tracker.js, lead magnet | ✅ Complete |
+| Phase 4 — Analytics | dashboard.js, kpis.md, weekly report pipeline | ✅ Complete |
+| Phase 5 — GitHub Actions CI/CD | Workflow YML files, cron jobs, Claude review action | 🔲 Pending |
+
+---
+
 ## Quick Start
 
 ### Prerequisites
@@ -95,6 +107,35 @@ node content-pipeline/scheduler.js --force
 npm run seo -- titles "Jasper AI" "best Jasper AI review"
 ```
 
+### Automation Commands
+
+```bash
+# Post latest WP article to Reddit and Pinterest
+npm run social -- --platform all
+
+# Log an affiliate commission
+node automation/affiliate-tracker.js add jasper-ai 49.75
+
+# View all-time commission summary
+node automation/affiliate-tracker.js summary
+
+# Generate and email weekly revenue report
+npm run tracker:report
+```
+
+### Analytics Commands
+
+```bash
+# Live console dashboard (all 4 data sources)
+npm run dashboard
+
+# Save JSON report to analytics/reports/
+npm run dashboard:report
+
+# Full weekly report — save + email to NOTIFICATION_EMAIL
+node analytics/dashboard.js --report --weekly
+```
+
 ---
 
 ## Project Structure
@@ -117,8 +158,19 @@ gamma-stream-platform/
 │       ├── comparison.md
 │       ├── top-list.md
 │       └── tutorial.md
-├── automation/                      ← Social, email & affiliate automation
-├── analytics/                       ← Revenue tracking & reporting
+├── automation/                      ← Social, email & affiliate automation (Phase 3)
+│   ├── social-poster.js             ← Reddit + Pinterest auto-poster
+│   ├── affiliate-tracker.js         ← Commission ledger + weekly reports
+│   ├── email-sequences/             ← ConvertKit email templates
+│   │   ├── welcome.md               ← 5-email / 7-day welcome sequence
+│   │   ├── nurture.md               ← 4 weekly value emails
+│   │   └── promo.md                 ← 3 promotional templates
+│   └── lead-magnet/
+│       └── ai-tools-guide.md        ← "The Ultimate AI Tools Guide 2026"
+├── analytics/                       ← Revenue tracking & reporting (Phase 4)
+│   ├── dashboard.js                 ← GA4 + ConvertKit + WP + revenue dashboard
+│   ├── kpis.md                      ← KPI targets, measurements, recovery actions
+│   └── reports/                     ← Auto-generated weekly JSON reports
 ├── site/                            ← Site configuration
 └── .github/workflows/               ← GitHub Actions CI/CD
 ```
@@ -129,11 +181,12 @@ gamma-stream-platform/
 
 | Doc | Description |
 |---|---|
-| [Architecture](docs/architecture.md) | Full system design |
-| [Setup Guide](docs/setup-guide.md) | Step-by-step deployment |
-| [Monetization](docs/monetization.md) | Affiliate programs & revenue |
-| [Content Strategy](docs/content-strategy.md) | SEO & content plan |
-| [Scaling Roadmap](docs/scaling-roadmap.md) | Month-by-month growth |
+| [Architecture](architecture.md) | Full system design |
+| [Setup Guide](setup-guide.md) | Step-by-step deployment |
+| [Monetization](monetization.md) | Affiliate programs & revenue |
+| [Scaling Roadmap](scaling-roadmap.md) | Month-by-month growth |
+| [KPI Targets](analytics/kpis.md) | KPI definitions, targets & recovery actions |
+| [Changelog](CHANGELOG.md) | Full version history |
 
 ---
 

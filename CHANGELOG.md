@@ -6,7 +6,20 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] — Phase 3: Automation
+## [Unreleased] — Phase 4: Analytics
+
+### Added
+- `analytics/dashboard.js` — Unified analytics dashboard; fetches data from GA4 (BetaAnalyticsDataClient), ConvertKit API v3, WordPress REST API, and local affiliate ledger in parallel; renders formatted console summary with KPI progress bars; `--report` flag saves timestamped JSON to `analytics/reports/`; `--weekly` flag emails full HTML report via nodemailer; graceful fallback for each data source when credentials are absent
+- `analytics/kpis.md` — Full KPI reference: month-by-month targets (articles, traffic, email, revenue) through Month 12; measurement instructions and data sources for each KPI; recovery actions and decision tree for underperforming metrics; reporting cadence guide
+- `analytics/reports/.gitkeep` — Placeholder to track the auto-generated reports directory in git
+
+### Changed
+- `package.json` — Bumped to v1.3.0; added `@google-analytics/data` dependency; added `dashboard` and `dashboard:report` npm scripts
+- `.env.example` — Added `GA4_PROPERTY_ID`, `GA4_SERVICE_ACCOUNT_KEY_PATH`, `GA4_SERVICE_ACCOUNT_JSON` (for GitHub Actions inline credentials)
+
+---
+
+## [1.2.0] — Phase 3: Automation
 
 ### Added
 - `automation/social-poster.js` — Posts latest WordPress article to Reddit (via snoowrap) and Pinterest (via API v5); `--platform reddit|pinterest|all` flag; graceful partial failure (one platform failing doesn't block the other)
@@ -23,6 +36,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 ---
 
 ## [1.1.0] — Phase 2: Content Pipeline
+
 
 ### Added
 - `content-pipeline/generator.js` — Claude API article generator with prompt caching; supports review, comparison, top-list, and tutorial content types; saves articles with YAML front matter
