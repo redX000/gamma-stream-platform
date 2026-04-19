@@ -6,7 +6,23 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [Unreleased] — Phase 2: Content Pipeline
+## [Unreleased] — Phase 3: Automation
+
+### Added
+- `automation/social-poster.js` — Posts latest WordPress article to Reddit (via snoowrap) and Pinterest (via API v5); `--platform reddit|pinterest|all` flag; graceful partial failure (one platform failing doesn't block the other)
+- `automation/email-sequences/welcome.md` — 5-email, 7-day welcome sequence: lead magnet delivery, quick-win tip, tool introduction, case study, and engagement ask; all emails include FTC-compliant affiliate disclosures
+- `automation/email-sequences/nurture.md` — 4 weekly value emails: productivity workflow breakdown, free tool stack, 6-month income case study with real numbers, and phased AI tools budget guide
+- `automation/email-sequences/promo.md` — 3 promotional email templates: flash sale announcement, new tool launch review, and limited bonus offer with FTC disclosures
+- `automation/affiliate-tracker.js` — Commission ledger (local JSON); tracks all 8 affiliate programs from CLAUDE.md; weekly HTML email reports via nodemailer; CLI commands: `add`, `list`, `summary`, `report`
+- `automation/lead-magnet/ai-tools-guide.md` — "The Ultimate AI Tools Guide 2026": 10 sections covering writing, SEO, automation, email, design, video, research, business tools, affiliate program rankings, and phased budget strategy; affiliate link placeholders throughout
+
+### Changed
+- `package.json` — Bumped to v1.2.0; added `snoowrap`, `nodemailer` dependencies; added `social`, `tracker`, `tracker:report` npm scripts
+- `.env.example` — Added Reddit OAuth vars (`REDDIT_USERNAME`, `REDDIT_PASSWORD`, `REDDIT_USER_AGENT`), `PINTEREST_BOARD_ID`, and SMTP email vars (`NOTIFICATION_EMAIL`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`)
+
+---
+
+## [1.1.0] — Phase 2: Content Pipeline
 
 ### Added
 - `content-pipeline/generator.js` — Claude API article generator with prompt caching; supports review, comparison, top-list, and tutorial content types; saves articles with YAML front matter
@@ -26,7 +42,7 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.0.0] — 2026-04-19 — Phase 1: Foundation
+## [1.0.0] — Phase 1: Foundation
 
 ### Added
 - `CLAUDE.md` — Master blueprint and Claude Code operating manual
