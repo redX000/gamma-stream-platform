@@ -15,6 +15,8 @@ import { fileURLToPath } from 'url';
 
 dotenv.config();
 
+// Node.js 18+ has global fetch — no import needed
+
 /**
  * Build the Base64 Basic Auth header from .env credentials.
  * WordPress Application Passwords use this auth scheme.
@@ -55,13 +57,15 @@ async function wpRequest(endpoint, method = 'GET', body = null) {
   if (body) options.body = JSON.stringify(body);
 
   try {
-    // Use dynamic import for node-fetch (ESM-only package)
-    const { default: fetch } = await import('node-fetch');
     const res = await fetch(url, options);
 
     if (!res.ok) {
       const errorText = await res.text();
-      throw new Error(`WordPress API ${res.status} on ${endpoint}: ${errorText.slice(0, 200)}`);
+      const hint =
+        res.status === 401 ? ' — check WORDPRESS_USERNAME and WORDPRESS_APP_PASSWORD secrets' :
+        res.status === 403 ? ' — Application Passwords may be disabled on this WordPress install' :
+        res.status === 404 ? ' — WordPress REST API not found; check WORDPRESS_URL and that REST API is enabled' : '';
+      throw new Error(`WordPress API ${res.status}${hint} on ${endpoint}: ${errorText.slice(0, 300)}`);
     }
 
     return res.json();

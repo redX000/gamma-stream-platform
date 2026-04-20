@@ -163,14 +163,15 @@ export async function runPipeline(dryRun = false, force = false) {
     return { status: 'error', stage: 'save', error: err.message };
   }
 
-  // Stage 4: Publish to WordPress (skipped in dry-run or if WP not configured)
+  // Stage 4: Publish to WordPress (skipped only in dry-run)
   console.log(`[scheduler] Stage 4 — Publishing...`);
   let publishResult = null;
 
   if (dryRun) {
     console.log('[scheduler] Dry run — skipping WordPress publish');
   } else if (!process.env.WORDPRESS_URL) {
-    console.log('[scheduler] WORDPRESS_URL not set — skipping publish (article saved as local draft)');
+    console.error('[scheduler] WORDPRESS_URL is not set — cannot publish. Check GitHub Actions secrets.');
+    return { status: 'error', stage: 'publish', error: 'WORDPRESS_URL environment variable is not set' };
   } else {
     // Auto-publish if SEO score is sufficient; otherwise save as WP draft for review
     const postStatus = seoResult.score >= MIN_PUBLISH_SCORE ? 'publish' : 'draft';
@@ -181,8 +182,8 @@ export async function runPipeline(dryRun = false, force = false) {
       publishResult = await publishArticle(article, { status: postStatus });
       console.log(`[scheduler] Published — WP ID: ${publishResult.id}, status: ${postStatus}, URL: ${publishResult.link}`);
     } catch (err) {
-      // Non-fatal: article is saved locally; log and continue
-      console.error(`[scheduler] WordPress publish failed (article saved locally): ${err.message}`);
+      console.error(`[scheduler] WordPress publish failed: ${err.message}`);
+      return { status: 'error', stage: 'publish', error: err.message };
     }
   }
 
