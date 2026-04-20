@@ -178,11 +178,21 @@ export async function publishArticle(article, options = {}) {
 
   console.log(`[publisher] Publishing "${article.title}" — status: ${status}, category: ${category}`);
 
-  // Resolve category and tags in parallel to save time
-  const [categoryId, tagIds] = await Promise.all([
-    getOrCreateCategory(category),
-    getOrCreateTags(tags),
-  ]);
+  // Category is non-fatal — fall back to uncategorized (ID 1) if creation fails
+  let categoryId = 1;
+  try {
+    categoryId = await getOrCreateCategory(category);
+  } catch (err) {
+    console.warn(`[publisher] Category resolution failed (using Uncategorized): ${err.message}`);
+  }
+
+  // Tags are non-fatal — fall back to no tags if creation fails
+  let tagIds = [];
+  try {
+    tagIds = await getOrCreateTags(tags);
+  } catch (err) {
+    console.warn(`[publisher] Tag resolution failed (publishing without tags): ${err.message}`);
+  }
 
   const htmlContent = markdownToHtml(article.content);
 
