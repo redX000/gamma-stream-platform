@@ -57,7 +57,7 @@ jobs:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
           WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
-          WORDPRESS_APP_PASSWORD: ${{ secrets.WORDPRESS_APP_PASSWORD }}
+          WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
         run: |
           FLAGS=""
           if [ "${{ inputs.force }}" = "true" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
@@ -107,7 +107,8 @@ jobs:
 
             Common causes:
             - ANTHROPIC_API_KEY expired or rate-limited
-            - WORDPRESS_APP_PASSWORD rotated
+            - WORDPRESS_PASSWORD changed (check GitHub secret)
+            - JWT Auth plugin deactivated on WordPress
             - WordPress site unreachable
 
       - name: Fail job if pipeline errored

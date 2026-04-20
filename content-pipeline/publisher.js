@@ -1,9 +1,10 @@
 /**
  * @fileoverview WordPress REST API publisher for Gamma Stream Platform.
  * Handles creating, updating, and scheduling posts via the WordPress REST API.
- * Supports categories, tags, Yoast SEO meta fields, and post scheduling.
+ * Authenticates using JWT (jwt-authentication-for-wp-rest-api plugin) because
+ * Hostinger disables Application Passwords at the platform level.
  *
- * Requires .env: WORDPRESS_URL, WORDPRESS_USERNAME, WORDPRESS_APP_PASSWORD
+ * Requires env: WORDPRESS_URL, WORDPRESS_USERNAME, WORDPRESS_PASSWORD
  *
  * Usage (import):
  *   import { publishArticle } from './publisher.js';
@@ -15,22 +16,55 @@ import { fileURLToPath } from 'url';
 
 dotenv.config();
 
+// Module-level JWT token cache — one token fetch per process lifetime
+let _cachedToken = null;
+
 /**
- * Build the Base64 Basic Auth header from .env credentials.
- * WordPress Application Passwords use this auth scheme.
- * @returns {string} Authorization header value
+ * Obtain a JWT token from the WordPress JWT Auth plugin.
+ * Token is cached for the lifetime of the process (a single pipeline run).
+ * @returns {Promise<string>} JWT token string
  */
-function getAuthHeader() {
+async function getJwtToken() {
+  if (_cachedToken) return _cachedToken;
+
   const user = process.env.WORDPRESS_USERNAME;
-  const pass = process.env.WORDPRESS_APP_PASSWORD;
+  const pass = process.env.WORDPRESS_PASSWORD;
   if (!user || !pass) {
-    throw new Error('WORDPRESS_USERNAME and WORDPRESS_APP_PASSWORD must be set in .env');
+    throw new Error('WORDPRESS_USERNAME and WORDPRESS_PASSWORD must be set in environment');
   }
-  return 'Basic ' + Buffer.from(`${user}:${pass}`).toString('base64');
+
+  const base = process.env.WORDPRESS_URL?.replace(/\/$/, '');
+  if (!base) throw new Error('WORDPRESS_URL is not set in environment');
+
+  const tokenUrl = `${base}/wp-json/jwt-auth/v1/token`;
+  console.log(`[publisher] Fetching JWT token for user: ${user}`);
+
+  const { default: fetch } = await import('node-fetch');
+  const res = await fetch(tokenUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username: user, password: pass }),
+  });
+
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok || !data.token) {
+    const detail = data.message || data.code || JSON.stringify(data).slice(0, 200);
+    const hint = res.status === 403
+      ? ' — JWT plugin may not be installed/activated, or .htaccess Authorization passthrough is missing'
+      : res.status === 401
+      ? ' — wrong WORDPRESS_USERNAME or WORDPRESS_PASSWORD'
+      : '';
+    throw new Error(`JWT token request failed ${res.status}${hint}: ${detail}`);
+  }
+
+  console.log(`[publisher] JWT token obtained for "${data.user_display_name}" (${data.user_email})`);
+  _cachedToken = data.token;
+  return _cachedToken;
 }
 
 /**
- * Make an authenticated request to the WordPress REST API.
+ * Make an authenticated request to the WordPress REST API using JWT Bearer auth.
  * @param {string} endpoint - API endpoint path (e.g., '/wp/v2/posts')
  * @param {string} [method='GET'] - HTTP method
  * @param {Object|null} [body=null] - JSON request body
@@ -38,15 +72,16 @@ function getAuthHeader() {
  */
 async function wpRequest(endpoint, method = 'GET', body = null) {
   const base = process.env.WORDPRESS_URL?.replace(/\/$/, '');
-  if (!base) throw new Error('WORDPRESS_URL is not set in .env');
+  if (!base) throw new Error('WORDPRESS_URL is not set in environment');
 
+  const token = await getJwtToken();
   const url = `${base}/wp-json${endpoint}`;
   console.log(`[publisher] ${method} ${endpoint}`);
 
   const options = {
     method,
     headers: {
-      Authorization: getAuthHeader(),
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
       Accept: 'application/json',
     },
@@ -61,9 +96,9 @@ async function wpRequest(endpoint, method = 'GET', body = null) {
     if (!res.ok) {
       const errorText = await res.text();
       const hint =
-        res.status === 401 ? ' — check WORDPRESS_USERNAME and WORDPRESS_APP_PASSWORD secrets' :
-        res.status === 403 ? ' — Application Passwords may be disabled on this WordPress install' :
-        res.status === 404 ? ' — WordPress REST API not found; check WORDPRESS_URL and that REST API is enabled' : '';
+        res.status === 401 ? ' — JWT token rejected; check credentials and JWT plugin status' :
+        res.status === 403 ? ' — user lacks permission for this operation' :
+        res.status === 404 ? ' — endpoint not found; check WORDPRESS_URL and REST API is enabled' : '';
       throw new Error(`WordPress API ${res.status}${hint} on ${endpoint}: ${errorText.slice(0, 300)}`);
     }
 
@@ -119,33 +154,23 @@ export async function getOrCreateTags(names) {
 /**
  * Convert markdown to basic WordPress-compatible HTML.
  * Handles headings, bold, italic, lists, links, and paragraph breaks.
- * Note: For production, consider using the `marked` package for full spec compliance.
  * @param {string} markdown - Markdown string
  * @returns {string} HTML string
  */
 export function markdownToHtml(markdown) {
   return markdown
-    // Strip front matter if present
     .replace(/^---[\s\S]+?---\n+/, '')
-    // Headings
     .replace(/^### (.+)$/gm, '<h3>$1</h3>')
     .replace(/^## (.+)$/gm, '<h2>$1</h2>')
     .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    // Bold and italic
     .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Blockquotes
     .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
-    // Unordered list items
     .replace(/^[-*] (.+)$/gm, '<li>$1</li>')
-    // Wrap consecutive <li> in <ul>
     .replace(/(<li>[\s\S]*?<\/li>\n?)+/g, (match) => `<ul>\n${match}</ul>\n`)
-    // Links
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    // Horizontal rules
     .replace(/^---+$/gm, '<hr>')
-    // Double newlines → paragraph breaks (for non-block elements)
     .replace(/\n\n(?!<[huo])/g, '</p><p>')
     .replace(/^(?!<[huo]|<li|<block|<hr)(.+)$/gm, (line) => line.startsWith('<') ? line : `<p>${line}</p>`);
 }
@@ -177,7 +202,7 @@ export async function publishArticle(article, options = {}) {
 
   console.log(`[publisher] Publishing "${article.title}" — status: ${status}, category: ${category}`);
 
-  // Category is non-fatal — fall back to uncategorized (ID 1) if creation fails
+  // Category is non-fatal — fall back to Uncategorized (ID 1) if creation fails
   let categoryId = 1;
   try {
     categoryId = await getOrCreateCategory(category);
@@ -202,7 +227,6 @@ export async function publishArticle(article, options = {}) {
     status,
     categories: [categoryId],
     tags: tagIds,
-    // Yoast SEO plugin reads these meta fields if installed
     meta: {
       _yoast_wpseo_metadesc: article.metaDescription,
       _yoast_wpseo_focuskw: article.keyword,
@@ -242,11 +266,12 @@ export async function getPosts(page = 1) {
   return wpRequest(`/wp/v2/posts?per_page=10&page=${page}&status=publish&orderby=date&order=desc`);
 }
 
-// CLI entry: node publisher.js status  (prints post counts per status)
+// CLI entry: node publisher.js  — tests JWT auth + connection
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  console.log('[publisher] Checking WordPress connection...');
-  wpRequest('/wp/v2/posts?per_page=1&status=publish')
-    .then(() => console.log('[publisher] WordPress connection OK'))
+  console.log('[publisher] Testing JWT auth + WordPress connection...');
+  getJwtToken()
+    .then(() => wpRequest('/wp/v2/posts?per_page=1&status=publish'))
+    .then(() => console.log('[publisher] Connection OK'))
     .catch((err) => {
       console.error(`[publisher] Connection failed: ${err.message}`);
       process.exit(1);
