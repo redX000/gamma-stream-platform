@@ -1,0 +1,63 @@
+{
+  "generatedAt": "2026-04-20T18:17:37.386Z",
+  "daysBack": 7,
+  "ga4": {
+    "sessions": 0,
+    "pageviews": 0,
+    "newUsers": 0,
+    "topPages": [],
+    "source": "skipped"
+  },
+  "convertkit": {
+    "total": 0,
+    "active": 0,
+    "newThisWeek": 0,
+    "source": "error",
+    "error": "ConvertKit API 401"
+  },
+  "wordpress": {
+    "totalPosts": 2,
+    "recentPosts": [
+      {
+        "id": 8,
+        "title": "Jasper AI vs Copy.ai 2025: Which Is Better? (Head-to-Head)",
+        "url": "https://gammacash.online/jasper-ai-vs-copy-ai-2025-which-is-better-head-to-head/",
+        "date": "2026-04-20"
+      },
+      {
+        "id": 1,
+        "title": "Hello world!",
+        "url": "https://gammacash.online/hello-world/",
+        "date": "2026-04-19"
+      }
+    ],
+    "postsThisWeek": 2,
+    "source": "wordpress"
+  },
+  "revenue": {
+    "weekly": 0,
+    "monthly": 0,
+    "allTime": 0,
+    "byProgram": {},
+    "entryCount": 0,
+    "source": "no-ledger"
+  },
+  "kpi": {
+    "milestone": "month1",
+    "targets": {
+      "articles": 12,
+      "emailSubs": 50,
+      "revenue": 50
+    },
+    "progress": {
+      "articles": 17,
+      "emailSubs": 0,
+      "revenue": 0
+    },
+    "status": {
+      "articlesOnTrack": false,
+      "subsOnTrack": false,
+      "revenueOnTrack": false
+    }
+  }
+}
