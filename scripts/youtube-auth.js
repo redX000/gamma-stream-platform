@@ -4,18 +4,24 @@
  * Run ONCE locally:
  *   node scripts/youtube-auth.js
  *
- * Prerequisites — add to .env first:
- *   YOUTUBE_CLIENT_ID=...
- *   YOUTUBE_CLIENT_SECRET=...
+ * Prerequisites:
+ *   1. Add to .env:  YOUTUBE_CLIENT_ID=...  YOUTUBE_CLIENT_SECRET=...
+ *   2. In Google Cloud Console → APIs & Services → Credentials → edit your
+ *      Desktop app OAuth client → add  http://localhost:8080  as an
+ *      authorized redirect URI and save.
  *
  * After running, add to GitHub Secrets (Settings → Secrets → Actions):
  *   YOUTUBE_CLIENT_ID
  *   YOUTUBE_CLIENT_SECRET
  *   YOUTUBE_REFRESH_TOKEN   ← printed at the end of this script
+ *
+ * Note: urn:ietf:wg:oauth:2.0:oob (OOB flow) was deprecated by Google in
+ * 2022 and now causes invalid_client. This script uses localhost redirect
+ * instead, which is the correct approach for new Desktop app clients.
  */
 
 import { google } from 'googleapis';
-import readline from 'readline';
+import http from 'http';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
@@ -31,40 +37,64 @@ if (!CLIENT_ID || !CLIENT_SECRET) {
   process.exit(1);
 }
 
+const PORT = 8080;
+const REDIRECT_URI = `http://localhost:${PORT}`;
+
 const SCOPES = [
   'https://www.googleapis.com/auth/youtube.upload',
   'https://www.googleapis.com/auth/youtube',
 ];
 
-// 'urn:ietf:wg:oauth:2.0:oob' is the out-of-band redirect for Desktop app credentials.
-// Google shows the auth code on screen instead of redirecting to a URL.
-const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, 'urn:ietf:wg:oauth:2.0:oob');
+const oauth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
 
 const authUrl = oauth2Client.generateAuthUrl({
-  access_type: 'offline',   // required to receive a refresh token
+  access_type: 'offline',
   scope: SCOPES,
-  prompt: 'consent',        // force consent screen so refresh_token is always returned
+  prompt: 'consent',
 });
 
 console.log('\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 console.log('  YouTube OAuth Setup — Gamma Stream Platform');
 console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n');
-console.log('Step 1: Open this URL in your browser (use the channel owner account):\n');
+console.log('Prerequisite check:');
+console.log('  Make sure http://localhost:8080 is listed as an authorized redirect URI');
+console.log('  on your OAuth client in Google Cloud Console, then press Enter.\n');
+console.log('Open this URL in your browser (use the channel owner account):\n');
 console.log(`  ${authUrl}\n`);
-console.log('Step 2: Sign in, click Allow, then copy the code shown.\n');
+console.log('Waiting for Google to redirect back to localhost:8080…\n');
 
-const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+const server = http.createServer(async (req, res) => {
+  const url = new URL(req.url, REDIRECT_URI);
 
-rl.question('Step 3: Paste the authorization code here: ', async (code) => {
-  rl.close();
+  const error = url.searchParams.get('error');
+  if (error) {
+    res.writeHead(400, { 'Content-Type': 'text/html' });
+    res.end(`<h2>❌ Auth error: ${error}</h2><p>Check the terminal.</p>`);
+    server.close();
+    console.error(`\n❌  Google returned an error: ${error}\n`);
+    process.exit(1);
+  }
+
+  const code = url.searchParams.get('code');
+  if (!code) {
+    // Ignore favicon or other stray requests.
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+
+  res.writeHead(200, { 'Content-Type': 'text/html' });
+  res.end('<h2>✅ Authorized! You can close this tab and check your terminal.</h2>');
+  server.close();
+
   try {
-    const { tokens } = await oauth2Client.getToken(code.trim());
+    const { tokens } = await oauth2Client.getToken(code);
 
     if (!tokens.refresh_token) {
       console.error('\n❌  No refresh_token returned.');
-      console.error('    This happens if you already authorized this app before.');
+      console.error('    This happens when the app was already authorized before.');
       console.error('    Fix: go to https://myaccount.google.com/permissions, revoke');
-      console.error('    "Gamma Stream", then run this script again.\n');
+      console.error('    access for your app ("Gamma Stream"), then run this script again.\n');
       process.exit(1);
     }
 
@@ -79,8 +109,22 @@ rl.question('Step 3: Paste the authorization code here: ', async (code) => {
   } catch (err) {
     console.error('\n❌  Token exchange failed:', err.message);
     if (err.message.includes('invalid_grant')) {
-      console.error('    Code expired (codes are single-use and expire quickly). Run the script again.\n');
+      console.error('    Auth code expired or already used. Run the script again and');
+      console.error('    complete the browser step quickly (codes expire in ~1 minute).\n');
     }
     process.exit(1);
   }
+});
+
+server.listen(PORT, '127.0.0.1', () => {
+  // Server is ready — URL was already printed above.
+});
+
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`\n❌  Port ${PORT} is already in use. Close whatever is using it and try again.\n`);
+  } else {
+    console.error('\n❌  Server error:', err.message);
+  }
+  process.exit(1);
 });
