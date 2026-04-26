@@ -1,0 +1,452 @@
+{
+  "voice": "en-US-GuyNeural",
+  "generatedAt": "2026-04-26T19:57:02.537Z",
+  "totalDurationMs": 33950,
+  "wordCount": 74,
+  "words": [
+    {
+      "word": "Are",
+      "startMs": 100,
+      "durationMs": 163,
+      "endMs": 263
+    },
+    {
+      "word": "you",
+      "startMs": 275,
+      "durationMs": 113,
+      "endMs": 388
+    },
+    {
+      "word": "still",
+      "startMs": 413,
+      "durationMs": 275,
+      "endMs": 688
+    },
+    {
+      "word": "doing",
+      "startMs": 713,
+      "durationMs": 300,
+      "endMs": 1013
+    },
+    {
+      "word": "everything",
+      "startMs": 1038,
+      "durationMs": 438,
+      "endMs": 1475
+    },
+    {
+      "word": "manually",
+      "startMs": 1500,
+      "durationMs": 625,
+      "endMs": 2125
+    },
+    {
+      "word": "These",
+      "startMs": 3013,
+      "durationMs": 238,
+      "endMs": 3250
+    },
+    {
+      "word": "5",
+      "startMs": 3275,
+      "durationMs": 263,
+      "endMs": 3538
+    },
+    {
+      "word": "AI",
+      "startMs": 3550,
+      "durationMs": 263,
+      "endMs": 3813
+    },
+    {
+      "word": "tools",
+      "startMs": 3838,
+      "durationMs": 388,
+      "endMs": 4225
+    },
+    {
+      "word": "will",
+      "startMs": 4238,
+      "durationMs": 125,
+      "endMs": 4363
+    },
+    {
+      "word": "save",
+      "startMs": 4388,
+      "durationMs": 200,
+      "endMs": 4588
+    },
+    {
+      "word": "you",
+      "startMs": 4613,
+      "durationMs": 125,
+      "endMs": 4738
+    },
+    {
+      "word": "10 hours",
+      "startMs": 4763,
+      "durationMs": 563,
+      "endMs": 5325
+    },
+    {
+      "word": "every",
+      "startMs": 5350,
+      "durationMs": 225,
+      "endMs": 5575
+    },
+    {
+      "word": "single",
+      "startMs": 5600,
+      "durationMs": 313,
+      "endMs": 5913
+    },
+    {
+      "word": "week",
+      "startMs": 5925,
+      "durationMs": 338,
+      "endMs": 6263
+    },
+    {
+      "word": "Number",
+      "startMs": 7150,
+      "durationMs": 400,
+      "endMs": 7550
+    },
+    {
+      "word": "one",
+      "startMs": 7575,
+      "durationMs": 275,
+      "endMs": 7850
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 8075,
+      "durationMs": 913,
+      "endMs": 8988
+    },
+    {
+      "word": "for",
+      "startMs": 9013,
+      "durationMs": 200,
+      "endMs": 9213
+    },
+    {
+      "word": "writing",
+      "startMs": 9238,
+      "durationMs": 350,
+      "endMs": 9588
+    },
+    {
+      "word": "and",
+      "startMs": 9600,
+      "durationMs": 100,
+      "endMs": 9700
+    },
+    {
+      "word": "brainstorming",
+      "startMs": 9725,
+      "durationMs": 738,
+      "endMs": 10463
+    },
+    {
+      "word": "Number",
+      "startMs": 11350,
+      "durationMs": 375,
+      "endMs": 11725
+    },
+    {
+      "word": "two",
+      "startMs": 11750,
+      "durationMs": 263,
+      "endMs": 12013
+    },
+    {
+      "word": "Jasper",
+      "startMs": 12175,
+      "durationMs": 438,
+      "endMs": 12613
+    },
+    {
+      "word": "AI",
+      "startMs": 12638,
+      "durationMs": 313,
+      "endMs": 12950
+    },
+    {
+      "word": "for",
+      "startMs": 12963,
+      "durationMs": 163,
+      "endMs": 13125
+    },
+    {
+      "word": "long-form",
+      "startMs": 13150,
+      "durationMs": 450,
+      "endMs": 13600
+    },
+    {
+      "word": "content",
+      "startMs": 13625,
+      "durationMs": 588,
+      "endMs": 14213
+    },
+    {
+      "word": "Number",
+      "startMs": 15088,
+      "durationMs": 350,
+      "endMs": 15438
+    },
+    {
+      "word": "three",
+      "startMs": 15463,
+      "durationMs": 350,
+      "endMs": 15813
+    },
+    {
+      "word": "Surfer",
+      "startMs": 15988,
+      "durationMs": 388,
+      "endMs": 16375
+    },
+    {
+      "word": "SEO",
+      "startMs": 16388,
+      "durationMs": 438,
+      "endMs": 16825
+    },
+    {
+      "word": "for",
+      "startMs": 16850,
+      "durationMs": 175,
+      "endMs": 17025
+    },
+    {
+      "word": "ranking",
+      "startMs": 17050,
+      "durationMs": 350,
+      "endMs": 17400
+    },
+    {
+      "word": "on",
+      "startMs": 17425,
+      "durationMs": 125,
+      "endMs": 17550
+    },
+    {
+      "word": "Google",
+      "startMs": 17575,
+      "durationMs": 425,
+      "endMs": 18000
+    },
+    {
+      "word": "Number",
+      "startMs": 18875,
+      "durationMs": 375,
+      "endMs": 19250
+    },
+    {
+      "word": "four",
+      "startMs": 19275,
+      "durationMs": 388,
+      "endMs": 19663
+    },
+    {
+      "word": "Zapier",
+      "startMs": 19838,
+      "durationMs": 475,
+      "endMs": 20313
+    },
+    {
+      "word": "to",
+      "startMs": 20338,
+      "durationMs": 125,
+      "endMs": 20463
+    },
+    {
+      "word": "automate",
+      "startMs": 20475,
+      "durationMs": 463,
+      "endMs": 20938
+    },
+    {
+      "word": "repetitive",
+      "startMs": 20963,
+      "durationMs": 588,
+      "endMs": 21550
+    },
+    {
+      "word": "workflows",
+      "startMs": 21575,
+      "durationMs": 688,
+      "endMs": 22263
+    },
+    {
+      "word": "And",
+      "startMs": 23138,
+      "durationMs": 200,
+      "endMs": 23338
+    },
+    {
+      "word": "number",
+      "startMs": 23363,
+      "durationMs": 288,
+      "endMs": 23650
+    },
+    {
+      "word": "five",
+      "startMs": 23675,
+      "durationMs": 388,
+      "endMs": 24063
+    },
+    {
+      "word": "Canva",
+      "startMs": 24200,
+      "durationMs": 400,
+      "endMs": 24600
+    },
+    {
+      "word": "AI",
+      "startMs": 24613,
+      "durationMs": 375,
+      "endMs": 24988
+    },
+    {
+      "word": "for",
+      "startMs": 25013,
+      "durationMs": 175,
+      "endMs": 25188
+    },
+    {
+      "word": "stunning",
+      "startMs": 25213,
+      "durationMs": 325,
+      "endMs": 25538
+    },
+    {
+      "word": "graphics",
+      "startMs": 25550,
+      "durationMs": 438,
+      "endMs": 25988
+    },
+    {
+      "word": "in",
+      "startMs": 26000,
+      "durationMs": 113,
+      "endMs": 26113
+    },
+    {
+      "word": "seconds",
+      "startMs": 26138,
+      "durationMs": 550,
+      "endMs": 26688
+    },
+    {
+      "word": "Drop",
+      "startMs": 27575,
+      "durationMs": 288,
+      "endMs": 27863
+    },
+    {
+      "word": "a",
+      "startMs": 27875,
+      "durationMs": 75,
+      "endMs": 27950
+    },
+    {
+      "word": "comment",
+      "startMs": 27963,
+      "durationMs": 438,
+      "endMs": 28400
+    },
+    {
+      "word": "with",
+      "startMs": 28425,
+      "durationMs": 138,
+      "endMs": 28563
+    },
+    {
+      "word": "which",
+      "startMs": 28588,
+      "durationMs": 238,
+      "endMs": 28825
+    },
+    {
+      "word": "tool",
+      "startMs": 28838,
+      "durationMs": 225,
+      "endMs": 29063
+    },
+    {
+      "word": "you're",
+      "startMs": 29088,
+      "durationMs": 138,
+      "endMs": 29225
+    },
+    {
+      "word": "trying",
+      "startMs": 29250,
+      "durationMs": 300,
+      "endMs": 29550
+    },
+    {
+      "word": "first",
+      "startMs": 29575,
+      "durationMs": 488,
+      "endMs": 30063
+    },
+    {
+      "word": "And",
+      "startMs": 30950,
+      "durationMs": 175,
+      "endMs": 31125
+    },
+    {
+      "word": "follow",
+      "startMs": 31150,
+      "durationMs": 338,
+      "endMs": 31488
+    },
+    {
+      "word": "for",
+      "startMs": 31513,
+      "durationMs": 150,
+      "endMs": 31663
+    },
+    {
+      "word": "more",
+      "startMs": 31688,
+      "durationMs": 250,
+      "endMs": 31938
+    },
+    {
+      "word": "AI",
+      "startMs": 31950,
+      "durationMs": 250,
+      "endMs": 32200
+    },
+    {
+      "word": "productivity",
+      "startMs": 32225,
+      "durationMs": 750,
+      "endMs": 32975
+    },
+    {
+      "word": "tips",
+      "startMs": 33000,
+      "durationMs": 300,
+      "endMs": 33300
+    },
+    {
+      "word": "every",
+      "startMs": 33313,
+      "durationMs": 238,
+      "endMs": 33550
+    },
+    {
+      "word": "week",
+      "startMs": 33575,
+      "durationMs": 375,
+      "endMs": 33950
+    }
+  ]
+}

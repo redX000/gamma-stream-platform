@@ -1,0 +1,89 @@
+name: Voiceover Generator
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic_filter:
+        description: 'Only process scripts matching this topic (leave blank for all)'
+        required: false
+        default: ''
+        type: string
+  # Run weekly on Sundays at 07:00 UTC to produce voiceovers for the upcoming week's scripts
+  schedule:
+    - cron: '0 7 * * 0'
+
+concurrency:
+  group: voiceover-generator
+  cancel-in-progress: false
+
+jobs:
+  generate-voiceovers:
+    name: Generate MP3 Voiceovers
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate voiceovers
+        id: voiceover
+        run: node automation/voiceover-generator.js
+        # Edge TTS uses the Microsoft Bing speech service over WebSocket
+        # No API key or environment variable required
+
+      - name: Upload MP3 audio files
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: voiceovers-${{ github.run_number }}
+          path: videos/audio/*.mp3
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Commit timing + manifest files
+        # Timing JSON and manifest are small text files — commit them so subtitle
+        # generation scripts can reference them directly from the repo
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add videos/audio/*-timing.json videos/audio/manifest.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No timing files to commit."
+          else
+            git commit -m "chore: add voiceover timing data [run #${{ github.run_number }}]"
+            git push
+          fi
+
+      - name: Send failure notification
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: '❌ Gamma Stream — Voiceover generation failed (#${{ github.run_number }})'
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Gamma Stream <${{ secrets.SMTP_USER }}>
+          body: |
+            The voiceover generation pipeline failed.
+
+            Run: ${{ github.run_number }}
+            Branch: ${{ github.ref_name }}
+
+            View logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Common causes:
+            - Microsoft Edge TTS service temporarily unavailable
+            - videos/scripts/ directory missing or contains invalid JSON
+            - Network timeout (Edge TTS WebSocket requires outbound WSS access)

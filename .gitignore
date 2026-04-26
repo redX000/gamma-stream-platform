@@ -5,3 +5,7 @@ content-pipeline/queue.json
 *.log
 .DS_Store
 Thumbs.db
+# Generated audio/video — large binaries, tracked via GitHub Actions artifacts
+videos/audio/*.mp3
+videos/output/*.mp4
+videos/temp/
