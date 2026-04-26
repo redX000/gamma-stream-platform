@@ -1,0 +1,2204 @@
+{
+  "voice": "en-US-JennyNeural",
+  "generatedAt": "2026-04-26T19:57:08.160Z",
+  "totalDurationMs": 146025,
+  "wordCount": 366,
+  "words": [
+    {
+      "word": "Hey",
+      "startMs": 100,
+      "durationMs": 238,
+      "endMs": 338
+    },
+    {
+      "word": "everyone",
+      "startMs": 350,
+      "durationMs": 550,
+      "endMs": 900
+    },
+    {
+      "word": "welcome",
+      "startMs": 1100,
+      "durationMs": 325,
+      "endMs": 1425
+    },
+    {
+      "word": "back",
+      "startMs": 1438,
+      "durationMs": 225,
+      "endMs": 1663
+    },
+    {
+      "word": "to",
+      "startMs": 1675,
+      "durationMs": 75,
+      "endMs": 1750
+    },
+    {
+      "word": "the",
+      "startMs": 1763,
+      "durationMs": 88,
+      "endMs": 1850
+    },
+    {
+      "word": "channel",
+      "startMs": 1863,
+      "durationMs": 538,
+      "endMs": 2400
+    },
+    {
+      "word": "Today",
+      "startMs": 3263,
+      "durationMs": 350,
+      "endMs": 3613
+    },
+    {
+      "word": "we're",
+      "startMs": 3625,
+      "durationMs": 150,
+      "endMs": 3775
+    },
+    {
+      "word": "breaking",
+      "startMs": 3788,
+      "durationMs": 363,
+      "endMs": 4150
+    },
+    {
+      "word": "down",
+      "startMs": 4163,
+      "durationMs": 188,
+      "endMs": 4350
+    },
+    {
+      "word": "the",
+      "startMs": 4363,
+      "durationMs": 100,
+      "endMs": 4463
+    },
+    {
+      "word": "five",
+      "startMs": 4475,
+      "durationMs": 288,
+      "endMs": 4763
+    },
+    {
+      "word": "best",
+      "startMs": 4775,
+      "durationMs": 288,
+      "endMs": 5063
+    },
+    {
+      "word": "AI",
+      "startMs": 5075,
+      "durationMs": 275,
+      "endMs": 5350
+    },
+    {
+      "word": "tools",
+      "startMs": 5363,
+      "durationMs": 375,
+      "endMs": 5738
+    },
+    {
+      "word": "that",
+      "startMs": 5750,
+      "durationMs": 125,
+      "endMs": 5875
+    },
+    {
+      "word": "are",
+      "startMs": 5888,
+      "durationMs": 75,
+      "endMs": 5963
+    },
+    {
+      "word": "transforming",
+      "startMs": 5975,
+      "durationMs": 638,
+      "endMs": 6613
+    },
+    {
+      "word": "the",
+      "startMs": 6625,
+      "durationMs": 88,
+      "endMs": 6713
+    },
+    {
+      "word": "way",
+      "startMs": 6725,
+      "durationMs": 175,
+      "endMs": 6900
+    },
+    {
+      "word": "people",
+      "startMs": 6913,
+      "durationMs": 350,
+      "endMs": 7263
+    },
+    {
+      "word": "work",
+      "startMs": 7275,
+      "durationMs": 288,
+      "endMs": 7563
+    },
+    {
+      "word": "in 2026",
+      "startMs": 7575,
+      "durationMs": 1313,
+      "endMs": 8888
+    },
+    {
+      "word": "Whether",
+      "startMs": 9750,
+      "durationMs": 288,
+      "endMs": 10038
+    },
+    {
+      "word": "you're",
+      "startMs": 10050,
+      "durationMs": 138,
+      "endMs": 10188
+    },
+    {
+      "word": "a",
+      "startMs": 10200,
+      "durationMs": 63,
+      "endMs": 10263
+    },
+    {
+      "word": "content",
+      "startMs": 10275,
+      "durationMs": 450,
+      "endMs": 10725
+    },
+    {
+      "word": "creator",
+      "startMs": 10738,
+      "durationMs": 525,
+      "endMs": 11263
+    },
+    {
+      "word": "marketer",
+      "startMs": 11450,
+      "durationMs": 538,
+      "endMs": 11988
+    },
+    {
+      "word": "or",
+      "startMs": 12188,
+      "durationMs": 163,
+      "endMs": 12350
+    },
+    {
+      "word": "entrepreneur",
+      "startMs": 12363,
+      "durationMs": 725,
+      "endMs": 13088
+    },
+    {
+      "word": "these",
+      "startMs": 13300,
+      "durationMs": 225,
+      "endMs": 13525
+    },
+    {
+      "word": "tools",
+      "startMs": 13538,
+      "durationMs": 350,
+      "endMs": 13888
+    },
+    {
+      "word": "are",
+      "startMs": 13900,
+      "durationMs": 225,
+      "endMs": 14125
+    },
+    {
+      "word": "absolute",
+      "startMs": 14138,
+      "durationMs": 488,
+      "endMs": 14625
+    },
+    {
+      "word": "game-changers",
+      "startMs": 14638,
+      "durationMs": 900,
+      "endMs": 15538
+    },
+    {
+      "word": "Let's",
+      "startMs": 16400,
+      "durationMs": 263,
+      "endMs": 16663
+    },
+    {
+      "word": "start",
+      "startMs": 16675,
+      "durationMs": 225,
+      "endMs": 16900
+    },
+    {
+      "word": "with",
+      "startMs": 16913,
+      "durationMs": 138,
+      "endMs": 17050
+    },
+    {
+      "word": "number",
+      "startMs": 17063,
+      "durationMs": 313,
+      "endMs": 17375
+    },
+    {
+      "word": "one",
+      "startMs": 17388,
+      "durationMs": 325,
+      "endMs": 17713
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 17888,
+      "durationMs": 875,
+      "endMs": 18763
+    },
+    {
+      "word": "by",
+      "startMs": 18775,
+      "durationMs": 213,
+      "endMs": 18988
+    },
+    {
+      "word": "OpenAI",
+      "startMs": 19000,
+      "durationMs": 713,
+      "endMs": 19713
+    },
+    {
+      "word": "This",
+      "startMs": 20575,
+      "durationMs": 238,
+      "endMs": 20813
+    },
+    {
+      "word": "is",
+      "startMs": 20825,
+      "durationMs": 100,
+      "endMs": 20925
+    },
+    {
+      "word": "the",
+      "startMs": 20938,
+      "durationMs": 100,
+      "endMs": 21038
+    },
+    {
+      "word": "Swiss",
+      "startMs": 21050,
+      "durationMs": 275,
+      "endMs": 21325
+    },
+    {
+      "word": "Army",
+      "startMs": 21338,
+      "durationMs": 263,
+      "endMs": 21600
+    },
+    {
+      "word": "knife",
+      "startMs": 21613,
+      "durationMs": 238,
+      "endMs": 21850
+    },
+    {
+      "word": "of",
+      "startMs": 21863,
+      "durationMs": 88,
+      "endMs": 21950
+    },
+    {
+      "word": "AI",
+      "startMs": 21963,
+      "durationMs": 513,
+      "endMs": 22475
+    },
+    {
+      "word": "You",
+      "startMs": 23338,
+      "durationMs": 163,
+      "endMs": 23500
+    },
+    {
+      "word": "can",
+      "startMs": 23513,
+      "durationMs": 138,
+      "endMs": 23650
+    },
+    {
+      "word": "use",
+      "startMs": 23663,
+      "durationMs": 188,
+      "endMs": 23850
+    },
+    {
+      "word": "it",
+      "startMs": 23863,
+      "durationMs": 100,
+      "endMs": 23963
+    },
+    {
+      "word": "to",
+      "startMs": 23975,
+      "durationMs": 113,
+      "endMs": 24088
+    },
+    {
+      "word": "write",
+      "startMs": 24100,
+      "durationMs": 250,
+      "endMs": 24350
+    },
+    {
+      "word": "emails",
+      "startMs": 24363,
+      "durationMs": 575,
+      "endMs": 24938
+    },
+    {
+      "word": "brainstorm",
+      "startMs": 25050,
+      "durationMs": 463,
+      "endMs": 25513
+    },
+    {
+      "word": "ideas",
+      "startMs": 25525,
+      "durationMs": 600,
+      "endMs": 26125
+    },
+    {
+      "word": "debug",
+      "startMs": 26275,
+      "durationMs": 350,
+      "endMs": 26625
+    },
+    {
+      "word": "code",
+      "startMs": 26638,
+      "durationMs": 375,
+      "endMs": 27013
+    },
+    {
+      "word": "summarize",
+      "startMs": 27213,
+      "durationMs": 488,
+      "endMs": 27700
+    },
+    {
+      "word": "documents",
+      "startMs": 27713,
+      "durationMs": 650,
+      "endMs": 28363
+    },
+    {
+      "word": "and",
+      "startMs": 28488,
+      "durationMs": 163,
+      "endMs": 28650
+    },
+    {
+      "word": "so",
+      "startMs": 28663,
+      "durationMs": 188,
+      "endMs": 28850
+    },
+    {
+      "word": "much",
+      "startMs": 28863,
+      "durationMs": 238,
+      "endMs": 29100
+    },
+    {
+      "word": "more",
+      "startMs": 29113,
+      "durationMs": 438,
+      "endMs": 29550
+    },
+    {
+      "word": "The",
+      "startMs": 30413,
+      "durationMs": 150,
+      "endMs": 30563
+    },
+    {
+      "word": "GPT-4",
+      "startMs": 30575,
+      "durationMs": 763,
+      "endMs": 31338
+    },
+    {
+      "word": "model",
+      "startMs": 31350,
+      "durationMs": 450,
+      "endMs": 31800
+    },
+    {
+      "word": "is",
+      "startMs": 31813,
+      "durationMs": 150,
+      "endMs": 31963
+    },
+    {
+      "word": "incredibly",
+      "startMs": 31975,
+      "durationMs": 550,
+      "endMs": 32525
+    },
+    {
+      "word": "powerful",
+      "startMs": 32538,
+      "durationMs": 675,
+      "endMs": 33213
+    },
+    {
+      "word": "and",
+      "startMs": 33225,
+      "durationMs": 75,
+      "endMs": 33300
+    },
+    {
+      "word": "the",
+      "startMs": 33313,
+      "durationMs": 75,
+      "endMs": 33388
+    },
+    {
+      "word": "free",
+      "startMs": 33400,
+      "durationMs": 213,
+      "endMs": 33613
+    },
+    {
+      "word": "tier",
+      "startMs": 33625,
+      "durationMs": 325,
+      "endMs": 33950
+    },
+    {
+      "word": "is",
+      "startMs": 33963,
+      "durationMs": 150,
+      "endMs": 34113
+    },
+    {
+      "word": "surprisingly",
+      "startMs": 34125,
+      "durationMs": 650,
+      "endMs": 34775
+    },
+    {
+      "word": "capable",
+      "startMs": 34788,
+      "durationMs": 625,
+      "endMs": 35413
+    },
+    {
+      "word": "If",
+      "startMs": 36275,
+      "durationMs": 163,
+      "endMs": 36438
+    },
+    {
+      "word": "you",
+      "startMs": 36450,
+      "durationMs": 138,
+      "endMs": 36588
+    },
+    {
+      "word": "upgrade",
+      "startMs": 36600,
+      "durationMs": 338,
+      "endMs": 36938
+    },
+    {
+      "word": "to",
+      "startMs": 36950,
+      "durationMs": 88,
+      "endMs": 37038
+    },
+    {
+      "word": "Plus",
+      "startMs": 37050,
+      "durationMs": 500,
+      "endMs": 37550
+    },
+    {
+      "word": "you",
+      "startMs": 37700,
+      "durationMs": 113,
+      "endMs": 37813
+    },
+    {
+      "word": "get",
+      "startMs": 37825,
+      "durationMs": 163,
+      "endMs": 37988
+    },
+    {
+      "word": "access",
+      "startMs": 38000,
+      "durationMs": 413,
+      "endMs": 38413
+    },
+    {
+      "word": "to",
+      "startMs": 38425,
+      "durationMs": 100,
+      "endMs": 38525
+    },
+    {
+      "word": "plugins",
+      "startMs": 38538,
+      "durationMs": 550,
+      "endMs": 39088
+    },
+    {
+      "word": "image",
+      "startMs": 39225,
+      "durationMs": 300,
+      "endMs": 39525
+    },
+    {
+      "word": "generation",
+      "startMs": 39538,
+      "durationMs": 750,
+      "endMs": 40288
+    },
+    {
+      "word": "and",
+      "startMs": 40513,
+      "durationMs": 113,
+      "endMs": 40625
+    },
+    {
+      "word": "advanced",
+      "startMs": 40638,
+      "durationMs": 463,
+      "endMs": 41100
+    },
+    {
+      "word": "data",
+      "startMs": 41113,
+      "durationMs": 250,
+      "endMs": 41363
+    },
+    {
+      "word": "analysis",
+      "startMs": 41375,
+      "durationMs": 850,
+      "endMs": 42225
+    },
+    {
+      "word": "Number",
+      "startMs": 43088,
+      "durationMs": 313,
+      "endMs": 43400
+    },
+    {
+      "word": "two",
+      "startMs": 43413,
+      "durationMs": 325,
+      "endMs": 43738
+    },
+    {
+      "word": "is",
+      "startMs": 43750,
+      "durationMs": 213,
+      "endMs": 43963
+    },
+    {
+      "word": "Jasper",
+      "startMs": 43975,
+      "durationMs": 413,
+      "endMs": 44388
+    },
+    {
+      "word": "AI",
+      "startMs": 44400,
+      "durationMs": 413,
+      "endMs": 44813
+    },
+    {
+      "word": "the",
+      "startMs": 45050,
+      "durationMs": 100,
+      "endMs": 45150
+    },
+    {
+      "word": "go-to",
+      "startMs": 45163,
+      "durationMs": 238,
+      "endMs": 45400
+    },
+    {
+      "word": "tool",
+      "startMs": 45413,
+      "durationMs": 288,
+      "endMs": 45700
+    },
+    {
+      "word": "for",
+      "startMs": 45713,
+      "durationMs": 163,
+      "endMs": 45875
+    },
+    {
+      "word": "long-form",
+      "startMs": 45888,
+      "durationMs": 488,
+      "endMs": 46375
+    },
+    {
+      "word": "content",
+      "startMs": 46388,
+      "durationMs": 425,
+      "endMs": 46813
+    },
+    {
+      "word": "creation",
+      "startMs": 46825,
+      "durationMs": 663,
+      "endMs": 47488
+    },
+    {
+      "word": "If",
+      "startMs": 48350,
+      "durationMs": 163,
+      "endMs": 48513
+    },
+    {
+      "word": "you're",
+      "startMs": 48525,
+      "durationMs": 138,
+      "endMs": 48663
+    },
+    {
+      "word": "running",
+      "startMs": 48675,
+      "durationMs": 275,
+      "endMs": 48950
+    },
+    {
+      "word": "a",
+      "startMs": 48963,
+      "durationMs": 50,
+      "endMs": 49013
+    },
+    {
+      "word": "blog",
+      "startMs": 49025,
+      "durationMs": 388,
+      "endMs": 49413
+    },
+    {
+      "word": "or",
+      "startMs": 49425,
+      "durationMs": 113,
+      "endMs": 49538
+    },
+    {
+      "word": "content",
+      "startMs": 49550,
+      "durationMs": 438,
+      "endMs": 49988
+    },
+    {
+      "word": "marketing",
+      "startMs": 50000,
+      "durationMs": 450,
+      "endMs": 50450
+    },
+    {
+      "word": "operation",
+      "startMs": 50463,
+      "durationMs": 688,
+      "endMs": 51150
+    },
+    {
+      "word": "Jasper",
+      "startMs": 51400,
+      "durationMs": 425,
+      "endMs": 51825
+    },
+    {
+      "word": "can",
+      "startMs": 51838,
+      "durationMs": 175,
+      "endMs": 52013
+    },
+    {
+      "word": "generate",
+      "startMs": 52025,
+      "durationMs": 413,
+      "endMs": 52438
+    },
+    {
+      "word": "full",
+      "startMs": 52450,
+      "durationMs": 238,
+      "endMs": 52688
+    },
+    {
+      "word": "articles",
+      "startMs": 52700,
+      "durationMs": 663,
+      "endMs": 53363
+    },
+    {
+      "word": "product",
+      "startMs": 53488,
+      "durationMs": 338,
+      "endMs": 53825
+    },
+    {
+      "word": "descriptions",
+      "startMs": 53838,
+      "durationMs": 838,
+      "endMs": 54675
+    },
+    {
+      "word": "and",
+      "startMs": 54863,
+      "durationMs": 175,
+      "endMs": 55038
+    },
+    {
+      "word": "ad",
+      "startMs": 55050,
+      "durationMs": 200,
+      "endMs": 55250
+    },
+    {
+      "word": "copy",
+      "startMs": 55263,
+      "durationMs": 363,
+      "endMs": 55625
+    },
+    {
+      "word": "in",
+      "startMs": 55638,
+      "durationMs": 88,
+      "endMs": 55725
+    },
+    {
+      "word": "your",
+      "startMs": 55738,
+      "durationMs": 113,
+      "endMs": 55850
+    },
+    {
+      "word": "brand's",
+      "startMs": 55863,
+      "durationMs": 313,
+      "endMs": 56175
+    },
+    {
+      "word": "voice",
+      "startMs": 56188,
+      "durationMs": 525,
+      "endMs": 56713
+    },
+    {
+      "word": "It",
+      "startMs": 57575,
+      "durationMs": 163,
+      "endMs": 57738
+    },
+    {
+      "word": "integrates",
+      "startMs": 57750,
+      "durationMs": 488,
+      "endMs": 58238
+    },
+    {
+      "word": "directly",
+      "startMs": 58250,
+      "durationMs": 475,
+      "endMs": 58725
+    },
+    {
+      "word": "with",
+      "startMs": 58738,
+      "durationMs": 150,
+      "endMs": 58888
+    },
+    {
+      "word": "Surfer",
+      "startMs": 58900,
+      "durationMs": 363,
+      "endMs": 59263
+    },
+    {
+      "word": "SEO",
+      "startMs": 59275,
+      "durationMs": 600,
+      "endMs": 59875
+    },
+    {
+      "word": "which",
+      "startMs": 60063,
+      "durationMs": 188,
+      "endMs": 60250
+    },
+    {
+      "word": "brings",
+      "startMs": 60263,
+      "durationMs": 275,
+      "endMs": 60538
+    },
+    {
+      "word": "me",
+      "startMs": 60550,
+      "durationMs": 113,
+      "endMs": 60663
+    },
+    {
+      "word": "to",
+      "startMs": 60675,
+      "durationMs": 100,
+      "endMs": 60775
+    },
+    {
+      "word": "number",
+      "startMs": 60788,
+      "durationMs": 275,
+      "endMs": 61063
+    },
+    {
+      "word": "three",
+      "startMs": 61075,
+      "durationMs": 463,
+      "endMs": 61538
+    },
+    {
+      "word": "Surfer",
+      "startMs": 62400,
+      "durationMs": 400,
+      "endMs": 62800
+    },
+    {
+      "word": "SEO",
+      "startMs": 62813,
+      "durationMs": 475,
+      "endMs": 63288
+    },
+    {
+      "word": "is",
+      "startMs": 63300,
+      "durationMs": 175,
+      "endMs": 63475
+    },
+    {
+      "word": "the",
+      "startMs": 63488,
+      "durationMs": 100,
+      "endMs": 63588
+    },
+    {
+      "word": "tool",
+      "startMs": 63600,
+      "durationMs": 238,
+      "endMs": 63838
+    },
+    {
+      "word": "that",
+      "startMs": 63850,
+      "durationMs": 163,
+      "endMs": 64013
+    },
+    {
+      "word": "actually",
+      "startMs": 64025,
+      "durationMs": 400,
+      "endMs": 64425
+    },
+    {
+      "word": "gets",
+      "startMs": 64438,
+      "durationMs": 200,
+      "endMs": 64638
+    },
+    {
+      "word": "your",
+      "startMs": 64650,
+      "durationMs": 100,
+      "endMs": 64750
+    },
+    {
+      "word": "content",
+      "startMs": 64763,
+      "durationMs": 500,
+      "endMs": 65263
+    },
+    {
+      "word": "to",
+      "startMs": 65275,
+      "durationMs": 88,
+      "endMs": 65363
+    },
+    {
+      "word": "rank",
+      "startMs": 65375,
+      "durationMs": 250,
+      "endMs": 65625
+    },
+    {
+      "word": "on",
+      "startMs": 65638,
+      "durationMs": 138,
+      "endMs": 65775
+    },
+    {
+      "word": "Google",
+      "startMs": 65788,
+      "durationMs": 488,
+      "endMs": 66275
+    },
+    {
+      "word": "It",
+      "startMs": 67138,
+      "durationMs": 175,
+      "endMs": 67313
+    },
+    {
+      "word": "analyzes",
+      "startMs": 67325,
+      "durationMs": 550,
+      "endMs": 67875
+    },
+    {
+      "word": "the",
+      "startMs": 67888,
+      "durationMs": 100,
+      "endMs": 67988
+    },
+    {
+      "word": "top-ranking",
+      "startMs": 68000,
+      "durationMs": 638,
+      "endMs": 68638
+    },
+    {
+      "word": "pages",
+      "startMs": 68650,
+      "durationMs": 450,
+      "endMs": 69100
+    },
+    {
+      "word": "for",
+      "startMs": 69113,
+      "durationMs": 188,
+      "endMs": 69300
+    },
+    {
+      "word": "any",
+      "startMs": 69313,
+      "durationMs": 213,
+      "endMs": 69525
+    },
+    {
+      "word": "keyword",
+      "startMs": 69538,
+      "durationMs": 488,
+      "endMs": 70025
+    },
+    {
+      "word": "and",
+      "startMs": 70038,
+      "durationMs": 150,
+      "endMs": 70188
+    },
+    {
+      "word": "tells",
+      "startMs": 70200,
+      "durationMs": 288,
+      "endMs": 70488
+    },
+    {
+      "word": "you",
+      "startMs": 70500,
+      "durationMs": 100,
+      "endMs": 70600
+    },
+    {
+      "word": "exactly",
+      "startMs": 70613,
+      "durationMs": 488,
+      "endMs": 71100
+    },
+    {
+      "word": "what",
+      "startMs": 71113,
+      "durationMs": 188,
+      "endMs": 71300
+    },
+    {
+      "word": "to",
+      "startMs": 71313,
+      "durationMs": 113,
+      "endMs": 71425
+    },
+    {
+      "word": "write",
+      "startMs": 71438,
+      "durationMs": 400,
+      "endMs": 71838
+    },
+    {
+      "word": "how",
+      "startMs": 72075,
+      "durationMs": 113,
+      "endMs": 72188
+    },
+    {
+      "word": "long",
+      "startMs": 72200,
+      "durationMs": 213,
+      "endMs": 72413
+    },
+    {
+      "word": "your",
+      "startMs": 72425,
+      "durationMs": 150,
+      "endMs": 72575
+    },
+    {
+      "word": "article",
+      "startMs": 72588,
+      "durationMs": 375,
+      "endMs": 72963
+    },
+    {
+      "word": "should",
+      "startMs": 72975,
+      "durationMs": 200,
+      "endMs": 73175
+    },
+    {
+      "word": "be",
+      "startMs": 73188,
+      "durationMs": 300,
+      "endMs": 73488
+    },
+    {
+      "word": "and",
+      "startMs": 73725,
+      "durationMs": 125,
+      "endMs": 73850
+    },
+    {
+      "word": "which",
+      "startMs": 73863,
+      "durationMs": 238,
+      "endMs": 74100
+    },
+    {
+      "word": "terms",
+      "startMs": 74113,
+      "durationMs": 288,
+      "endMs": 74400
+    },
+    {
+      "word": "to",
+      "startMs": 74413,
+      "durationMs": 100,
+      "endMs": 74513
+    },
+    {
+      "word": "include",
+      "startMs": 74525,
+      "durationMs": 588,
+      "endMs": 75113
+    },
+    {
+      "word": "When",
+      "startMs": 75975,
+      "durationMs": 175,
+      "endMs": 76150
+    },
+    {
+      "word": "you",
+      "startMs": 76163,
+      "durationMs": 100,
+      "endMs": 76263
+    },
+    {
+      "word": "combine",
+      "startMs": 76275,
+      "durationMs": 400,
+      "endMs": 76675
+    },
+    {
+      "word": "Jasper",
+      "startMs": 76688,
+      "durationMs": 450,
+      "endMs": 77138
+    },
+    {
+      "word": "and",
+      "startMs": 77150,
+      "durationMs": 113,
+      "endMs": 77263
+    },
+    {
+      "word": "Surfer",
+      "startMs": 77275,
+      "durationMs": 488,
+      "endMs": 77763
+    },
+    {
+      "word": "you",
+      "startMs": 77963,
+      "durationMs": 88,
+      "endMs": 78050
+    },
+    {
+      "word": "can",
+      "startMs": 78063,
+      "durationMs": 138,
+      "endMs": 78200
+    },
+    {
+      "word": "create",
+      "startMs": 78213,
+      "durationMs": 338,
+      "endMs": 78550
+    },
+    {
+      "word": "optimized",
+      "startMs": 78563,
+      "durationMs": 575,
+      "endMs": 79138
+    },
+    {
+      "word": "content",
+      "startMs": 79150,
+      "durationMs": 538,
+      "endMs": 79688
+    },
+    {
+      "word": "in",
+      "startMs": 79700,
+      "durationMs": 175,
+      "endMs": 79875
+    },
+    {
+      "word": "under",
+      "startMs": 79888,
+      "durationMs": 213,
+      "endMs": 80100
+    },
+    {
+      "word": "an",
+      "startMs": 80113,
+      "durationMs": 113,
+      "endMs": 80225
+    },
+    {
+      "word": "hour",
+      "startMs": 80238,
+      "durationMs": 288,
+      "endMs": 80525
+    },
+    {
+      "word": "that",
+      "startMs": 80538,
+      "durationMs": 138,
+      "endMs": 80675
+    },
+    {
+      "word": "would",
+      "startMs": 80688,
+      "durationMs": 125,
+      "endMs": 80813
+    },
+    {
+      "word": "normally",
+      "startMs": 80825,
+      "durationMs": 375,
+      "endMs": 81200
+    },
+    {
+      "word": "take",
+      "startMs": 81213,
+      "durationMs": 238,
+      "endMs": 81450
+    },
+    {
+      "word": "a",
+      "startMs": 81463,
+      "durationMs": 50,
+      "endMs": 81513
+    },
+    {
+      "word": "full",
+      "startMs": 81525,
+      "durationMs": 200,
+      "endMs": 81725
+    },
+    {
+      "word": "day",
+      "startMs": 81738,
+      "durationMs": 400,
+      "endMs": 82138
+    },
+    {
+      "word": "Number",
+      "startMs": 83000,
+      "durationMs": 350,
+      "endMs": 83350
+    },
+    {
+      "word": "four",
+      "startMs": 83363,
+      "durationMs": 250,
+      "endMs": 83613
+    },
+    {
+      "word": "is",
+      "startMs": 83625,
+      "durationMs": 125,
+      "endMs": 83750
+    },
+    {
+      "word": "Zapier",
+      "startMs": 83763,
+      "durationMs": 638,
+      "endMs": 84400
+    },
+    {
+      "word": "This",
+      "startMs": 85263,
+      "durationMs": 238,
+      "endMs": 85500
+    },
+    {
+      "word": "is",
+      "startMs": 85513,
+      "durationMs": 100,
+      "endMs": 85613
+    },
+    {
+      "word": "the",
+      "startMs": 85625,
+      "durationMs": 113,
+      "endMs": 85738
+    },
+    {
+      "word": "glue",
+      "startMs": 85750,
+      "durationMs": 238,
+      "endMs": 85988
+    },
+    {
+      "word": "that",
+      "startMs": 86000,
+      "durationMs": 163,
+      "endMs": 86163
+    },
+    {
+      "word": "connects",
+      "startMs": 86175,
+      "durationMs": 413,
+      "endMs": 86588
+    },
+    {
+      "word": "all",
+      "startMs": 86600,
+      "durationMs": 200,
+      "endMs": 86800
+    },
+    {
+      "word": "your",
+      "startMs": 86813,
+      "durationMs": 150,
+      "endMs": 86963
+    },
+    {
+      "word": "apps",
+      "startMs": 86975,
+      "durationMs": 213,
+      "endMs": 87188
+    },
+    {
+      "word": "together",
+      "startMs": 87200,
+      "durationMs": 563,
+      "endMs": 87763
+    },
+    {
+      "word": "With",
+      "startMs": 88625,
+      "durationMs": 188,
+      "endMs": 88813
+    },
+    {
+      "word": "Zapier",
+      "startMs": 88825,
+      "durationMs": 563,
+      "endMs": 89388
+    },
+    {
+      "word": "you",
+      "startMs": 89588,
+      "durationMs": 88,
+      "endMs": 89675
+    },
+    {
+      "word": "can",
+      "startMs": 89688,
+      "durationMs": 175,
+      "endMs": 89863
+    },
+    {
+      "word": "automate",
+      "startMs": 89875,
+      "durationMs": 400,
+      "endMs": 90275
+    },
+    {
+      "word": "workflows",
+      "startMs": 90288,
+      "durationMs": 550,
+      "endMs": 90838
+    },
+    {
+      "word": "like",
+      "startMs": 90850,
+      "durationMs": 163,
+      "endMs": 91013
+    },
+    {
+      "word": "posting",
+      "startMs": 91025,
+      "durationMs": 413,
+      "endMs": 91438
+    },
+    {
+      "word": "new",
+      "startMs": 91450,
+      "durationMs": 150,
+      "endMs": 91600
+    },
+    {
+      "word": "blog",
+      "startMs": 91613,
+      "durationMs": 313,
+      "endMs": 91925
+    },
+    {
+      "word": "articles",
+      "startMs": 91938,
+      "durationMs": 475,
+      "endMs": 92413
+    },
+    {
+      "word": "to",
+      "startMs": 92425,
+      "durationMs": 100,
+      "endMs": 92525
+    },
+    {
+      "word": "social",
+      "startMs": 92538,
+      "durationMs": 375,
+      "endMs": 92913
+    },
+    {
+      "word": "media",
+      "startMs": 92925,
+      "durationMs": 463,
+      "endMs": 93388
+    },
+    {
+      "word": "adding",
+      "startMs": 93650,
+      "durationMs": 313,
+      "endMs": 93963
+    },
+    {
+      "word": "leads",
+      "startMs": 93975,
+      "durationMs": 288,
+      "endMs": 94263
+    },
+    {
+      "word": "to",
+      "startMs": 94275,
+      "durationMs": 75,
+      "endMs": 94350
+    },
+    {
+      "word": "your",
+      "startMs": 94363,
+      "durationMs": 163,
+      "endMs": 94525
+    },
+    {
+      "word": "email",
+      "startMs": 94538,
+      "durationMs": 388,
+      "endMs": 94925
+    },
+    {
+      "word": "list",
+      "startMs": 94938,
+      "durationMs": 425,
+      "endMs": 95363
+    },
+    {
+      "word": "or",
+      "startMs": 95563,
+      "durationMs": 125,
+      "endMs": 95688
+    },
+    {
+      "word": "sending",
+      "startMs": 95700,
+      "durationMs": 363,
+      "endMs": 96063
+    },
+    {
+      "word": "Slack",
+      "startMs": 96075,
+      "durationMs": 350,
+      "endMs": 96425
+    },
+    {
+      "word": "notifications",
+      "startMs": 96438,
+      "durationMs": 863,
+      "endMs": 97300
+    },
+    {
+      "word": "when",
+      "startMs": 97313,
+      "durationMs": 125,
+      "endMs": 97438
+    },
+    {
+      "word": "a",
+      "startMs": 97450,
+      "durationMs": 50,
+      "endMs": 97500
+    },
+    {
+      "word": "sale",
+      "startMs": 97513,
+      "durationMs": 313,
+      "endMs": 97825
+    },
+    {
+      "word": "comes",
+      "startMs": 97838,
+      "durationMs": 263,
+      "endMs": 98100
+    },
+    {
+      "word": "in",
+      "startMs": 98113,
+      "durationMs": 313,
+      "endMs": 98425
+    },
+    {
+      "word": "No",
+      "startMs": 99288,
+      "durationMs": 213,
+      "endMs": 99500
+    },
+    {
+      "word": "coding",
+      "startMs": 99513,
+      "durationMs": 338,
+      "endMs": 99850
+    },
+    {
+      "word": "required",
+      "startMs": 99863,
+      "durationMs": 625,
+      "endMs": 100488
+    },
+    {
+      "word": "They",
+      "startMs": 101350,
+      "durationMs": 150,
+      "endMs": 101500
+    },
+    {
+      "word": "have",
+      "startMs": 101513,
+      "durationMs": 150,
+      "endMs": 101663
+    },
+    {
+      "word": "over",
+      "startMs": 101675,
+      "durationMs": 213,
+      "endMs": 101888
+    },
+    {
+      "word": "six",
+      "startMs": 101900,
+      "durationMs": 313,
+      "endMs": 102213
+    },
+    {
+      "word": "thousand",
+      "startMs": 102225,
+      "durationMs": 388,
+      "endMs": 102613
+    },
+    {
+      "word": "app",
+      "startMs": 102625,
+      "durationMs": 150,
+      "endMs": 102775
+    },
+    {
+      "word": "integrations",
+      "startMs": 102788,
+      "durationMs": 938,
+      "endMs": 103725
+    },
+    {
+      "word": "And",
+      "startMs": 104588,
+      "durationMs": 163,
+      "endMs": 104750
+    },
+    {
+      "word": "number",
+      "startMs": 104763,
+      "durationMs": 250,
+      "endMs": 105013
+    },
+    {
+      "word": "five",
+      "startMs": 105025,
+      "durationMs": 338,
+      "endMs": 105363
+    },
+    {
+      "word": "is",
+      "startMs": 105375,
+      "durationMs": 125,
+      "endMs": 105500
+    },
+    {
+      "word": "Canva",
+      "startMs": 105513,
+      "durationMs": 338,
+      "endMs": 105850
+    },
+    {
+      "word": "AI",
+      "startMs": 105863,
+      "durationMs": 525,
+      "endMs": 106388
+    },
+    {
+      "word": "Canva",
+      "startMs": 107250,
+      "durationMs": 338,
+      "endMs": 107588
+    },
+    {
+      "word": "has",
+      "startMs": 107600,
+      "durationMs": 188,
+      "endMs": 107788
+    },
+    {
+      "word": "completely",
+      "startMs": 107800,
+      "durationMs": 525,
+      "endMs": 108325
+    },
+    {
+      "word": "transformed",
+      "startMs": 108338,
+      "durationMs": 638,
+      "endMs": 108975
+    },
+    {
+      "word": "with",
+      "startMs": 108988,
+      "durationMs": 138,
+      "endMs": 109125
+    },
+    {
+      "word": "AI",
+      "startMs": 109138,
+      "durationMs": 250,
+      "endMs": 109388
+    },
+    {
+      "word": "features",
+      "startMs": 109400,
+      "durationMs": 675,
+      "endMs": 110075
+    },
+    {
+      "word": "The",
+      "startMs": 110938,
+      "durationMs": 125,
+      "endMs": 111063
+    },
+    {
+      "word": "Magic",
+      "startMs": 111075,
+      "durationMs": 375,
+      "endMs": 111450
+    },
+    {
+      "word": "Design",
+      "startMs": 111463,
+      "durationMs": 388,
+      "endMs": 111850
+    },
+    {
+      "word": "tool",
+      "startMs": 111863,
+      "durationMs": 413,
+      "endMs": 112275
+    },
+    {
+      "word": "creates",
+      "startMs": 112288,
+      "durationMs": 375,
+      "endMs": 112663
+    },
+    {
+      "word": "stunning",
+      "startMs": 112675,
+      "durationMs": 338,
+      "endMs": 113013
+    },
+    {
+      "word": "graphics",
+      "startMs": 113025,
+      "durationMs": 550,
+      "endMs": 113575
+    },
+    {
+      "word": "from",
+      "startMs": 113588,
+      "durationMs": 125,
+      "endMs": 113713
+    },
+    {
+      "word": "a",
+      "startMs": 113725,
+      "durationMs": 50,
+      "endMs": 113775
+    },
+    {
+      "word": "text",
+      "startMs": 113788,
+      "durationMs": 363,
+      "endMs": 114150
+    },
+    {
+      "word": "prompt",
+      "startMs": 114163,
+      "durationMs": 500,
+      "endMs": 114663
+    },
+    {
+      "word": "You",
+      "startMs": 115525,
+      "durationMs": 163,
+      "endMs": 115688
+    },
+    {
+      "word": "can",
+      "startMs": 115700,
+      "durationMs": 150,
+      "endMs": 115850
+    },
+    {
+      "word": "generate",
+      "startMs": 115863,
+      "durationMs": 400,
+      "endMs": 116263
+    },
+    {
+      "word": "presentations",
+      "startMs": 116275,
+      "durationMs": 938,
+      "endMs": 117213
+    },
+    {
+      "word": "social",
+      "startMs": 117413,
+      "durationMs": 350,
+      "endMs": 117763
+    },
+    {
+      "word": "media",
+      "startMs": 117775,
+      "durationMs": 313,
+      "endMs": 118088
+    },
+    {
+      "word": "posts",
+      "startMs": 118100,
+      "durationMs": 538,
+      "endMs": 118638
+    },
+    {
+      "word": "and",
+      "startMs": 118813,
+      "durationMs": 138,
+      "endMs": 118950
+    },
+    {
+      "word": "YouTube",
+      "startMs": 118963,
+      "durationMs": 375,
+      "endMs": 119338
+    },
+    {
+      "word": "thumbnails",
+      "startMs": 119350,
+      "durationMs": 488,
+      "endMs": 119838
+    },
+    {
+      "word": "in",
+      "startMs": 119850,
+      "durationMs": 125,
+      "endMs": 119975
+    },
+    {
+      "word": "seconds",
+      "startMs": 119988,
+      "durationMs": 663,
+      "endMs": 120650
+    },
+    {
+      "word": "It's",
+      "startMs": 121513,
+      "durationMs": 188,
+      "endMs": 121700
+    },
+    {
+      "word": "the",
+      "startMs": 121713,
+      "durationMs": 88,
+      "endMs": 121800
+    },
+    {
+      "word": "most",
+      "startMs": 121813,
+      "durationMs": 288,
+      "endMs": 122100
+    },
+    {
+      "word": "accessible",
+      "startMs": 122113,
+      "durationMs": 525,
+      "endMs": 122638
+    },
+    {
+      "word": "design",
+      "startMs": 122650,
+      "durationMs": 425,
+      "endMs": 123075
+    },
+    {
+      "word": "tool",
+      "startMs": 123088,
+      "durationMs": 238,
+      "endMs": 123325
+    },
+    {
+      "word": "out",
+      "startMs": 123338,
+      "durationMs": 150,
+      "endMs": 123488
+    },
+    {
+      "word": "there",
+      "startMs": 123500,
+      "durationMs": 338,
+      "endMs": 123838
+    },
+    {
+      "word": "and",
+      "startMs": 123850,
+      "durationMs": 75,
+      "endMs": 123925
+    },
+    {
+      "word": "the",
+      "startMs": 123938,
+      "durationMs": 88,
+      "endMs": 124025
+    },
+    {
+      "word": "AI",
+      "startMs": 124038,
+      "durationMs": 313,
+      "endMs": 124350
+    },
+    {
+      "word": "features",
+      "startMs": 124363,
+      "durationMs": 463,
+      "endMs": 124825
+    },
+    {
+      "word": "are",
+      "startMs": 124838,
+      "durationMs": 175,
+      "endMs": 125013
+    },
+    {
+      "word": "constantly",
+      "startMs": 125025,
+      "durationMs": 550,
+      "endMs": 125575
+    },
+    {
+      "word": "improving",
+      "startMs": 125588,
+      "durationMs": 613,
+      "endMs": 126200
+    },
+    {
+      "word": "So",
+      "startMs": 127063,
+      "durationMs": 200,
+      "endMs": 127263
+    },
+    {
+      "word": "there",
+      "startMs": 127275,
+      "durationMs": 163,
+      "endMs": 127438
+    },
+    {
+      "word": "you",
+      "startMs": 127450,
+      "durationMs": 125,
+      "endMs": 127575
+    },
+    {
+      "word": "have",
+      "startMs": 127588,
+      "durationMs": 238,
+      "endMs": 127825
+    },
+    {
+      "word": "it",
+      "startMs": 127838,
+      "durationMs": 288,
+      "endMs": 128125
+    },
+    {
+      "word": "Five",
+      "startMs": 128988,
+      "durationMs": 313,
+      "endMs": 129300
+    },
+    {
+      "word": "AI",
+      "startMs": 129313,
+      "durationMs": 263,
+      "endMs": 129575
+    },
+    {
+      "word": "tools",
+      "startMs": 129588,
+      "durationMs": 313,
+      "endMs": 129900
+    },
+    {
+      "word": "that",
+      "startMs": 129913,
+      "durationMs": 125,
+      "endMs": 130038
+    },
+    {
+      "word": "will",
+      "startMs": 130050,
+      "durationMs": 113,
+      "endMs": 130163
+    },
+    {
+      "word": "seriously",
+      "startMs": 130175,
+      "durationMs": 613,
+      "endMs": 130788
+    },
+    {
+      "word": "upgrade",
+      "startMs": 130800,
+      "durationMs": 388,
+      "endMs": 131188
+    },
+    {
+      "word": "your",
+      "startMs": 131200,
+      "durationMs": 100,
+      "endMs": 131300
+    },
+    {
+      "word": "productivity",
+      "startMs": 131313,
+      "durationMs": 825,
+      "endMs": 132138
+    },
+    {
+      "word": "and",
+      "startMs": 132150,
+      "durationMs": 163,
+      "endMs": 132313
+    },
+    {
+      "word": "content",
+      "startMs": 132325,
+      "durationMs": 438,
+      "endMs": 132763
+    },
+    {
+      "word": "output",
+      "startMs": 132775,
+      "durationMs": 525,
+      "endMs": 133300
+    },
+    {
+      "word": "I've",
+      "startMs": 134163,
+      "durationMs": 200,
+      "endMs": 134363
+    },
+    {
+      "word": "linked",
+      "startMs": 134375,
+      "durationMs": 263,
+      "endMs": 134638
+    },
+    {
+      "word": "all",
+      "startMs": 134650,
+      "durationMs": 163,
+      "endMs": 134813
+    },
+    {
+      "word": "five",
+      "startMs": 134825,
+      "durationMs": 288,
+      "endMs": 135113
+    },
+    {
+      "word": "in",
+      "startMs": 135125,
+      "durationMs": 75,
+      "endMs": 135200
+    },
+    {
+      "word": "the",
+      "startMs": 135213,
+      "durationMs": 88,
+      "endMs": 135300
+    },
+    {
+      "word": "description",
+      "startMs": 135313,
+      "durationMs": 625,
+      "endMs": 135938
+    },
+    {
+      "word": "with",
+      "startMs": 135950,
+      "durationMs": 138,
+      "endMs": 136088
+    },
+    {
+      "word": "any",
+      "startMs": 136100,
+      "durationMs": 238,
+      "endMs": 136338
+    },
+    {
+      "word": "available",
+      "startMs": 136350,
+      "durationMs": 450,
+      "endMs": 136800
+    },
+    {
+      "word": "discounts",
+      "startMs": 136813,
+      "durationMs": 775,
+      "endMs": 137588
+    },
+    {
+      "word": "If",
+      "startMs": 138450,
+      "durationMs": 163,
+      "endMs": 138613
+    },
+    {
+      "word": "you",
+      "startMs": 138625,
+      "durationMs": 113,
+      "endMs": 138738
+    },
+    {
+      "word": "found",
+      "startMs": 138750,
+      "durationMs": 225,
+      "endMs": 138975
+    },
+    {
+      "word": "this",
+      "startMs": 138988,
+      "durationMs": 163,
+      "endMs": 139150
+    },
+    {
+      "word": "valuable",
+      "startMs": 139163,
+      "durationMs": 613,
+      "endMs": 139775
+    },
+    {
+      "word": "please",
+      "startMs": 139950,
+      "durationMs": 275,
+      "endMs": 140225
+    },
+    {
+      "word": "give",
+      "startMs": 140238,
+      "durationMs": 138,
+      "endMs": 140375
+    },
+    {
+      "word": "it",
+      "startMs": 140388,
+      "durationMs": 88,
+      "endMs": 140475
+    },
+    {
+      "word": "a",
+      "startMs": 140488,
+      "durationMs": 50,
+      "endMs": 140538
+    },
+    {
+      "word": "thumbs",
+      "startMs": 140550,
+      "durationMs": 338,
+      "endMs": 140888
+    },
+    {
+      "word": "up",
+      "startMs": 140900,
+      "durationMs": 188,
+      "endMs": 141088
+    },
+    {
+      "word": "and",
+      "startMs": 141100,
+      "durationMs": 113,
+      "endMs": 141213
+    },
+    {
+      "word": "subscribe",
+      "startMs": 141225,
+      "durationMs": 538,
+      "endMs": 141763
+    },
+    {
+      "word": "for",
+      "startMs": 141775,
+      "durationMs": 138,
+      "endMs": 141913
+    },
+    {
+      "word": "more",
+      "startMs": 141925,
+      "durationMs": 213,
+      "endMs": 142138
+    },
+    {
+      "word": "AI",
+      "startMs": 142150,
+      "durationMs": 263,
+      "endMs": 142413
+    },
+    {
+      "word": "tool",
+      "startMs": 142425,
+      "durationMs": 288,
+      "endMs": 142713
+    },
+    {
+      "word": "reviews",
+      "startMs": 142725,
+      "durationMs": 463,
+      "endMs": 143188
+    },
+    {
+      "word": "every",
+      "startMs": 143200,
+      "durationMs": 225,
+      "endMs": 143425
+    },
+    {
+      "word": "week",
+      "startMs": 143438,
+      "durationMs": 438,
+      "endMs": 143875
+    },
+    {
+      "word": "See",
+      "startMs": 144738,
+      "durationMs": 225,
+      "endMs": 144963
+    },
+    {
+      "word": "you",
+      "startMs": 144975,
+      "durationMs": 138,
+      "endMs": 145113
+    },
+    {
+      "word": "in",
+      "startMs": 145125,
+      "durationMs": 88,
+      "endMs": 145213
+    },
+    {
+      "word": "the",
+      "startMs": 145225,
+      "durationMs": 75,
+      "endMs": 145300
+    },
+    {
+      "word": "next",
+      "startMs": 145313,
+      "durationMs": 363,
+      "endMs": 145675
+    },
+    {
+      "word": "one",
+      "startMs": 145688,
+      "durationMs": 338,
+      "endMs": 146025
+    }
+  ]
+}
