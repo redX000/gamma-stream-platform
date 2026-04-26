@@ -28,6 +28,10 @@ jobs:
     timeout-minutes: 15
 
     steps:
+      - name: Record start time
+        id: ts
+        run: echo "time=$(date -u '+%Y-%m-%d %H:%M:%S UTC')" >> $GITHUB_OUTPUT
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -62,7 +66,7 @@ jobs:
           GA4_API_SECRET: ${{ secrets.GA4_API_SECRET }}
         run: |
           FLAGS=""
-          if [ "${{ inputs.force }}" = "true" ] || [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+          if [ "${{ inputs.force }}" = "true" ]; then
             FLAGS="$FLAGS --force"
           fi
           if [ "${{ inputs.dry_run }}" = "true" ]; then
@@ -102,7 +106,7 @@ jobs:
             The daily content generation pipeline failed.
 
             Run: ${{ github.run_number }}
-            Time: ${{ github.event.head_commit.timestamp }}
+            Time: ${{ steps.ts.outputs.time }}
             Branch: ${{ github.ref_name }}
 
             View logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

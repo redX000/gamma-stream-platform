@@ -86,6 +86,10 @@ export async function trackPostPublished(post, article = {}) {
     .replace(/&amp;/g, '&')
     .slice(0, 100);
 
+  const wordCount = article.content
+    ? article.content.split(/\s+/).filter(Boolean).length
+    : 0;
+
   return trackEvent('post_published', {
     post_id: String(post.id || ''),
     post_title: title,
@@ -93,5 +97,6 @@ export async function trackPostPublished(post, article = {}) {
     post_status: post.status || 'publish',
     content_type: article.type || 'unknown',
     keyword: (article.keyword || '').slice(0, 50),
+    word_count: wordCount,
   });
 }

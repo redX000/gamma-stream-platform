@@ -1,0 +1,64 @@
+name: Trend Detection
+
+on:
+  schedule:
+    # Daily at 05:00 UTC — runs 1 hour before content generation (06:00 UTC)
+    # so fresh trends are always available when the content pipeline picks a topic.
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: trend-detection
+  cancel-in-progress: false
+
+jobs:
+  detect-trends:
+    name: Fetch & Save Trending Topics
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Detect trending topics
+        id: detect
+        run: node automation/trend-detector.js
+        # Non-fatal: if all sources fail, existing trends/latest.json is unchanged
+        continue-on-error: true
+
+      - name: Commit trends to repository
+        run: |
+          git config user.name "Gamma Stream Bot"
+          git config user.email "noreply@gammacash.online"
+          git add trends/latest.json
+          if git diff --cached --quiet; then
+            echo "No changes to trends/latest.json — nothing to commit"
+          else
+            git commit -m "chore: update trending topics [$(date -u '+%Y-%m-%d')]"
+            git pull --rebase origin main
+            git push
+          fi
+
+      - name: Log outcome
+        if: always()
+        run: |
+          if [ "${{ steps.detect.outcome }}" = "success" ]; then
+            echo "✅ Trend detection complete — trends/latest.json updated"
+          else
+            echo "⚠️ Trend detection failed — content pipeline will use static keyword queue"
+          fi

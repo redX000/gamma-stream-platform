@@ -220,9 +220,18 @@ export async function publishArticle(article, options = {}) {
 
   const htmlContent = markdownToHtml(article.content);
 
+  // Affiliate link insertion (non-fatal — never blocks a successful publish)
+  let linkedContent = htmlContent;
+  try {
+    const { insertAffiliateLinks } = await import('../automation/affiliate-links.js');
+    linkedContent = insertAffiliateLinks(htmlContent);
+  } catch (err) {
+    console.warn(`[publisher] Affiliate link insertion skipped: ${err.message}`);
+  }
+
   const postData = {
     title: article.title,
-    content: htmlContent,
+    content: linkedContent,
     excerpt: article.metaDescription,
     status,
     categories: [categoryId],

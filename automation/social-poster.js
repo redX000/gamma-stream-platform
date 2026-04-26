@@ -62,6 +62,26 @@ async function getLatestArticle() {
 
   const post = posts[0];
   console.log(`[social] Latest article: "${post.title.rendered}" — ${post.link}`);
+
+  // Resolve the actual image file URL from the featured media ID.
+  // post._links['wp:featuredmedia'][0].href is a REST API URL, not an image URL —
+  // we must follow it to get source_url. Jetpack exposes the shortcut directly.
+  let featuredImageUrl = post.jetpack_featured_media_url || null;
+  if (!featuredImageUrl && post.featured_media > 0) {
+    try {
+      const mediaRes = await fetch(
+        `${base}/wp-json/wp/v2/media/${post.featured_media}`,
+        { headers: { Accept: 'application/json' } }
+      );
+      if (mediaRes.ok) {
+        const media = await mediaRes.json();
+        featuredImageUrl = media.source_url || null;
+      }
+    } catch {
+      // non-fatal — featuredImageUrl stays null
+    }
+  }
+
   return {
     id: post.id,
     title: post.title.rendered.replace(/&#8211;/g, '—').replace(/&amp;/g, '&'),
@@ -69,7 +89,7 @@ async function getLatestArticle() {
     excerpt: post.excerpt?.rendered?.replace(/<[^>]+>/g, '').trim().slice(0, 300) || '',
     // WordPress REST API stores type in categories — fall back to 'default'
     type: post.meta?._content_type || 'default',
-    featuredImageUrl: post.jetpack_featured_media_url || post._links?.['wp:featuredmedia']?.[0]?.href || null,
+    featuredImageUrl,
   };
 }
 
@@ -185,6 +205,7 @@ async function getPinterestAccessToken() {
  */
 export async function postToPinterest(article) {
   if (!process.env.PINTEREST_BOARD_ID) throw new Error('PINTEREST_BOARD_ID is not set in .env');
+  if (!article.featuredImageUrl) throw new Error('Post has no featured image — Pinterest pin skipped');
 
   const accessToken = await getPinterestAccessToken();
 
@@ -202,10 +223,7 @@ export async function postToPinterest(article) {
     title: article.title.slice(0, 100), // Pinterest title max 100 chars
     description: description.slice(0, 500),
     link: article.url,
-    media_source: article.featuredImageUrl
-      ? { source_type: 'image_url', url: article.featuredImageUrl }
-      // Fallback: use web page scrape mode if no featured image
-      : { source_type: 'image_url', url: `${process.env.WORDPRESS_URL}/wp-content/uploads/og-default.jpg` },
+    media_source: { source_type: 'image_url', url: article.featuredImageUrl },
   };
 
   try {
