@@ -134,14 +134,59 @@ export async function postToReddit(article) {
 }
 
 /**
+ * Exchange a Pinterest refresh token for a fresh access token.
+ * Refresh tokens are valid for 365 days; access tokens expire in 30 days.
+ * Uses Pinterest OAuth2 v5 token endpoint with HTTP Basic auth (app_id:app_secret).
+ * @returns {Promise<string>} Fresh access token
+ */
+async function getPinterestAccessToken() {
+  const appId = process.env.PINTEREST_APP_ID;
+  const appSecret = process.env.PINTEREST_APP_SECRET;
+  const refreshToken = process.env.PINTEREST_REFRESH_TOKEN;
+
+  if (!appId) throw new Error('PINTEREST_APP_ID is not set in environment');
+  if (!appSecret) throw new Error('PINTEREST_APP_SECRET is not set in environment');
+  if (!refreshToken) throw new Error('PINTEREST_REFRESH_TOKEN is not set in environment');
+
+  console.log('[social] Refreshing Pinterest access token...');
+
+  const { default: fetch } = await import('node-fetch');
+
+  const credentials = Buffer.from(`${appId}:${appSecret}`).toString('base64');
+  const body = new URLSearchParams({ grant_type: 'refresh_token', refresh_token: refreshToken });
+
+  const res = await fetch('https://api.pinterest.com/v5/oauth/token', {
+    method: 'POST',
+    headers: {
+      Authorization: `Basic ${credentials}`,
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: body.toString(),
+  });
+
+  if (!res.ok) {
+    const err = await res.text();
+    throw new Error(`Pinterest token refresh failed ${res.status}: ${err.slice(0, 200)}`);
+  }
+
+  const data = await res.json();
+  if (!data.access_token) throw new Error('Pinterest token response missing access_token');
+
+  console.log('[social] Pinterest access token refreshed successfully');
+  return data.access_token;
+}
+
+/**
  * Create a Pinterest pin linking to the article.
  * Uses Pinterest API v5 POST /v5/pins endpoint.
+ * Authenticates via OAuth2 refresh token flow (PINTEREST_APP_ID + PINTEREST_APP_SECRET + PINTEREST_REFRESH_TOKEN).
  * @param {Object} article - Article object from getLatestArticle()
  * @returns {Promise<Object>} Result with pin ID and URL
  */
 export async function postToPinterest(article) {
-  if (!process.env.PINTEREST_ACCESS_TOKEN) throw new Error('PINTEREST_ACCESS_TOKEN is not set in .env');
   if (!process.env.PINTEREST_BOARD_ID) throw new Error('PINTEREST_BOARD_ID is not set in .env');
+
+  const accessToken = await getPinterestAccessToken();
 
   console.log('[social] Creating Pinterest pin...');
 
@@ -167,7 +212,7 @@ export async function postToPinterest(article) {
     const res = await fetch('https://api.pinterest.com/v5/pins', {
       method: 'POST',
       headers: {
-        Authorization: `Bearer ${process.env.PINTEREST_ACCESS_TOKEN}`,
+        Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(pinBody),

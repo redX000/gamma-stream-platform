@@ -238,6 +238,15 @@ export async function publishArticle(article, options = {}) {
   try {
     const post = await wpRequest('/wp/v2/posts', 'POST', postData);
     console.log(`[publisher] Post created — ID: ${post.id}, URL: ${post.link}, status: ${post.status}`);
+
+    // Fire GA4 publish event (non-fatal — never blocks a successful publish)
+    try {
+      const { trackPostPublished } = await import('../automation/ga4-tracker.js');
+      await trackPostPublished(post, article);
+    } catch (err) {
+      console.warn(`[publisher] GA4 tracking skipped: ${err.message}`);
+    }
+
     return post;
   } catch (err) {
     console.error(`[publisher] Publish failed: ${err.message}`);
