@@ -26,6 +26,9 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 // Persist queue state across GitHub Actions runs using a JSON file
 const QUEUE_FILE = path.join(__dirname, 'queue.json');
 
+// Trends file written daily by automation/trend-detector.js
+const TRENDS_FILE = path.join(__dirname, '..', 'trends', 'latest.json');
+
 // Publish on Monday (1), Wednesday (3), Friday (5) — 3 articles/week
 const PUBLISH_DAYS = [1, 3, 5];
 
@@ -59,6 +62,77 @@ const KEYWORD_QUEUE = [
   { keyword: 'Systeme.io review 2025', tool: 'Systeme.io', type: 'review' },
   { keyword: 'how to build an email list with ConvertKit', tool: 'ConvertKit', type: 'tutorial' },
 ];
+
+// ── Trend integration ────────────────────────────────────────────
+
+// Maps lowercase substrings found in trend topics → known tool names
+const TREND_TOOL_MAP = {
+  chatgpt: 'ChatGPT', gpt: 'ChatGPT', openai: 'ChatGPT',
+  claude: 'Claude', anthropic: 'Claude',
+  gemini: 'Google Gemini', bard: 'Google Gemini',
+  jasper: 'Jasper AI',
+  'copy.ai': 'Copy.ai', copyai: 'Copy.ai',
+  writesonic: 'Writesonic',
+  'surfer seo': 'Surfer SEO', surfer: 'Surfer SEO',
+  grammarly: 'Grammarly',
+  canva: 'Canva',
+  midjourney: 'Midjourney',
+  perplexity: 'Perplexity AI',
+  notion: 'Notion AI',
+  zapier: 'Zapier',
+  convertkit: 'ConvertKit',
+};
+
+/**
+ * Load trending topics from trends/latest.json.
+ * Returns an empty array if the file is missing, unreadable, or older than 25 hours.
+ * @returns {Promise<Array>}
+ */
+async function loadTrends() {
+  try {
+    const raw = await fs.readFile(TRENDS_FILE, 'utf-8');
+    const data = JSON.parse(raw);
+    if (!data.fetchedAt || !Array.isArray(data.topics) || data.topics.length === 0) return [];
+    const ageHours = (Date.now() - new Date(data.fetchedAt).getTime()) / 3_600_000;
+    if (ageHours > 25) {
+      console.log(`[scheduler] Trends are ${Math.round(ageHours)}h old — falling back to static queue`);
+      return [];
+    }
+    console.log(`[scheduler] Loaded ${data.topics.length} fresh trend(s) (${Math.round(ageHours)}h old)`);
+    return data.topics;
+  } catch {
+    return [];
+  }
+}
+
+/**
+ * Convert a trending topic entry into a keyword queue item for the generator.
+ * Detects a known tool in the topic text; defaults to ChatGPT when none matches.
+ * @param {{ topic: string, score: number, source: string }} trend
+ * @returns {{ keyword: string, tool: string, type: string, fromTrend: boolean }}
+ */
+function trendToKeywordItem(trend) {
+  const topicLower = trend.topic.toLowerCase();
+
+  let tool = 'ChatGPT';
+  for (const [pattern, name] of Object.entries(TREND_TOOL_MAP)) {
+    if (topicLower.includes(pattern)) { tool = name; break; }
+  }
+
+  let type = 'tutorial';
+  if (/\bvs\.?\b|compar/i.test(trend.topic))               type = 'comparison';
+  else if (/\bbest\b|\btop\s*\d|\blist\b/i.test(trend.topic)) type = 'top-list';
+  else if (/\breview\b|\bworth\b|\bpricing\b/i.test(trend.topic)) type = 'review';
+
+  // Keep keyword ≤ 70 chars — truncate at a word boundary
+  const keyword = trend.topic.length > 70
+    ? trend.topic.slice(0, 67).replace(/\s\S*$/, '') + '...'
+    : trend.topic;
+
+  return { keyword, tool, type, fromTrend: true, trendScore: trend.score, trendSource: trend.source };
+}
+
+// ── Queue persistence ────────────────────────────────────────────
 
 /**
  * Load the current queue state from disk.
@@ -126,7 +200,20 @@ export async function runPipeline(dryRun = false, force = false) {
   }
 
   const queue = await loadQueue();
-  const item = getNextKeyword(queue);
+
+  // Prefer a fresh trending topic if one hasn't been used this cycle
+  const trends = await loadTrends();
+  const usedTrendSet = new Set(queue.usedTrends || []);
+  const freshTrend = trends.find(t => !usedTrendSet.has(t.topic));
+
+  let item;
+  if (freshTrend) {
+    item = trendToKeywordItem(freshTrend);
+    queue.usedTrends = [...(queue.usedTrends || []), freshTrend.topic].slice(-20);
+    console.log(`[scheduler] Trend-driven topic: "${item.keyword}" (score: ${freshTrend.score}, source: ${freshTrend.source})`);
+  } else {
+    item = getNextKeyword(queue);
+  }
 
   // Stage 1: Generate article
   console.log(`[scheduler] Stage 1 — Generating article...`);
@@ -187,8 +274,10 @@ export async function runPipeline(dryRun = false, force = false) {
     }
   }
 
-  // Stage 5: Advance queue
-  queue.index = (queue.index + 1) % KEYWORD_QUEUE.length;
+  // Stage 5: Advance queue — only move the static index when a static item was used
+  if (!item.fromTrend) {
+    queue.index = (queue.index + 1) % KEYWORD_QUEUE.length;
+  }
   queue.lastRun = new Date().toISOString();
   queue.published.push({
     keyword: item.keyword,

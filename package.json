@@ -13,7 +13,8 @@
     "tracker:report": "node automation/affiliate-tracker.js report",
     "dashboard": "node analytics/dashboard.js",
     "dashboard:report": "node analytics/dashboard.js --report --weekly",
-    "adsense-check": "node scripts/adsense-checker.js"
+    "adsense-check": "node scripts/adsense-checker.js",
+    "trends": "node automation/trend-detector.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
