@@ -9,6 +9,7 @@ name: Video Assembler
 #
 # MP4 files are uploaded as artifacts (90-day retention).
 # Timing JSON + manifest are committed back to the repo.
+# YouTube upload is skipped when YOUTUBE_REFRESH_TOKEN secret is not set.
 
 on:
   workflow_dispatch:
@@ -39,6 +40,9 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     if: ${{ github.event.inputs.orientation != 'horizontal' }}
+    # Expose the secret as an env var so step `if:` conditions can read it.
+    env:
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
 
     steps:
       - name: Checkout repository
@@ -102,12 +106,40 @@ jobs:
             git push
           fi
 
+      # ── YouTube upload (skipped when secret is not configured) ──────────────
+      - name: Upload Shorts to YouTube
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          ARGS="--type short"
+          [ -n "${{ github.event.inputs.topic_filter }}" ] && ARGS="$ARGS --topic ${{ github.event.inputs.topic_filter }}"
+          node automation/youtube-publisher.js $ARGS
+
+      - name: Commit YouTube upload records (shorts)
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
+          git add videos/uploads.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new upload records."
+          else
+            git commit -m "chore: youtube upload records (shorts) [run #${{ github.run_number }}]"
+            git push
+          fi
+
   # ── Horizontal (standard YouTube) — slower, separate job ───────────────────
   assemble-horizontal:
     name: Assemble Horizontal (YouTube)
     runs-on: ubuntu-latest
     timeout-minutes: 120
     if: ${{ github.event.inputs.orientation != 'vertical' }}
+    env:
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
 
     steps:
       - name: Checkout repository
@@ -157,6 +189,32 @@ jobs:
           retention-days: 90
           if-no-files-found: warn
 
+      # ── YouTube upload (skipped when secret is not configured) ──────────────
+      - name: Upload long-form video to YouTube
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          ARGS="--type long"
+          [ -n "${{ github.event.inputs.topic_filter }}" ] && ARGS="$ARGS --topic ${{ github.event.inputs.topic_filter }}"
+          node automation/youtube-publisher.js $ARGS
+
+      - name: Commit YouTube upload records (long-form)
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
+          git add videos/uploads.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new upload records."
+          else
+            git commit -m "chore: youtube upload records (long-form) [run #${{ github.run_number }}]"
+            git push
+          fi
+
   # ── Failure notification ────────────────────────────────────────────────────
   notify-on-failure:
     name: Notify on Failure
@@ -188,3 +246,4 @@ jobs:
             - moviepy/ffmpeg version conflict — check pip install output
             - No audio files in videos/audio/ (run voiceover workflow first)
             - Long video timeout — horizontal job has 120-min limit
+            - YOUTUBE_REFRESH_TOKEN expired — re-run scripts/youtube-auth.js

@@ -15,13 +15,15 @@
     "dashboard:report": "node analytics/dashboard.js --report --weekly",
     "adsense-check": "node scripts/adsense-checker.js",
     "trends": "node automation/trend-detector.js",
-    "voiceover": "node automation/voiceover-generator.js"
+    "voiceover": "node automation/voiceover-generator.js",
+    "publish": "node automation/youtube-publisher.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
     "@google-analytics/data": "^4.8.0",
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "googleapis": "^171.4.0",
     "msedge-tts": "^2.0.5",
     "node-fetch": "^3.3.2",
     "nodemailer": "^6.9.14",
