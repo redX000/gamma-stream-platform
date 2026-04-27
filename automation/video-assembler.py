@@ -111,10 +111,7 @@ def _load_font(size: int) -> ImageFont.FreeTypeFont:
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _pexels_key() -> str:
-    key = os.environ.get("PEXELS_API_KEY", "")
-    if not key:
-        raise RuntimeError("PEXELS_API_KEY environment variable is not set.")
-    return key
+    return os.environ.get("PEXELS_API_KEY", "")
 
 
 def fetch_pexels_clips(query: str, max_clips: int = 8, min_duration: int = 4) -> list[dict]:
@@ -128,7 +125,11 @@ def fetch_pexels_clips(query: str, max_clips: int = 8, min_duration: int = 4) ->
         "per_page": 25,
         "orientation": "landscape",  # download landscape; crop to each target ratio later
     }
-    r = requests.get(PEXELS_URL, headers=headers, params=params, timeout=30)
+    key = _pexels_key()
+    if not key:
+        raise RuntimeError("PEXELS_API_KEY not set — will use gradient background")
+
+    r = requests.get(PEXELS_URL, headers={"Authorization": key}, params=params, timeout=30)
     r.raise_for_status()
 
     results = []
@@ -175,6 +176,25 @@ def download_clip(url: str, dest: Path) -> None:
 # ─────────────────────────────────────────────────────────────────────────────
 # Clip preparation
 # ─────────────────────────────────────────────────────────────────────────────
+
+def make_gradient_body(video_size: tuple[int, int], duration: float) -> ImageClip:
+    """Static gradient background — fallback when PEXELS_API_KEY is absent."""
+    vw, vh = video_size
+    img = Image.new("RGB", (vw, vh))
+    draw = ImageDraw.Draw(img)
+    top, bot = (8, 8, 18), (30, 58, 95)
+    for y in range(vh):
+        t = y / max(vh - 1, 1)
+        draw.line(
+            [(0, y), (vw - 1, y)],
+            fill=(
+                int(top[0] * (1 - t) + bot[0] * t),
+                int(top[1] * (1 - t) + bot[1] * t),
+                int(top[2] * (1 - t) + bot[2] * t),
+            ),
+        )
+    return ImageClip(np.array(img)).set_duration(duration).set_fps(FPS)
+
 
 def prepare_clip(path: Path, target_size: tuple[int, int]) -> VideoFileClip:
     """Load a clip, center-crop to target aspect ratio, resize."""
@@ -394,28 +414,35 @@ def assemble(
         total_duration = INTRO_DURATION + audio_duration + OUTRO_DURATION
         print(f"[assembler] {orientation} | audio {audio_duration:.1f}s → total {total_duration:.1f}s")
 
-        # ── 2. Fetch + download stock clips ───────────────────────────────────
-        clip_infos = fetch_pexels_clips(keywords, max_clips=8)
-        raw_paths = []
-        for i, info in enumerate(clip_infos):
-            dest = clip_dir / f"clip_{i:02d}.mp4"
-            if not dest.exists():
-                download_clip(info["url"], dest)
-            raw_paths.append(dest)
+        # ── 2. Fetch + download stock clips (or use gradient fallback) ────────
+        body = None
+        try:
+            clip_infos = fetch_pexels_clips(keywords, max_clips=8)
+            raw_paths = []
+            for i, info in enumerate(clip_infos):
+                dest = clip_dir / f"clip_{i:02d}.mp4"
+                if not dest.exists():
+                    download_clip(info["url"], dest)
+                raw_paths.append(dest)
 
-        # ── 3. Prepare clips (crop + resize) ──────────────────────────────────
-        for p in raw_paths:
-            try:
-                prepared.append(prepare_clip(p, video_size))
-            except Exception as e:
-                print(f"[assembler] Warning: skipping {p.name}: {e}")
+            # ── 3. Prepare clips (crop + resize) ──────────────────────────────
+            for p in raw_paths:
+                try:
+                    prepared.append(prepare_clip(p, video_size))
+                except Exception as e:
+                    print(f"[assembler] Warning: skipping {p.name}: {e}")
 
-        if not prepared:
-            raise RuntimeError("All clips failed to load — check Pexels downloads.")
+            if prepared:
+                # ── 4. Loop clips to fill body duration ───────────────────────
+                body_clips = fill_to_duration(prepared, audio_duration)
+                body = concatenate_videoclips(body_clips, method="compose")
+            else:
+                print("[assembler] All Pexels clips failed — using gradient background")
+        except RuntimeError as exc:
+            print(f"[assembler] Pexels skipped: {exc}")
 
-        # ── 4. Loop clips to fill body duration ───────────────────────────────
-        body_clips = fill_to_duration(prepared, audio_duration)
-        body = concatenate_videoclips(body_clips, method="compose")
+        if body is None:
+            body = make_gradient_body(video_size, audio_duration)
 
         # ── 5. Cards ──────────────────────────────────────────────────────────
         intro = make_title_card(topic, video_size)
