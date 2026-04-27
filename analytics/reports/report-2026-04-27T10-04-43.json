@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-04-27T10:04:43.730Z",
+  "daysBack": 7,
+  "ga4": {
+    "sessions": 0,
+    "pageviews": 0,
+    "newUsers": 0,
+    "topPages": [],
+    "source": "skipped"
+  },
+  "convertkit": {
+    "total": 0,
+    "active": 0,
+    "newThisWeek": 0,
+    "source": "error",
+    "error": "ConvertKit API 401"
+  },
+  "wordpress": {
+    "totalPosts": 0,
+    "recentPosts": [],
+    "postsThisWeek": 0,
+    "source": "error",
+    "error": "request to https://gammacash.online/wp-json/wp/v2/posts?per_page=1&status=publish failed, reason: "
+  },
+  "revenue": {
+    "weekly": 0,
+    "monthly": 0,
+    "allTime": 0,
+    "byProgram": {},
+    "entryCount": 0,
+    "source": "no-ledger"
+  },
+  "kpi": {
+    "milestone": "month1",
+    "targets": {
+      "articles": 12,
+      "emailSubs": 50,
+      "revenue": 50
+    },
+    "progress": {
+      "articles": 0,
+      "emailSubs": 0,
+      "revenue": 0
+    },
+    "status": {
+      "articlesOnTrack": false,
+      "subsOnTrack": false,
+      "revenueOnTrack": false
+    }
+  }
+}
