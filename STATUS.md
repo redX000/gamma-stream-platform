@@ -24,6 +24,24 @@
   - Privacy Policy slug landed at `/privacy-policy-2/` — fix manually in WP Admin → Pages → edit slug to `privacy-policy`
   - Site has only 3 published posts (need 10 for AdSense); pipeline will reach 10 in ~2.3 more weeks
 
+### Completed This Session (Design Upgrade)
+- Built `scripts/site-upgrade.js` — comprehensive WP upgrade script
+- Dark theme CSS (18 KB) saved → `scripts/theme.css`
+- Homepage created with: hero, stats bar, posts grid (3 posts), categories, trust section, newsletter, social, footer, YouTube widget
+- Blog page created → set as posts listing page
+- Top Picks page created with affiliate buttons
+- Affiliate Disclosure page created
+- Navigation menu: Home | AI Tools Reviews | Make Money Online | YouTube | TikTok | 🔥 Top Picks
+- Reading progress bar, social proof popups, auto-TOC, author box, share buttons (injected via JS on single posts)
+- Site tagline & front page updated via Settings API
+
+### REQUIRED: One Manual Step
+- **Paste CSS into WordPress Customizer** so dark theme applies to ALL pages:
+  1. Go to https://gammacash.online/wp-admin/customize.php
+  2. Click "Additional CSS" in left panel
+  3. Open `scripts/theme.css`, copy all contents, paste in
+  4. Click "Publish"
+
 ### Waiting On User
 - `GA4_API_SECRET` — GA4 → Admin → Data Streams → your stream → Measurement Protocol API secrets → Create
 - `GA4_PROPERTY_ID` — GA4 → Admin → Property Settings → Property ID (numeric)

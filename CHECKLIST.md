@@ -151,13 +151,19 @@
 
 ## Phase E — Platform Polish
 
-### E1. WordPress Design Upgrade
-- [ ] Install Kadence or Astra theme (fast, lightweight, SEO-friendly)
-- [ ] Configure: set logo, colors (navy #0f172a / blue accent), typography
-- [ ] Install Elementor or Kadence Blocks for page builder
-- [ ] Design homepage: hero section + latest posts grid + opt-in form + featured tools
-- [ ] Design single post template: reading progress bar + author box + related posts + CTA
-- [ ] Add site-wide affiliate disclosure banner (FTC compliance)
+### E1. WordPress Design Upgrade ✅ done 2026-04-27
+- [x] Dark theme CSS generated → `scripts/theme.css` (18 KB)
+- [x] Homepage created — hero, stats, posts grid, categories, trust section, newsletter, social, footer
+- [x] Blog page created at `/ai-tools-reviews/` (set as posts listing page)
+- [x] Top Picks page created at `/top-picks/` with affiliate buttons
+- [x] Affiliate Disclosure page created at `/affiliate-disclosure/`
+- [x] Navigation menu created — Home | AI Tools Reviews | Make Money Online | YouTube | TikTok | 🔥 Top Picks
+- [x] Site tagline updated, front page set to homepage
+- [x] Reading progress bar, social proof popups, auto-TOC, author box, share buttons (via JS)
+- [ ] **MANUAL STEP REQUIRED** — Paste `scripts/theme.css` into WordPress Customizer → Additional CSS
+  - Go to: https://gammacash.online/wp-admin/customize.php → Additional CSS → paste → Publish
+  - This makes the dark theme apply to ALL pages (posts, archives, etc.)
+  - Without this step: homepage has the theme, other pages use the default WordPress theme
 
 ### E2. SEO Improvements
 - [ ] Install Rank Math or verify Yoast SEO is properly configured
