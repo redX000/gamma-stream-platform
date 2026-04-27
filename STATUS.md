@@ -6,12 +6,7 @@
 ---
 
 ## Current Phase
-**Phase A — Critical Fixes & Infrastructure**
-
-Active tasks this session:
-- Writing `automation/video-assembler.py` (was missing, broke video workflow)
-- Adding YouTube + GA4 secrets to GitHub
-- Running AdSense checker to create required WordPress pages
+**Phase A — Critical Fixes & Infrastructure** (mostly complete — waiting on user-supplied secrets)
 
 ---
 
@@ -22,28 +17,31 @@ Active tasks this session:
 - Modified `.github/workflows/social-posting.yml` — added comment explaining Pinterest pending approval
 - Full platform audit completed — see audit findings below
 - Wrote `CHECKLIST.md` and `STATUS.md` (this file)
-- Wrote `automation/video-assembler.py` — full Python video assembly pipeline
-- Added `YOUTUBE_CLIENT_ID` and `YOUTUBE_CLIENT_SECRET` to GitHub Secrets
-- Added `GA4_MEASUREMENT_ID = G-6DJVSLX7WX` to GitHub Secrets
-- Ran `node scripts/adsense-checker.js` — created Privacy Policy, About, Contact pages on WordPress
+- `automation/video-assembler.py` — confirmed existing (552 lines); added gradient fallback for missing PEXELS_API_KEY
+- Added `YOUTUBE_CLIENT_ID` and `YOUTUBE_CLIENT_SECRET` to GitHub Secrets ✅
+- Added `GA4_MEASUREMENT_ID = G-6DJVSLX7WX` to GitHub Secrets ✅
+- Ran `node scripts/adsense-checker.js` — created Privacy Policy (/privacy-policy-2/), About, Contact pages on WordPress ✅
+  - Privacy Policy slug landed at `/privacy-policy-2/` — fix manually in WP Admin → Pages → edit slug to `privacy-policy`
+  - Site has only 3 published posts (need 10 for AdSense); pipeline will reach 10 in ~2.3 more weeks
 
-### Still Needed This Session
-- Get `GA4_API_SECRET` from user (asked)
-- Get `PEXELS_API_KEY` — user must register at pexels.com/api (free)
-- Get `YOUTUBE_REFRESH_TOKEN` — user must run `node scripts/youtube-auth.js` locally
-- Pretty Links redirects — user must create in WordPress admin
-- ConvertKit opt-in form — depends on CONVERTKIT_API_KEY
+### Waiting On User
+- `GA4_API_SECRET` — GA4 → Admin → Data Streams → your stream → Measurement Protocol API secrets → Create
+- `GA4_PROPERTY_ID` — GA4 → Admin → Property Settings → Property ID (numeric)
+- `PEXELS_API_KEY` — free at https://www.pexels.com/api/
+- `YOUTUBE_REFRESH_TOKEN` — run `node scripts/youtube-auth.js` locally, follow browser flow
 
 ---
 
 ## Next Session — Start Here
 
-1. Paste `GA4_API_SECRET` if you have it (GA4 → Admin → Data Streams → Measurement Protocol API secrets)
-2. Register at pexels.com/api and paste the free API key → I'll add to GitHub secrets
-3. Run `node scripts/youtube-auth.js` locally → paste the `YOUTUBE_REFRESH_TOKEN` output → I'll add to GitHub
-4. Go to WordPress Admin → Pretty Links → create the 10 `/go/*` redirects with real affiliate URLs
-5. Join affiliate programs (Copy.ai, Systeme.io, ConvertKit have best commissions)
-6. Continue Phase D: video script generator, Medium auto-publisher
+1. **Paste `GA4_API_SECRET`** → GA4 → Admin → Data Streams → your stream → Measurement Protocol API secrets → Create
+2. **Paste `GA4_PROPERTY_ID`** → GA4 → Admin → Property Settings → Property ID (numeric, e.g. 123456789)
+3. **Register at pexels.com/api** (free) → paste the key → I'll add to GitHub Secrets
+4. **Run `node scripts/youtube-auth.js` locally** → complete browser OAuth → paste `YOUTUBE_REFRESH_TOKEN` → I'll add to GitHub
+5. **WordPress → Pretty Links** → create the 10 `/go/*` redirects (see B2 in CHECKLIST.md)
+6. **Fix Privacy Policy slug**: WP Admin → Pages → Privacy Policy → edit slug from `privacy-policy-2` to `privacy-policy`
+7. **Join affiliate programs**: Copy.ai (45%), Systeme.io (60%), ConvertKit (30%) are highest priority
+8. Continue Phase D: video script generator, Medium auto-publisher
 
 ---
 

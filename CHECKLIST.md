@@ -8,18 +8,18 @@
 
 ## Phase A — Critical Fixes & Infrastructure
 
-### A1. Video Pipeline (broken workflow — fix first)
-- [x] Write `automation/video-assembler.py` — assembles MP4s from voiceovers + Pexels stock footage
+### A1. Video Pipeline
+- [x] `automation/video-assembler.py` — exists and working; added graceful gradient fallback when PEXELS_API_KEY absent
 - [ ] Get `PEXELS_API_KEY` — free at https://www.pexels.com/api/ → add to GitHub Secrets
 - [ ] Get `YOUTUBE_REFRESH_TOKEN` — run `node scripts/youtube-auth.js` locally, follow browser flow
-- [x] Add `YOUTUBE_CLIENT_ID` to GitHub Secrets (value from local `.env`)
-- [x] Add `YOUTUBE_CLIENT_SECRET` to GitHub Secrets (value from local `.env`)
+- [x] Add `YOUTUBE_CLIENT_ID` to GitHub Secrets ✅ done 2026-04-27
+- [x] Add `YOUTUBE_CLIENT_SECRET` to GitHub Secrets ✅ done 2026-04-27
 - [ ] Add `YOUTUBE_REFRESH_TOKEN` to GitHub Secrets (after running youtube-auth.js)
 - [ ] Add `PEXELS_API_KEY` to GitHub Secrets
 - [ ] Manually trigger `video-assembler.yml` workflow once to verify end-to-end
 
 ### A2. GA4 Analytics
-- [x] Add `GA4_MEASUREMENT_ID = G-6DJVSLX7WX` to GitHub Secrets
+- [x] Add `GA4_MEASUREMENT_ID = G-6DJVSLX7WX` to GitHub Secrets ✅ done 2026-04-27
 - [ ] Add `GA4_API_SECRET` to GitHub Secrets
   - Get from: GA4 → Admin → Data Streams → your stream → Measurement Protocol API secrets → Create
 - [ ] Add `GA4_PROPERTY_ID` to GitHub Secrets
@@ -28,7 +28,8 @@
   - Get from: Google Cloud Console → IAM → Service Accounts → create account → JSON key → paste entire JSON
 
 ### A3. WordPress Required Pages (AdSense prerequisite)
-- [x] Run `node scripts/adsense-checker.js` to auto-create Privacy Policy, About, Contact pages
+- [x] Run `node scripts/adsense-checker.js` to auto-create Privacy Policy, About, Contact pages ✅ done 2026-04-27
+  - Note: Privacy Policy created at `/privacy-policy-2/` (slug conflict) — fix in WP Admin → Pages → rename slug
   - Requires: `WORDPRESS_URL`, `WORDPRESS_USERNAME`, `WORDPRESS_PASSWORD` in local `.env`
 
 ### A4. Email — Update NOTIFICATION_EMAIL
