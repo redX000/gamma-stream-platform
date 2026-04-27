@@ -1,5 +1,11 @@
 {
-  "fetchedAt": null,
-  "topicCount": 0,
-  "topics": []
+  "fetchedAt": "2026-04-27T07:34:42.498Z",
+  "topicCount": 1,
+  "topics": [
+    {
+      "topic": "qatar airways",
+      "score": 100,
+      "source": "google-trends"
+    }
+  ]
 }
