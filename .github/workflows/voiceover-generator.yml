@@ -8,10 +8,6 @@ on:
         required: false
         default: ''
         type: string
-  # Run weekly on Sundays at 07:00 UTC to produce voiceovers for the upcoming week's scripts
-  schedule:
-    - cron: '0 7 * * 0'
-
 concurrency:
   group: voiceover-generator
   cancel-in-progress: false

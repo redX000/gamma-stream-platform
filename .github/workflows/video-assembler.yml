@@ -25,10 +25,6 @@ on:
         default: 'both'
         type: choice
         options: [both, vertical, horizontal]
-  # Run every Sunday at 08:00 UTC (after voiceover runs at 07:00)
-  schedule:
-    - cron: '0 8 * * 0'
-
 concurrency:
   group: video-assembler
   cancel-in-progress: false

@@ -21,6 +21,9 @@ concurrency:
   group: content-generation
   cancel-in-progress: false
 
+permissions:
+  contents: write
+
 jobs:
   generate-and-publish:
     name: Generate & Publish Article
@@ -37,6 +40,7 @@ jobs:
         with:
           # Fetch full history so queue.json commits have correct ancestry
           fetch-depth: 0
+          persist-credentials: true
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -117,8 +121,12 @@ jobs:
           git config user.name "gamma-stream-bot"
           git config user.email "bot@gammacash.online"
           git add videos/scripts/ analytics/medium-published.json
-          git diff --cached --quiet || git commit -m "chore: auto video script + Medium log [skip ci]"
-          git push origin main || true
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "chore: auto video script + Medium log [skip ci]"
+            git push origin main
+          fi
 
       - name: Send failure notification
         if: steps.pipeline.outcome == 'failure'

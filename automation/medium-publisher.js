@@ -4,6 +4,7 @@
  * with a canonical URL pointing back to gammacash.online (SEO-safe).
  *
  * Requires env: WORDPRESS_URL, WORDPRESS_USERNAME, WORDPRESS_PASSWORD, MEDIUM_INTEGRATION_TOKEN
+ *   (NOTE: Medium deprecated public Integration Tokens in 2023 — only legacy tokens work)
  *
  * Usage: node automation/medium-publisher.js [--post-id <id>]
  */
@@ -180,7 +181,9 @@ async function publishToMedium(userId, token, post) {
 async function main() {
   const token = process.env.MEDIUM_INTEGRATION_TOKEN;
   if (!token) {
-    console.log('[medium] MEDIUM_INTEGRATION_TOKEN not set — skipping Medium publish');
+    console.log('[medium] MEDIUM_INTEGRATION_TOKEN not set — skipping.');
+    console.log('[medium] NOTE: Medium deprecated public Integration Tokens in 2023.');
+    console.log('[medium] Only legacy tokens issued before then still work. New tokens cannot be created.');
     process.exit(0);
   }
   if (!process.env.WORDPRESS_URL) throw new Error('WORDPRESS_URL is not set');
