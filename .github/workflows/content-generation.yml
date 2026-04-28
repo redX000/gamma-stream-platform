@@ -91,6 +91,35 @@ jobs:
           retention-days: 30
           if-no-files-found: ignore
 
+      - name: Generate video script from new post
+        if: steps.pipeline.outcome == 'success'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+        run: node content-pipeline/video-script-generator.js
+        continue-on-error: true
+
+      - name: Cross-post to Medium
+        if: steps.pipeline.outcome == 'success'
+        env:
+          MEDIUM_INTEGRATION_TOKEN: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+        run: node automation/medium-publisher.js
+        continue-on-error: true
+
+      - name: Commit video script + Medium log
+        if: steps.pipeline.outcome == 'success'
+        run: |
+          git config user.name "gamma-stream-bot"
+          git config user.email "bot@gammacash.online"
+          git add videos/scripts/ analytics/medium-published.json
+          git diff --cached --quiet || git commit -m "chore: auto video script + Medium log [skip ci]"
+          git push origin main || true
+
       - name: Send failure notification
         if: steps.pipeline.outcome == 'failure'
         uses: dawidd6/action-send-mail@v3

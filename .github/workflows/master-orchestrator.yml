@@ -1,0 +1,373 @@
+name: Master Orchestrator
+
+# Weekly full-pipeline run: trend detect → content → video script → voiceover → video → Medium → report
+# Run time estimate: 60–90 min (parallel video jobs are the bottleneck)
+# Manual trigger lets you run any subset of steps.
+
+on:
+  schedule:
+    # Every Sunday at 10:00 UTC (after video-assembler at 08:00 finishes)
+    - cron: '0 10 * * 0'
+  workflow_dispatch:
+    inputs:
+      skip_content:
+        description: 'Skip content generation (reuse last post)'
+        required: false
+        default: 'false'
+        type: boolean
+      skip_video:
+        description: 'Skip video script + voiceover + assemble'
+        required: false
+        default: 'false'
+        type: boolean
+      skip_medium:
+        description: 'Skip Medium cross-post'
+        required: false
+        default: 'false'
+        type: boolean
+      dry_run:
+        description: 'Dry run — log steps but skip publishing'
+        required: false
+        default: 'false'
+        type: boolean
+
+concurrency:
+  group: master-orchestrator
+  cancel-in-progress: false
+
+jobs:
+  # ── Step 1: Trend Detection ────────────────────────────────────────────────
+  trend-detect:
+    name: 1 — Trend Detection
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      trends_found: ${{ steps.detect.outputs.trends_found }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Detect trends
+        id: detect
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          node automation/trend-detector.js 2>&1 | tee /tmp/trend-output.txt || true
+          echo "trends_found=true" >> $GITHUB_OUTPUT
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: trend-output
+          path: /tmp/trend-output.txt
+          retention-days: 7
+
+  # ── Step 2: Content Generation ────────────────────────────────────────────
+  generate-content:
+    name: 2 — Content Generation
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    needs: trend-detect
+    if: inputs.skip_content != 'true'
+    outputs:
+      post_published: ${{ steps.pipeline.outputs.post_published }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Restore queue state
+        uses: actions/cache@v4
+        with:
+          path: content-pipeline/queue.json
+          key: queue-state-${{ github.run_id }}
+          restore-keys: queue-state-
+
+      - name: Run content pipeline
+        id: pipeline
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+          GA4_MEASUREMENT_ID: ${{ secrets.GA4_MEASUREMENT_ID }}
+          GA4_API_SECRET: ${{ secrets.GA4_API_SECRET }}
+        run: |
+          FLAGS="--force"
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            FLAGS="$FLAGS --dry-run"
+          fi
+          node content-pipeline/scheduler.js $FLAGS
+          echo "post_published=true" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+      - uses: actions/cache/save@v4
+        if: always()
+        with:
+          path: content-pipeline/queue.json
+          key: queue-state-${{ github.run_id }}
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: generated-article-orchestrator-${{ github.run_number }}
+          path: content-pipeline/generated/
+          retention-days: 30
+          if-no-files-found: ignore
+
+  # ── Step 3: Video Script Generation ──────────────────────────────────────
+  video-script:
+    name: 3 — Video Script
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: generate-content
+    if: |
+      always() &&
+      inputs.skip_video != 'true' &&
+      (needs.generate-content.result == 'success' || needs.generate-content.result == 'skipped')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Generate video script from latest post
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "[dry-run] Skipping video-script-generator.js"
+            exit 0
+          fi
+          node content-pipeline/video-script-generator.js
+        continue-on-error: true
+
+      - name: Commit new script back to repo
+        if: inputs.dry_run != 'true'
+        run: |
+          git config user.name "gamma-stream-bot"
+          git config user.email "bot@gammacash.online"
+          git add videos/scripts/
+          git diff --cached --quiet || git commit -m "chore: auto-generate video script [skip ci]"
+          git push origin ${{ github.ref_name }} || true
+
+  # ── Step 4: Voiceover Generation ──────────────────────────────────────────
+  voiceover:
+    name: 4 — Voiceover
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: video-script
+    if: |
+      always() &&
+      inputs.skip_video != 'true' &&
+      needs.video-script.result != 'failure'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Pull latest (includes the script commit from step 3)
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Generate voiceovers
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "[dry-run] Skipping voiceover-generator.js"
+            exit 0
+          fi
+          node automation/voiceover-generator.js
+        continue-on-error: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: voiceovers-orchestrator-${{ github.run_number }}
+          path: videos/audio/
+          retention-days: 30
+          if-no-files-found: ignore
+
+      - name: Commit timing JSON
+        if: inputs.dry_run != 'true'
+        run: |
+          git config user.name "gamma-stream-bot"
+          git config user.email "bot@gammacash.online"
+          git add videos/timing/
+          git diff --cached --quiet || git commit -m "chore: add voiceover timing JSON [skip ci]"
+          git push origin ${{ github.ref_name }} || true
+
+  # ── Step 5: Video Assembly ────────────────────────────────────────────────
+  video-assemble:
+    name: 5 — Video Assembly
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    needs: voiceover
+    if: |
+      always() &&
+      inputs.skip_video != 'true' &&
+      needs.voiceover.result != 'failure'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: pip install moviepy==1.0.3 requests pillow numpy
+
+      - name: Assemble videos
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "[dry-run] Skipping video-assembler.py"
+            exit 0
+          fi
+          python automation/video-assembler.py
+        continue-on-error: true
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: videos-orchestrator-${{ github.run_number }}
+          path: videos/output/
+          retention-days: 90
+          if-no-files-found: ignore
+
+  # ── Step 6: Medium Cross-Post ─────────────────────────────────────────────
+  medium-publish:
+    name: 6 — Medium Cross-Post
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    needs: generate-content
+    if: |
+      always() &&
+      inputs.skip_medium != 'true' &&
+      (needs.generate-content.result == 'success' || needs.generate-content.result == 'skipped')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Cross-post to Medium
+        env:
+          MEDIUM_INTEGRATION_TOKEN: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+        run: |
+          if [ "${{ inputs.dry_run }}" = "true" ]; then
+            echo "[dry-run] Skipping medium-publisher.js"
+            exit 0
+          fi
+          node automation/medium-publisher.js
+        continue-on-error: true
+
+      - name: Commit Medium publish log
+        if: inputs.dry_run != 'true'
+        run: |
+          git config user.name "gamma-stream-bot"
+          git config user.email "bot@gammacash.online"
+          git add analytics/medium-published.json
+          git diff --cached --quiet || git commit -m "chore: update Medium publish log [skip ci]"
+          git push origin ${{ github.ref_name }} || true
+
+  # ── Step 7: Weekly Analytics Report ──────────────────────────────────────
+  analytics-report:
+    name: 7 — Analytics Report
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [video-assemble, medium-publish]
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Generate analytics report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          CONVERTKIT_API_KEY: ${{ secrets.CONVERTKIT_API_KEY }}
+        run: node analytics/dashboard.js
+        continue-on-error: true
+
+      - name: Commit report
+        run: |
+          git config user.name "gamma-stream-bot"
+          git config user.email "bot@gammacash.online"
+          git add analytics/reports/
+          git pull --rebase origin ${{ github.ref_name }} || true
+          git diff --cached --quiet || git commit -m "chore: weekly orchestrator analytics report [skip ci]"
+          git push origin ${{ github.ref_name }} || true
+
+      - name: Email orchestrator summary
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: '✅ Gamma Stream — Weekly Orchestrator Run #${{ github.run_number }}'
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Gamma Stream <${{ secrets.SMTP_USER }}>
+          body: |
+            Weekly master pipeline completed.
+
+            Run: #${{ github.run_number }}
+            Triggered: ${{ github.event_name }}
+            Branch: ${{ github.ref_name }}
+
+            Steps completed:
+            1. Trend detection
+            2. Content generation (skip=${{ inputs.skip_content || 'false' }})
+            3. Video script
+            4. Voiceover
+            5. Video assembly
+            6. Medium cross-post (skip=${{ inputs.skip_medium || 'false' }})
+            7. Analytics report
+
+            View full run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
