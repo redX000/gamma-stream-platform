@@ -94,7 +94,7 @@
 | `GA4_MEASUREMENT_ID` | ✅ Set | G-6DJVSLX7WX — added this session |
 | `GA4_API_SECRET` | ✅ Set | Added 2026-04-28 |
 | `GA4_PROPERTY_ID` | ✅ Set | Added 2026-04-28 |
-| `GA4_SERVICE_ACCOUNT_JSON` | ❌ Missing | Google Cloud service account |
+| `GA4_SERVICE_ACCOUNT_JSON` | ✅ Set | Added 2026-04-28 |
 | `CONVERTKIT_API_KEY` | ❌ Missing | |
 | `PINTEREST_APP_ID` | ❌ Pending | App pending approval |
 | `PINTEREST_APP_SECRET` | ❌ Pending | App pending approval |
