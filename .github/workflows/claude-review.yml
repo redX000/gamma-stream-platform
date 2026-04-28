@@ -19,6 +19,7 @@ permissions:
   contents: read
   pull-requests: write
   issues: write
+  id-token: write
 
 jobs:
   claude-review:
@@ -37,7 +38,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           # Focused review prompt — checks security, code quality, and CLAUDE.md compliance
-          direct_prompt: |
+          prompt: |
             Review this pull request for the Gamma Stream Platform — an autonomous AI affiliate content platform.
 
             Check for the following in every changed file and leave inline comments where issues are found:
