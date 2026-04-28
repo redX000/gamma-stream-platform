@@ -92,8 +92,8 @@
 | `SMTP_USER` | ✅ Set | noreply@gammacash.online |
 | `SMTP_PASS` | ✅ Set | |
 | `GA4_MEASUREMENT_ID` | ✅ Set | G-6DJVSLX7WX — added this session |
-| `GA4_API_SECRET` | ❌ Missing | Ask user |
-| `GA4_PROPERTY_ID` | ❌ Missing | GA4 → Property Settings |
+| `GA4_API_SECRET` | ✅ Set | Added 2026-04-28 |
+| `GA4_PROPERTY_ID` | ✅ Set | Added 2026-04-28 |
 | `GA4_SERVICE_ACCOUNT_JSON` | ❌ Missing | Google Cloud service account |
 | `CONVERTKIT_API_KEY` | ❌ Missing | |
 | `PINTEREST_APP_ID` | ❌ Pending | App pending approval |
