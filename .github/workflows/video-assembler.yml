@@ -1,0 +1,249 @@
+name: Video Assembler
+
+# GitHub Actions ubuntu-latest specs:
+#   2 vCPU, 7 GB RAM, 14 GB SSD, 6-hour job limit
+#
+# Render time estimates (ultrafast preset, CRF 28):
+#   Vertical short  (~60s video)  → ~5-15 min  ✅ fast
+#   Horizontal long (~5 min video) → ~25-50 min ✅ feasible, separate job
+#
+# MP4 files are uploaded as artifacts (90-day retention).
+# Timing JSON + manifest are committed back to the repo.
+# YouTube upload is skipped when YOUTUBE_REFRESH_TOKEN secret is not set.
+
+on:
+  workflow_dispatch:
+    inputs:
+      topic_filter:
+        description: 'Only process scripts matching this topic slug (blank = all)'
+        required: false
+        default: ''
+        type: string
+      orientation:
+        description: 'Which format to render'
+        required: false
+        default: 'both'
+        type: choice
+        options: [both, vertical, horizontal]
+  # Run every Sunday at 08:00 UTC (after voiceover runs at 07:00)
+  schedule:
+    - cron: '0 8 * * 0'
+
+concurrency:
+  group: video-assembler
+  cancel-in-progress: false
+
+jobs:
+  # ── Vertical (YouTube Shorts) — fast, always runs ──────────────────────────
+  assemble-vertical:
+    name: Assemble Vertical (Shorts)
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    if: ${{ github.event.inputs.orientation != 'horizontal' }}
+    # Expose the secret as an env var so step `if:` conditions can read it.
+    env:
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── Node.js + voiceover ─────────────────────────────────────────────────
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Generate voiceovers (Edge TTS — free, no key needed)
+        run: |
+          ARGS=""
+          [ -n "${{ github.event.inputs.topic_filter }}" ] && ARGS="--topic ${{ github.event.inputs.topic_filter }}"
+          node automation/voiceover-generator.js $ARGS
+
+      # ── Python + video assembly ─────────────────────────────────────────────
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install system dependencies (ffmpeg + fonts)
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg fonts-dejavu-core
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Assemble vertical videos (Shorts)
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          ARGS="--orientation vertical"
+          [ -n "${{ github.event.inputs.topic_filter }}" ] && ARGS="$ARGS --topic ${{ github.event.inputs.topic_filter }}"
+          python automation/video-assembler.py $ARGS
+
+      - name: Upload vertical MP4s as artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shorts-vertical-${{ github.run_number }}
+          path: videos/output/*-short.mp4
+          retention-days: 90
+          if-no-files-found: warn
+
+      - name: Commit timing files (if new voiceovers were generated)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add videos/audio/*-timing.json videos/audio/manifest.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new timing files."
+          else
+            git commit -m "chore: voiceover timing data [run #${{ github.run_number }}]"
+            git push
+          fi
+
+      # ── YouTube upload (skipped when secret is not configured) ──────────────
+      - name: Upload Shorts to YouTube
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          ARGS="--type short"
+          [ -n "${{ github.event.inputs.topic_filter }}" ] && ARGS="$ARGS --topic ${{ github.event.inputs.topic_filter }}"
+          node automation/youtube-publisher.js $ARGS
+
+      - name: Commit YouTube upload records (shorts)
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
+          git add videos/uploads.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new upload records."
+          else
+            git commit -m "chore: youtube upload records (shorts) [run #${{ github.run_number }}]"
+            git push
+          fi
+
+  # ── Horizontal (standard YouTube) — slower, separate job ───────────────────
+  assemble-horizontal:
+    name: Assemble Horizontal (YouTube)
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    if: ${{ github.event.inputs.orientation != 'vertical' }}
+    env:
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node dependencies
+        run: npm ci
+
+      - name: Generate voiceovers
+        run: |
+          ARGS=""
+          [ -n "${{ github.event.inputs.topic_filter }}" ] && ARGS="--topic ${{ github.event.inputs.topic_filter }}"
+          node automation/voiceover-generator.js $ARGS
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install system dependencies
+        run: sudo apt-get update -qq && sudo apt-get install -y ffmpeg fonts-dejavu-core
+
+      - name: Install Python dependencies
+        run: pip install -r requirements.txt
+
+      - name: Assemble horizontal videos (YouTube)
+        env:
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: |
+          ARGS="--orientation horizontal"
+          [ -n "${{ github.event.inputs.topic_filter }}" ] && ARGS="$ARGS --topic ${{ github.event.inputs.topic_filter }}"
+          python automation/video-assembler.py $ARGS
+
+      - name: Upload horizontal MP4s as artifacts
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: youtube-horizontal-${{ github.run_number }}
+          path: videos/output/*-long.mp4
+          retention-days: 90
+          if-no-files-found: warn
+
+      # ── YouTube upload (skipped when secret is not configured) ──────────────
+      - name: Upload long-form video to YouTube
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        env:
+          YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
+          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          ARGS="--type long"
+          [ -n "${{ github.event.inputs.topic_filter }}" ] && ARGS="$ARGS --topic ${{ github.event.inputs.topic_filter }}"
+          node automation/youtube-publisher.js $ARGS
+
+      - name: Commit YouTube upload records (long-form)
+        if: env.YOUTUBE_REFRESH_TOKEN != ''
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
+          git add videos/uploads.json 2>/dev/null || true
+          if git diff --cached --quiet; then
+            echo "No new upload records."
+          else
+            git commit -m "chore: youtube upload records (long-form) [run #${{ github.run_number }}]"
+            git push
+          fi
+
+  # ── Failure notification ────────────────────────────────────────────────────
+  notify-on-failure:
+    name: Notify on Failure
+    runs-on: ubuntu-latest
+    needs: [assemble-vertical, assemble-horizontal]
+    if: failure()
+
+    steps:
+      - name: Send failure email
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: '❌ Gamma Stream — Video assembly failed (#${{ github.run_number }})'
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Gamma Stream <${{ secrets.SMTP_USER }}>
+          body: |
+            The video assembly pipeline failed.
+
+            Run: ${{ github.run_number }}
+            Branch: ${{ github.ref_name }}
+
+            View logs: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            Common causes:
+            - PEXELS_API_KEY not set or quota exceeded (200 req/hr, 20K/month)
+            - moviepy/ffmpeg version conflict — check pip install output
+            - No audio files in videos/audio/ (run voiceover workflow first)
+            - Long video timeout — horizontal job has 120-min limit
+            - YOUTUBE_REFRESH_TOKEN expired — re-run scripts/youtube-auth.js

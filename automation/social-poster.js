@@ -200,11 +200,19 @@ async function getPinterestAccessToken() {
  * Create a Pinterest pin linking to the article.
  * Uses Pinterest API v5 POST /v5/pins endpoint.
  * Authenticates via OAuth2 refresh token flow (PINTEREST_APP_ID + PINTEREST_APP_SECRET + PINTEREST_REFRESH_TOKEN).
+ * Gracefully skips (returns skipped result, does not throw) if Pinterest credentials are not yet configured.
  * @param {Object} article - Article object from getLatestArticle()
- * @returns {Promise<Object>} Result with pin ID and URL
+ * @returns {Promise<Object>} Result with pin ID and URL, or skipped flag if credentials missing
  */
 export async function postToPinterest(article) {
-  if (!process.env.PINTEREST_BOARD_ID) throw new Error('PINTEREST_BOARD_ID is not set in .env');
+  const missingCreds = ['PINTEREST_APP_ID', 'PINTEREST_APP_SECRET', 'PINTEREST_REFRESH_TOKEN', 'PINTEREST_BOARD_ID']
+    .filter((v) => !process.env[v]);
+
+  if (missingCreds.length) {
+    console.log(`[social] Pinterest skipped — credentials not configured (${missingCreds.join(', ')}). App pending approval.`);
+    return { platform: 'pinterest', skipped: true, reason: 'credentials not configured — app pending approval' };
+  }
+
   if (!article.featuredImageUrl) throw new Error('Post has no featured image — Pinterest pin skipped');
 
   const accessToken = await getPinterestAccessToken();
@@ -298,8 +306,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
 
   runSocialPoster(platform)
     .then((results) => {
-      const failed = results.filter((r) => r.error);
-      process.exit(failed.length === results.length ? 1 : 0);
+      const attempted = results.filter((r) => !r.skipped);
+      const failed = attempted.filter((r) => r.error);
+      process.exit(attempted.length > 0 && failed.length === attempted.length ? 1 : 0);
     })
     .catch((err) => {
       console.error(`[social] Fatal: ${err.message}`);

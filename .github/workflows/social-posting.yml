@@ -90,6 +90,10 @@ jobs:
 
       - name: Post to Pinterest
         id: pinterest
+        # Pinterest app is pending Standard Access approval (applied ~2026-04-27).
+        # Until approved, PINTEREST_APP_ID / PINTEREST_APP_SECRET / PINTEREST_REFRESH_TOKEN
+        # secrets will be absent and social-poster.js will log a skip instead of failing.
+        # Once approved: run scripts/pinterest-auth.js locally, then add all 4 secrets.
         env:
           WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
           PINTEREST_APP_ID: ${{ secrets.PINTEREST_APP_ID }}

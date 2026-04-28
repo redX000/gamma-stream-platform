@@ -1,0 +1,13 @@
+# Video assembler dependencies (automation/video-assembler.py)
+# Install: pip install -r requirements.txt
+# System deps also needed on Ubuntu: sudo apt-get install -y ffmpeg fonts-dejavu-core
+
+moviepy==1.0.3
+Pillow>=10.0.0
+requests>=2.31.0
+numpy>=1.24.0
+imageio>=2.31.0
+imageio-ffmpeg>=0.4.9
+decorator>=4.4.2
+proglog>=0.1.10
+tqdm>=4.65.0
