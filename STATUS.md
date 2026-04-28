@@ -102,7 +102,7 @@
 | `PINTEREST_BOARD_ID` | ❌ Pending | After Pinterest approval |
 | `YOUTUBE_CLIENT_ID` | ✅ Set | Added this session |
 | `YOUTUBE_CLIENT_SECRET` | ✅ Set | Added this session |
-| `YOUTUBE_REFRESH_TOKEN` | ❌ Missing | Run scripts/youtube-auth.js |
+| `YOUTUBE_REFRESH_TOKEN` | ✅ Set | Added 2026-04-28 |
 | `PEXELS_API_KEY` | ❌ Missing | Free at pexels.com/api |
 | Reddit secrets (5) | ❌ Skipped | Permanently blocked |
 
@@ -115,7 +115,7 @@
 | Affiliate commissions | ⚠️ Infrastructure ready | Not joined programs; /go/* redirects not created |
 | Display ads (AdSense) | ⏳ Not applied | Need 10+ posts; Privacy Policy etc. now created |
 | Email marketing | ⏳ Not collecting | No ConvertKit key; no opt-in form on site |
-| YouTube channel | ⏳ Not publishing | Need YOUTUBE_REFRESH_TOKEN + PEXELS_API_KEY |
+| YouTube channel | ⏳ Not publishing | Need PEXELS_API_KEY (YOUTUBE_REFRESH_TOKEN now set ✅) |
 | Pinterest traffic | ⏳ Pending approval | App submitted 2026-04-27 |
 | Reddit traffic | ❌ Skipped | Reddit permanently blocked app creation |
 
