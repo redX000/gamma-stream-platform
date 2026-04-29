@@ -120,7 +120,8 @@ jobs:
         run: |
           git config user.name "gamma-stream-bot"
           git config user.email "bot@gammacash.online"
-          git add videos/scripts/ analytics/medium-published.json
+          git add videos/scripts/ 2>/dev/null || true
+          [ -f analytics/medium-published.json ] && git add analytics/medium-published.json || true
           if git diff --cached --quiet; then
             echo "No changes to commit"
           else
