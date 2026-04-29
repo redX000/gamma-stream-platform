@@ -1,0 +1,136 @@
+name: Subscriber Milestone Monitor
+
+# Checks ConvertKit subscriber count daily.
+# Sends one-time notification emails at key monetization thresholds:
+#   500 subs → SparkLoop Upscribe referral widget unlockable
+#  1000 subs → Paved sponsorship marketplace + Beehiiv Boosts eligible
+
+on:
+  schedule:
+    - cron: '0 8 * * *'   # 08:00 UTC daily (after content-generation at 06:00)
+  workflow_dispatch:
+
+concurrency:
+  group: subscriber-milestone
+  cancel-in-progress: false
+
+jobs:
+  check-milestones:
+    name: Check ConvertKit Subscriber Count
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Fetch subscriber count from ConvertKit
+        id: count
+        env:
+          CONVERTKIT_API_KEY: ${{ secrets.CONVERTKIT_API_KEY }}
+        run: |
+          if [ -z "${CONVERTKIT_API_KEY}" ]; then
+            echo "CONVERTKIT_API_KEY not set — skipping"
+            echo "total=0" >> $GITHUB_OUTPUT
+            exit 0
+          fi
+
+          RESPONSE=$(curl -sf "https://api.convertkit.com/v3/subscribers?api_secret=${CONVERTKIT_API_KEY}&per_page=1" 2>/dev/null || echo '{}')
+          TOTAL=$(echo "${RESPONSE}" | python3 -c "import sys,json; d=json.load(sys.stdin); print(d.get('total_subscribers', 0))" 2>/dev/null || echo "0")
+          echo "total=${TOTAL}" >> $GITHUB_OUTPUT
+
+      - name: Log milestone status
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Subscriber Milestones — $(date -u '+%Y-%m-%d')"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Subscribers:   ${{ steps.count.outputs.total }}"
+          echo "  SparkLoop:     ${{ steps.count.outputs.total >= 500 && '✅ unlockable' || '⏳ needs 500' }}"
+          echo "  Paved/Beehiiv: ${{ steps.count.outputs.total >= 1000 && '✅ unlockable' || '⏳ needs 1000' }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      - name: Notify — SparkLoop (500 subs threshold)
+        if: steps.count.outputs.total >= 500
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: '🎉 500 subscribers! Activate SparkLoop Upscribe now'
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Gamma Stream <${{ secrets.SMTP_USER }}>
+          body: |
+            GammaCash newsletter has reached ${{ steps.count.outputs.total }} subscribers.
+            SparkLoop Upscribe referral widget is now unlockable.
+
+            ── ACTION REQUIRED — SparkLoop ─────────────────────────────────────
+
+            1. Apply at: https://sparkloop.app  (free, 2–5 days review)
+               • Site: https://gammacash.online
+               • Niche: AI tools / SaaS
+               • Apply in the Moroccan operator's name
+
+            2. After approval (2–5 days):
+               a. Add to GitHub Secrets:
+                  SPARKLOOP_API_KEY   = from SparkLoop → Settings → API Key
+                  SPARKLOOP_PARTNER_ID = from SparkLoop → Upscribe → Embed URL
+
+               b. Create /newsletter-confirmed page in WordPress:
+                  - Paste scripts/sparkloop-widget.html (replace SPARKLOOP_PARTNER_ID)
+                  - Page title: "You're in! 🎉 One more thing..."
+
+               c. In ConvertKit → Forms → [your form] → Settings → Redirect URL:
+                  Set to: https://gammacash.online/newsletter-confirmed
+
+            Expected revenue: $1–$5 per referred subscriber
+            At 500 subs + 10% referral rate: $5–$25/month baseline
+            Payout: PayPal Morocco → sweep to Payoneer USD
+
+            ─────────────────────────────────────────────────────────────────────
+            See full guide: docs/newsletter-sponsorships.md
+            Site: https://gammacash.online
+
+      - name: Notify — Paved + Beehiiv Boosts (1000 subs threshold)
+        if: steps.count.outputs.total >= 1000
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: '🚀 1,000 subscribers! Activate Paved + Beehiiv Boosts sponsorships'
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Gamma Stream <${{ secrets.SMTP_USER }}>
+          body: |
+            GammaCash newsletter has reached ${{ steps.count.outputs.total }} subscribers.
+            Newsletter sponsorship marketplaces are now accessible.
+
+            ── ACTION REQUIRED — Paved Sponsorships ────────────────────────────
+
+            1. Apply at: https://paved.com  (publishers tab)
+               • Niche: AI tools / SaaS / productivity
+               • Audience size: ~${{ steps.count.outputs.total }} subscribers
+               • Expected CPM: $25–$60 per 1,000 subscribers
+               • Payout: US ACH → Payoneer USD virtual account details
+
+            2. After approval:
+               • Paved will match you with sponsors automatically
+               • Use templates/sponsored-email.md for FTC-compliant placement
+               • Typical rate at 1,000 subs: $25–$60 per sponsored send
+
+            ── ACTION REQUIRED — Beehiiv Boosts ────────────────────────────────
+
+            1. Migrate list to Beehiiv (or stay on ConvertKit and use Paved only):
+               • Beehiiv Boosts: other newsletters pay you per new subscriber
+               • Rate: $1–$3 per boost subscriber
+               • Apply at: https://beehiiv.com  → Grow → Boosts → Get Boosted
+
+            2. After approval:
+               • Add Beehiiv Boosts widget to /newsletter-confirmed page
+                 (alongside the SparkLoop widget)
+
+            Expected revenue at 1,000 subs:
+               Paved:           $25–$60/sponsored send × 4 sends/month = $100–$240/mo
+               Beehiiv Boosts:  $1–$3 per boost × conversion rate
+
+            ─────────────────────────────────────────────────────────────────────
+            See full guide: docs/newsletter-sponsorships.md
+            Site: https://gammacash.online

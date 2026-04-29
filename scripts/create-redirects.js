@@ -22,19 +22,25 @@ const UPDATE       = process.argv.includes('--update');
 // Replace '#' with your real affiliate URL once you have been approved.
 // Re-run: node scripts/create-redirects.js --update
 const REDIRECTS = {
-  'jasper':       { title: 'Jasper AI',      url: '#' },   // jasper.ai/affiliate   — 25% recurring
-  'copyai':       { title: 'Copy.ai',         url: '#' },   // copy.ai/affiliate     — 45% recurring
-  'surfer-seo':   { title: 'Surfer SEO',      url: '#' },   // surferseo.com/aff.    — 25% recurring
-  'convertkit':   { title: 'ConvertKit',      url: '#' },   // convertkit.com/aff.   — 30% recurring
-  'writesonic':   { title: 'Writesonic',      url: '#' },   // writesonic.com/aff.   — 30% recurring
-  'grammarly':    { title: 'Grammarly',       url: '#' },   // grammarly.com/aff.    — various
-  'canva':        { title: 'Canva',           url: '#' },   // canva.com/affiliates  — various
-  'chatgpt-plus': { title: 'ChatGPT Plus',    url: '#' },   // openai.com — n/a
-  'midjourney':   { title: 'Midjourney',      url: '#' },   // midjourney.com — n/a
-  'systeme-io':   { title: 'Systeme.io',      url: '#' },   // systeme.io/affiliate  — 60% recurring ⭐
-  'zapier':       { title: 'Zapier',          url: '#' },   // zapier.com/affiliate  — 20-25% recurring
-  'scalenut':     { title: 'Scalenut',        url: '#' },   // scalenut.com/aff.     — 30% lifetime
-  'notion':       { title: 'Notion AI',       url: '#' },   // notion.so/affiliate   — 20% per sale
+  'jasper':          { title: 'Jasper AI',      url: '#' },   // jasper.ai/affiliate      — 25% recurring
+  'copyai':          { title: 'Copy.ai',         url: '#' },   // copy.ai/affiliate         — 45% recurring
+  'surfer-seo':      { title: 'Surfer SEO',      url: '#' },   // surferseo.com/aff.        — 25% recurring
+  'convertkit':      { title: 'ConvertKit',      url: '#' },   // convertkit.com/aff.       — 30% recurring
+  'writesonic':      { title: 'Writesonic',      url: '#' },   // writesonic.com/aff.       — 30% recurring
+  'grammarly':       { title: 'Grammarly',       url: '#' },   // grammarly.com/aff.        — various
+  'canva':           { title: 'Canva',           url: '#' },   // canva.com/affiliates      — various
+  'chatgpt-plus':    { title: 'ChatGPT Plus',    url: '#' },   // openai.com — n/a
+  'midjourney':      { title: 'Midjourney',      url: '#' },   // midjourney.com — n/a
+  'systeme-io':      { title: 'Systeme.io',      url: '#' },   // systeme.io/affiliate      — 60% recurring ⭐
+  'zapier':          { title: 'Zapier',          url: '#' },   // zapier.com/affiliate      — 20-25% recurring
+  'scalenut':        { title: 'Scalenut',        url: '#' },   // scalenut.com/aff.         — 30% lifetime
+  'notion':          { title: 'Notion AI',       url: '#' },   // notion.so/affiliate       — 20% per sale
+  // ── AppSumo ─────────────────────────────────────────────────────────────────
+  // Sign up at appsumo.com/affiliates (instant approval, free)
+  // Replace PLACEHOLDER with your real AppSumo affiliate ID, then run:
+  //   npm run redirects:update
+  'appsumo':         { title: 'AppSumo',         url: 'https://appsumo.com/?ref=PLACEHOLDER' },  // appsumo.com/affiliates — lifetime deals, up to $150/sale
+  'appsumo-deals':   { title: 'AppSumo Deals',   url: 'https://appsumo.com/collections/software-deals/?ref=PLACEHOLDER' }, // direct to AI & SaaS deal listings
 };
 
 // ─────────────────────────────────────────────────────────────────────────────

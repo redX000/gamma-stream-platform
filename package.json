@@ -30,7 +30,9 @@
     "test-ga4": "node scripts/test-ga4.js",
     "health-check": "node scripts/health-check.js",
     "site-upgrade": "node scripts/site-upgrade.js",
-    "rebuild-homepage": "node scripts/rebuild-homepage.js"
+    "rebuild-homepage": "node scripts/rebuild-homepage.js",
+    "deals:update": "node automation/appsumo-deals-fetcher.js",
+    "deals:dry": "node automation/appsumo-deals-fetcher.js --dry-run"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

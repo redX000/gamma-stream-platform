@@ -1,0 +1,57 @@
+<!--
+  SparkLoop Upscribe Embed Widget
+  ================================
+  ACTIVATE WHEN: ConvertKit list reaches 500 subscribers.
+  Apply at: sparkloop.app (free, 2–5 days approval)
+
+  After approval:
+    1. Add SPARKLOOP_API_KEY and SPARKLOOP_PARTNER_ID to .env + GitHub Secrets
+    2. Get your Upscribe widget URL from SparkLoop dashboard → Upscribe → Embed
+    3. Replace SPARKLOOP_PARTNER_ID below with your real partner ID
+    4. Paste this snippet into:
+       a. ConvertKit → Forms → [your form] → Settings → Redirect URL
+          Set redirect to: https://gammacash.online/newsletter-confirmed
+          Then add this widget to the /newsletter-confirmed WP page
+       b. OR embed directly in your ConvertKit thank-you page HTML
+
+  Expected revenue: $1–$5 per referral subscriber (partner newsletters pay you
+  every time a GammaCash subscriber also signs up for their newsletter via this widget).
+  At 500 subs and 10% referral rate: $5–$25/month baseline.
+
+  PAYOUT: SparkLoop pays via PayPal. Route: PayPal Morocco → sweep to Payoneer USD.
+-->
+
+<!-- SparkLoop Upscribe Widget — paste into /newsletter-confirmed page -->
+<div id="sparkloop-container" style="margin: 40px auto; max-width: 600px; padding: 0 20px;">
+
+  <!-- Upscribe embed (replace SPARKLOOP_PARTNER_ID) -->
+  <script src="https://upscri.be/SPARKLOOP_PARTNER_ID/embed.js" async></script>
+
+  <!-- Fallback CTA shown before script loads -->
+  <noscript>
+    <div style="background:#141414;border:1px solid rgba(0,255,136,.2);border-radius:12px;padding:32px;text-align:center;font-family:sans-serif;">
+      <h3 style="color:#fff;margin:0 0 12px">You're subscribed! 🎉</h3>
+      <p style="color:#a0a0a0;margin:0 0 20px;font-size:.9rem">
+        While you're here — these newsletters are trusted by 10,000+ AI enthusiasts.
+        Check them out (they're free):
+      </p>
+      <a href="https://gammacash.online/deals" style="color:#00ff88;font-weight:700;">
+        Browse AI Lifetime Deals →
+      </a>
+    </div>
+  </noscript>
+
+</div>
+
+<!--
+  RECOMMENDED PLACEMENT — /newsletter-confirmed WordPress page:
+
+  Title: "You're in! 🎉 One more thing..."
+  Content:
+    1. Confirmation message ("Check your inbox for the free guide!")
+    2. This SparkLoop widget (paste above)
+    3. Link back to homepage
+
+  WordPress page slug: newsletter-confirmed
+  Create with: node scripts/create-newsletter-confirmed.js (build this when ready to activate)
+-->

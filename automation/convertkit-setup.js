@@ -203,6 +203,14 @@ async function run() {
   console.log('  3. Link the sequence to your form automation');
   console.log(`  4. Add ${WP_URL}${LEAD_MAGNET} to your navigation menu`);
   console.log('  5. Add the form embed to post footers via functions.php or Code Snippets');
+  console.log('');
+  console.log('SparkLoop (Upscribe referral widget) — activate at 500 subscribers:');
+  console.log('  • Apply at sparkloop.app (free, 2–5 days approval)');
+  console.log('  • After approval: add SPARKLOOP_API_KEY + SPARKLOOP_PARTNER_ID to .env + GitHub Secrets');
+  console.log('  • Embed widget from scripts/sparkloop-widget.html into /newsletter-confirmed WP page');
+  console.log('  • In ConvertKit → Forms → [your form] → Settings → Redirect URL:');
+  console.log(`    Set to: ${WP_URL}/newsletter-confirmed`);
+  console.log('  • Revenue: $1–$5 per referred subscriber. Payout: PayPal → Payoneer USD.');
 }
 
 run().catch(err => { console.error(err.message); process.exit(1); });

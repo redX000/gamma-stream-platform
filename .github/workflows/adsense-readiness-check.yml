@@ -1,0 +1,102 @@
+name: AdSense Readiness Check
+
+# Runs daily. Counts published posts and sends one email when the site
+# crosses the 10-post threshold required to apply for Google AdSense.
+# After the notification fires, manually apply at google.com/adsense
+# using the operator's name and Moroccan address.
+
+on:
+  schedule:
+    - cron: '0 7 * * *'   # 07:00 UTC daily
+  workflow_dispatch:
+
+concurrency:
+  group: adsense-readiness-check
+  cancel-in-progress: false
+
+jobs:
+  check-readiness:
+    name: Check AdSense Readiness
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Count published posts + run readiness checks
+        id: check
+        env:
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+        run: |
+          POSTS=$(curl -sf "${WORDPRESS_URL}/wp-json/wp/v2/posts?status=publish&per_page=100&_fields=id" | python3 -c "import sys,json; print(len(json.load(sys.stdin)))" 2>/dev/null || echo "0")
+          echo "post_count=${POSTS}" >> $GITHUB_OUTPUT
+
+          PRIVACY=$(curl -sf "${WORDPRESS_URL}/wp-json/wp/v2/pages?slug=privacy-policy&_fields=id" | python3 -c "import sys,json; d=json.load(sys.stdin); print('yes' if d else 'no')" 2>/dev/null || echo "no")
+          ABOUT=$(curl -sf   "${WORDPRESS_URL}/wp-json/wp/v2/pages?slug=about&_fields=id"          | python3 -c "import sys,json; d=json.load(sys.stdin); print('yes' if d else 'no')" 2>/dev/null || echo "no")
+          CONTACT=$(curl -sf "${WORDPRESS_URL}/wp-json/wp/v2/pages?slug=contact&_fields=id"        | python3 -c "import sys,json; d=json.load(sys.stdin); print('yes' if d else 'no')" 2>/dev/null || echo "no")
+          DISCLOSURE=$(curl -sf "${WORDPRESS_URL}/wp-json/wp/v2/pages?slug=affiliate-disclosure&_fields=id" | python3 -c "import sys,json; d=json.load(sys.stdin); print('yes' if d else 'no')" 2>/dev/null || echo "no")
+
+          echo "privacy=${PRIVACY}"     >> $GITHUB_OUTPUT
+          echo "about=${ABOUT}"         >> $GITHUB_OUTPUT
+          echo "contact=${CONTACT}"     >> $GITHUB_OUTPUT
+          echo "disclosure=${DISCLOSURE}" >> $GITHUB_OUTPUT
+
+          # Ready when posts >= 10 AND all required pages exist
+          if [ "${POSTS}" -ge 10 ] && [ "${PRIVACY}" = "yes" ] && [ "${ABOUT}" = "yes" ] && [ "${CONTACT}" = "yes" ] && [ "${DISCLOSURE}" = "yes" ]; then
+            echo "ready=true" >> $GITHUB_OUTPUT
+          else
+            echo "ready=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Log readiness status
+        run: |
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  AdSense Readiness — $(date -u '+%Y-%m-%d')"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+          echo "  Posts:             ${{ steps.check.outputs.post_count }}/10"
+          echo "  Privacy Policy:    ${{ steps.check.outputs.privacy }}"
+          echo "  About page:        ${{ steps.check.outputs.about }}"
+          echo "  Contact page:      ${{ steps.check.outputs.contact }}"
+          echo "  Affiliate Disc.:   ${{ steps.check.outputs.disclosure }}"
+          echo "  Ready to apply:    ${{ steps.check.outputs.ready }}"
+          echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+      - name: Send readiness notification
+        if: steps.check.outputs.ready == 'true'
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_HOST }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: '✅ Gamma is AdSense-ready — apply now at google.com/adsense'
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: Gamma Stream <${{ secrets.SMTP_USER }}>
+          body: |
+            GammaCash.online has crossed the AdSense readiness threshold.
+
+            Post count:     ${{ steps.check.outputs.post_count }} (≥ 10 ✅)
+            Privacy Policy: ${{ steps.check.outputs.privacy }}
+            About page:     ${{ steps.check.outputs.about }}
+            Contact page:   ${{ steps.check.outputs.contact }}
+            Disclosure:     ${{ steps.check.outputs.disclosure }}
+
+            ── ACTION REQUIRED ──────────────────────────────────────────
+
+            1. Go to: https://www.google.com/adsense/start/
+            2. Sign in with the operator's Google account
+               (family member's account — Moroccan address + ID)
+            3. Site URL: https://gammacash.online
+            4. Language: English
+            5. Wait 1–14 days for review
+
+            Once approved:
+            • Add ADSENSE_PUBLISHER_ID=ca-pub-XXXXXXXXXX to GitHub Secrets
+            • Paste the auto-ads tag into WP Admin → Appearance → Customize →
+              Additional CSS OR via the Site Kit plugin already installed
+
+            AdSense payment: direct deposit to Moroccan bank OR Payoneer.
+            Payoneer route has lower fees — select "International wire" in AdSense
+            payments settings and use Payoneer's USD virtual account details.
+
+            ─────────────────────────────────────────────────────────────
+            Site: https://gammacash.online
+            WP Admin: https://gammacash.online/wp-admin
