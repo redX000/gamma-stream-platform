@@ -1,20 +1,34 @@
 {
-  "generatedAt": "2026-04-26T19:57:08.162Z",
-  "count": 2,
+  "generatedAt": "2026-04-29T22:30:50.683Z",
+  "count": 4,
   "voiceovers": [
     {
       "topic": "best-ai-tools",
       "type": "short",
-      "audioFile": "videos\\audio\\2026-04-26-best-ai-tools-short.mp3",
-      "timingFile": "videos\\audio\\2026-04-26-best-ai-tools-short-timing.json",
+      "audioFile": "videos/audio/2026-04-26-best-ai-tools-short.mp3",
+      "timingFile": "videos/audio/2026-04-26-best-ai-tools-short-timing.json",
       "wordCount": 74
     },
     {
       "topic": "best-ai-tools",
       "type": "long",
-      "audioFile": "videos\\audio\\2026-04-26-best-ai-tools-long.mp3",
-      "timingFile": "videos\\audio\\2026-04-26-best-ai-tools-long-timing.json",
+      "audioFile": "videos/audio/2026-04-26-best-ai-tools-long.mp3",
+      "timingFile": "videos/audio/2026-04-26-best-ai-tools-long-timing.json",
       "wordCount": 366
+    },
+    {
+      "topic": "how-to-stay-on-top-of-every-arc-raiders-update-with-chatgpt-2025-step-by-step-guide",
+      "type": "short",
+      "audioFile": "videos/audio/2026-04-29-how-to-stay-on-top-of-every-arc-raiders-update-with-chatgpt-2025-step-by-step-guide-short.mp3",
+      "timingFile": "videos/audio/2026-04-29-how-to-stay-on-top-of-every-arc-raiders-update-with-chatgpt-2025-step-by-step-guide-short-timing.json",
+      "wordCount": 137
+    },
+    {
+      "topic": "how-to-stay-on-top-of-every-arc-raiders-update-with-chatgpt-2025-step-by-step-guide",
+      "type": "long",
+      "audioFile": "videos/audio/2026-04-29-how-to-stay-on-top-of-every-arc-raiders-update-with-chatgpt-2025-step-by-step-guide-long.mp3",
+      "timingFile": "videos/audio/2026-04-29-how-to-stay-on-top-of-every-arc-raiders-update-with-chatgpt-2025-step-by-step-guide-long-timing.json",
+      "wordCount": 679
     }
   ]
 }

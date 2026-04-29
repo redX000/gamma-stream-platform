@@ -1,0 +1,4082 @@
+{
+  "voice": "en-US-JennyNeural",
+  "generatedAt": "2026-04-29T22:30:50.683Z",
+  "totalDurationMs": 255938,
+  "wordCount": 679,
+  "words": [
+    {
+      "word": "You",
+      "startMs": 100,
+      "durationMs": 213,
+      "endMs": 313
+    },
+    {
+      "word": "load",
+      "startMs": 325,
+      "durationMs": 213,
+      "endMs": 538
+    },
+    {
+      "word": "into",
+      "startMs": 550,
+      "durationMs": 200,
+      "endMs": 750
+    },
+    {
+      "word": "Arc",
+      "startMs": 763,
+      "durationMs": 250,
+      "endMs": 1013
+    },
+    {
+      "word": "Raiders",
+      "startMs": 1025,
+      "durationMs": 488,
+      "endMs": 1513
+    },
+    {
+      "word": "your",
+      "startMs": 1663,
+      "durationMs": 175,
+      "endMs": 1838
+    },
+    {
+      "word": "favorite",
+      "startMs": 1850,
+      "durationMs": 363,
+      "endMs": 2213
+    },
+    {
+      "word": "loadout",
+      "startMs": 2225,
+      "durationMs": 388,
+      "endMs": 2613
+    },
+    {
+      "word": "feels",
+      "startMs": 2625,
+      "durationMs": 300,
+      "endMs": 2925
+    },
+    {
+      "word": "completely",
+      "startMs": 2938,
+      "durationMs": 563,
+      "endMs": 3500
+    },
+    {
+      "word": "off",
+      "startMs": 3513,
+      "durationMs": 338,
+      "endMs": 3850
+    },
+    {
+      "word": "enemies",
+      "startMs": 4100,
+      "durationMs": 375,
+      "endMs": 4475
+    },
+    {
+      "word": "are",
+      "startMs": 4488,
+      "durationMs": 88,
+      "endMs": 4575
+    },
+    {
+      "word": "behaving",
+      "startMs": 4588,
+      "durationMs": 450,
+      "endMs": 5038
+    },
+    {
+      "word": "differently",
+      "startMs": 5050,
+      "durationMs": 588,
+      "endMs": 5638
+    },
+    {
+      "word": "and",
+      "startMs": 5888,
+      "durationMs": 125,
+      "endMs": 6013
+    },
+    {
+      "word": "your",
+      "startMs": 6025,
+      "durationMs": 138,
+      "endMs": 6163
+    },
+    {
+      "word": "squad",
+      "startMs": 6175,
+      "durationMs": 375,
+      "endMs": 6550
+    },
+    {
+      "word": "is",
+      "startMs": 6563,
+      "durationMs": 150,
+      "endMs": 6713
+    },
+    {
+      "word": "asking",
+      "startMs": 6725,
+      "durationMs": 425,
+      "endMs": 7150
+    },
+    {
+      "word": "why",
+      "startMs": 7163,
+      "durationMs": 163,
+      "endMs": 7325
+    },
+    {
+      "word": "you",
+      "startMs": 7338,
+      "durationMs": 138,
+      "endMs": 7475
+    },
+    {
+      "word": "don't",
+      "startMs": 7488,
+      "durationMs": 213,
+      "endMs": 7700
+    },
+    {
+      "word": "know",
+      "startMs": 7713,
+      "durationMs": 163,
+      "endMs": 7875
+    },
+    {
+      "word": "about",
+      "startMs": 7888,
+      "durationMs": 225,
+      "endMs": 8113
+    },
+    {
+      "word": "the",
+      "startMs": 8125,
+      "durationMs": 75,
+      "endMs": 8200
+    },
+    {
+      "word": "patch",
+      "startMs": 8213,
+      "durationMs": 388,
+      "endMs": 8600
+    },
+    {
+      "word": "that",
+      "startMs": 8613,
+      "durationMs": 125,
+      "endMs": 8738
+    },
+    {
+      "word": "dropped",
+      "startMs": 8750,
+      "durationMs": 338,
+      "endMs": 9088
+    },
+    {
+      "word": "three",
+      "startMs": 9100,
+      "durationMs": 213,
+      "endMs": 9313
+    },
+    {
+      "word": "days",
+      "startMs": 9325,
+      "durationMs": 263,
+      "endMs": 9588
+    },
+    {
+      "word": "ago",
+      "startMs": 9600,
+      "durationMs": 388,
+      "endMs": 9988
+    },
+    {
+      "word": "I've",
+      "startMs": 10850,
+      "durationMs": 175,
+      "endMs": 11025
+    },
+    {
+      "word": "been",
+      "startMs": 11038,
+      "durationMs": 200,
+      "endMs": 11238
+    },
+    {
+      "word": "there",
+      "startMs": 11250,
+      "durationMs": 325,
+      "endMs": 11575
+    },
+    {
+      "word": "and",
+      "startMs": 11775,
+      "durationMs": 88,
+      "endMs": 11863
+    },
+    {
+      "word": "it's",
+      "startMs": 11875,
+      "durationMs": 138,
+      "endMs": 12013
+    },
+    {
+      "word": "embarrassing",
+      "startMs": 12025,
+      "durationMs": 788,
+      "endMs": 12813
+    },
+    {
+      "word": "But",
+      "startMs": 13675,
+      "durationMs": 175,
+      "endMs": 13850
+    },
+    {
+      "word": "since",
+      "startMs": 13863,
+      "durationMs": 200,
+      "endMs": 14063
+    },
+    {
+      "word": "I",
+      "startMs": 14075,
+      "durationMs": 75,
+      "endMs": 14150
+    },
+    {
+      "word": "started",
+      "startMs": 14163,
+      "durationMs": 388,
+      "endMs": 14550
+    },
+    {
+      "word": "using",
+      "startMs": 14563,
+      "durationMs": 300,
+      "endMs": 14863
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 14875,
+      "durationMs": 1000,
+      "endMs": 15875
+    },
+    {
+      "word": "as",
+      "startMs": 15888,
+      "durationMs": 150,
+      "endMs": 16038
+    },
+    {
+      "word": "my",
+      "startMs": 16050,
+      "durationMs": 125,
+      "endMs": 16175
+    },
+    {
+      "word": "personal",
+      "startMs": 16188,
+      "durationMs": 488,
+      "endMs": 16675
+    },
+    {
+      "word": "Arc",
+      "startMs": 16688,
+      "durationMs": 250,
+      "endMs": 16938
+    },
+    {
+      "word": "Raiders",
+      "startMs": 16950,
+      "durationMs": 363,
+      "endMs": 17313
+    },
+    {
+      "word": "update",
+      "startMs": 17325,
+      "durationMs": 338,
+      "endMs": 17663
+    },
+    {
+      "word": "tracker",
+      "startMs": 17675,
+      "durationMs": 488,
+      "endMs": 18163
+    },
+    {
+      "word": "I",
+      "startMs": 18413,
+      "durationMs": 38,
+      "endMs": 18450
+    },
+    {
+      "word": "haven't",
+      "startMs": 18463,
+      "durationMs": 275,
+      "endMs": 18738
+    },
+    {
+      "word": "been",
+      "startMs": 18750,
+      "durationMs": 163,
+      "endMs": 18913
+    },
+    {
+      "word": "caught",
+      "startMs": 18925,
+      "durationMs": 225,
+      "endMs": 19150
+    },
+    {
+      "word": "off",
+      "startMs": 19163,
+      "durationMs": 138,
+      "endMs": 19300
+    },
+    {
+      "word": "guard",
+      "startMs": 19313,
+      "durationMs": 275,
+      "endMs": 19588
+    },
+    {
+      "word": "once",
+      "startMs": 19600,
+      "durationMs": 488,
+      "endMs": 20088
+    },
+    {
+      "word": "Today",
+      "startMs": 20950,
+      "durationMs": 325,
+      "endMs": 21275
+    },
+    {
+      "word": "I'm",
+      "startMs": 21288,
+      "durationMs": 138,
+      "endMs": 21425
+    },
+    {
+      "word": "walking",
+      "startMs": 21438,
+      "durationMs": 325,
+      "endMs": 21763
+    },
+    {
+      "word": "you",
+      "startMs": 21775,
+      "durationMs": 113,
+      "endMs": 21888
+    },
+    {
+      "word": "through",
+      "startMs": 21900,
+      "durationMs": 163,
+      "endMs": 22063
+    },
+    {
+      "word": "the",
+      "startMs": 22075,
+      "durationMs": 88,
+      "endMs": 22163
+    },
+    {
+      "word": "exact",
+      "startMs": 22175,
+      "durationMs": 475,
+      "endMs": 22650
+    },
+    {
+      "word": "workflow",
+      "startMs": 22663,
+      "durationMs": 413,
+      "endMs": 23075
+    },
+    {
+      "word": "I",
+      "startMs": 23088,
+      "durationMs": 88,
+      "endMs": 23175
+    },
+    {
+      "word": "use",
+      "startMs": 23188,
+      "durationMs": 438,
+      "endMs": 23625
+    },
+    {
+      "word": "step",
+      "startMs": 23838,
+      "durationMs": 288,
+      "endMs": 24125
+    },
+    {
+      "word": "by",
+      "startMs": 24138,
+      "durationMs": 138,
+      "endMs": 24275
+    },
+    {
+      "word": "step",
+      "startMs": 24288,
+      "durationMs": 500,
+      "endMs": 24788
+    },
+    {
+      "word": "Quick",
+      "startMs": 25650,
+      "durationMs": 263,
+      "endMs": 25913
+    },
+    {
+      "word": "credibility",
+      "startMs": 25925,
+      "durationMs": 638,
+      "endMs": 26563
+    },
+    {
+      "word": "check",
+      "startMs": 26575,
+      "durationMs": 450,
+      "endMs": 27025
+    },
+    {
+      "word": "I've",
+      "startMs": 27238,
+      "durationMs": 100,
+      "endMs": 27338
+    },
+    {
+      "word": "been",
+      "startMs": 27350,
+      "durationMs": 175,
+      "endMs": 27525
+    },
+    {
+      "word": "covering",
+      "startMs": 27538,
+      "durationMs": 450,
+      "endMs": 27988
+    },
+    {
+      "word": "AI",
+      "startMs": 28000,
+      "durationMs": 250,
+      "endMs": 28250
+    },
+    {
+      "word": "productivity",
+      "startMs": 28263,
+      "durationMs": 675,
+      "endMs": 28938
+    },
+    {
+      "word": "tools",
+      "startMs": 28950,
+      "durationMs": 375,
+      "endMs": 29325
+    },
+    {
+      "word": "for",
+      "startMs": 29338,
+      "durationMs": 138,
+      "endMs": 29475
+    },
+    {
+      "word": "gaming",
+      "startMs": 29488,
+      "durationMs": 338,
+      "endMs": 29825
+    },
+    {
+      "word": "for",
+      "startMs": 29838,
+      "durationMs": 175,
+      "endMs": 30013
+    },
+    {
+      "word": "over",
+      "startMs": 30025,
+      "durationMs": 200,
+      "endMs": 30225
+    },
+    {
+      "word": "a",
+      "startMs": 30238,
+      "durationMs": 38,
+      "endMs": 30275
+    },
+    {
+      "word": "year",
+      "startMs": 30288,
+      "durationMs": 238,
+      "endMs": 30525
+    },
+    {
+      "word": "now",
+      "startMs": 30538,
+      "durationMs": 350,
+      "endMs": 30888
+    },
+    {
+      "word": "and",
+      "startMs": 31138,
+      "durationMs": 125,
+      "endMs": 31263
+    },
+    {
+      "word": "this",
+      "startMs": 31275,
+      "durationMs": 200,
+      "endMs": 31475
+    },
+    {
+      "word": "is",
+      "startMs": 31488,
+      "durationMs": 138,
+      "endMs": 31625
+    },
+    {
+      "word": "honestly",
+      "startMs": 31638,
+      "durationMs": 488,
+      "endMs": 32125
+    },
+    {
+      "word": "one",
+      "startMs": 32138,
+      "durationMs": 200,
+      "endMs": 32338
+    },
+    {
+      "word": "of",
+      "startMs": 32350,
+      "durationMs": 63,
+      "endMs": 32413
+    },
+    {
+      "word": "the",
+      "startMs": 32425,
+      "durationMs": 75,
+      "endMs": 32500
+    },
+    {
+      "word": "most",
+      "startMs": 32513,
+      "durationMs": 313,
+      "endMs": 32825
+    },
+    {
+      "word": "practical",
+      "startMs": 32838,
+      "durationMs": 475,
+      "endMs": 33313
+    },
+    {
+      "word": "use",
+      "startMs": 33325,
+      "durationMs": 250,
+      "endMs": 33575
+    },
+    {
+      "word": "cases",
+      "startMs": 33588,
+      "durationMs": 400,
+      "endMs": 33988
+    },
+    {
+      "word": "I've",
+      "startMs": 34000,
+      "durationMs": 125,
+      "endMs": 34125
+    },
+    {
+      "word": "found",
+      "startMs": 34138,
+      "durationMs": 538,
+      "endMs": 34675
+    },
+    {
+      "word": "Arc",
+      "startMs": 35538,
+      "durationMs": 263,
+      "endMs": 35800
+    },
+    {
+      "word": "Raiders",
+      "startMs": 35813,
+      "durationMs": 363,
+      "endMs": 36175
+    },
+    {
+      "word": "is",
+      "startMs": 36188,
+      "durationMs": 113,
+      "endMs": 36300
+    },
+    {
+      "word": "a",
+      "startMs": 36313,
+      "durationMs": 63,
+      "endMs": 36375
+    },
+    {
+      "word": "fast-evolving",
+      "startMs": 36388,
+      "durationMs": 800,
+      "endMs": 37188
+    },
+    {
+      "word": "extraction",
+      "startMs": 37200,
+      "durationMs": 563,
+      "endMs": 37763
+    },
+    {
+      "word": "shooter",
+      "startMs": 37775,
+      "durationMs": 338,
+      "endMs": 38113
+    },
+    {
+      "word": "from",
+      "startMs": 38125,
+      "durationMs": 150,
+      "endMs": 38275
+    },
+    {
+      "word": "Embark",
+      "startMs": 38288,
+      "durationMs": 338,
+      "endMs": 38625
+    },
+    {
+      "word": "Studios",
+      "startMs": 38638,
+      "durationMs": 638,
+      "endMs": 39275
+    },
+    {
+      "word": "and",
+      "startMs": 39488,
+      "durationMs": 125,
+      "endMs": 39613
+    },
+    {
+      "word": "the",
+      "startMs": 39625,
+      "durationMs": 75,
+      "endMs": 39700
+    },
+    {
+      "word": "patch",
+      "startMs": 39713,
+      "durationMs": 363,
+      "endMs": 40075
+    },
+    {
+      "word": "cadence",
+      "startMs": 40088,
+      "durationMs": 363,
+      "endMs": 40450
+    },
+    {
+      "word": "is",
+      "startMs": 40463,
+      "durationMs": 125,
+      "endMs": 40588
+    },
+    {
+      "word": "relentless",
+      "startMs": 40600,
+      "durationMs": 738,
+      "endMs": 41338
+    },
+    {
+      "word": "Balance",
+      "startMs": 42200,
+      "durationMs": 438,
+      "endMs": 42638
+    },
+    {
+      "word": "changes",
+      "startMs": 42650,
+      "durationMs": 600,
+      "endMs": 43250
+    },
+    {
+      "word": "gear",
+      "startMs": 43338,
+      "durationMs": 250,
+      "endMs": 43588
+    },
+    {
+      "word": "reworks",
+      "startMs": 43600,
+      "durationMs": 600,
+      "endMs": 44200
+    },
+    {
+      "word": "enemy",
+      "startMs": 44400,
+      "durationMs": 288,
+      "endMs": 44688
+    },
+    {
+      "word": "behavior",
+      "startMs": 44700,
+      "durationMs": 463,
+      "endMs": 45163
+    },
+    {
+      "word": "tweaks",
+      "startMs": 45175,
+      "durationMs": 500,
+      "endMs": 45675
+    },
+    {
+      "word": "map",
+      "startMs": 45838,
+      "durationMs": 263,
+      "endMs": 46100
+    },
+    {
+      "word": "updates",
+      "startMs": 46113,
+      "durationMs": 575,
+      "endMs": 46688
+    },
+    {
+      "word": "it",
+      "startMs": 46875,
+      "durationMs": 88,
+      "endMs": 46963
+    },
+    {
+      "word": "never",
+      "startMs": 46975,
+      "durationMs": 263,
+      "endMs": 47238
+    },
+    {
+      "word": "stops",
+      "startMs": 47250,
+      "durationMs": 625,
+      "endMs": 47875
+    },
+    {
+      "word": "And",
+      "startMs": 48738,
+      "durationMs": 163,
+      "endMs": 48900
+    },
+    {
+      "word": "the",
+      "startMs": 48913,
+      "durationMs": 75,
+      "endMs": 48988
+    },
+    {
+      "word": "information",
+      "startMs": 49000,
+      "durationMs": 638,
+      "endMs": 49638
+    },
+    {
+      "word": "is",
+      "startMs": 49650,
+      "durationMs": 125,
+      "endMs": 49775
+    },
+    {
+      "word": "scattered",
+      "startMs": 49788,
+      "durationMs": 375,
+      "endMs": 50163
+    },
+    {
+      "word": "across",
+      "startMs": 50175,
+      "durationMs": 363,
+      "endMs": 50538
+    },
+    {
+      "word": "Reddit",
+      "startMs": 50550,
+      "durationMs": 363,
+      "endMs": 50913
+    },
+    {
+      "word": "Discord",
+      "startMs": 51063,
+      "durationMs": 538,
+      "endMs": 51600
+    },
+    {
+      "word": "and",
+      "startMs": 51775,
+      "durationMs": 125,
+      "endMs": 51900
+    },
+    {
+      "word": "the",
+      "startMs": 51913,
+      "durationMs": 88,
+      "endMs": 52000
+    },
+    {
+      "word": "official",
+      "startMs": 52013,
+      "durationMs": 425,
+      "endMs": 52438
+    },
+    {
+      "word": "site",
+      "startMs": 52450,
+      "durationMs": 513,
+      "endMs": 52963
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 53825,
+      "durationMs": 850,
+      "endMs": 54675
+    },
+    {
+      "word": "is",
+      "startMs": 54688,
+      "durationMs": 113,
+      "endMs": 54800
+    },
+    {
+      "word": "the",
+      "startMs": 54813,
+      "durationMs": 100,
+      "endMs": 54913
+    },
+    {
+      "word": "glue",
+      "startMs": 54925,
+      "durationMs": 225,
+      "endMs": 55150
+    },
+    {
+      "word": "that",
+      "startMs": 55163,
+      "durationMs": 163,
+      "endMs": 55325
+    },
+    {
+      "word": "pulls",
+      "startMs": 55338,
+      "durationMs": 250,
+      "endMs": 55588
+    },
+    {
+      "word": "it",
+      "startMs": 55600,
+      "durationMs": 88,
+      "endMs": 55688
+    },
+    {
+      "word": "all",
+      "startMs": 55700,
+      "durationMs": 138,
+      "endMs": 55838
+    },
+    {
+      "word": "together",
+      "startMs": 55850,
+      "durationMs": 600,
+      "endMs": 56450
+    },
+    {
+      "word": "Point",
+      "startMs": 57313,
+      "durationMs": 263,
+      "endMs": 57575
+    },
+    {
+      "word": "one",
+      "startMs": 57588,
+      "durationMs": 313,
+      "endMs": 57900
+    },
+    {
+      "word": "setting",
+      "startMs": 58075,
+      "durationMs": 375,
+      "endMs": 58450
+    },
+    {
+      "word": "up",
+      "startMs": 58463,
+      "durationMs": 100,
+      "endMs": 58563
+    },
+    {
+      "word": "your",
+      "startMs": 58575,
+      "durationMs": 138,
+      "endMs": 58713
+    },
+    {
+      "word": "workspace",
+      "startMs": 58725,
+      "durationMs": 800,
+      "endMs": 59525
+    },
+    {
+      "word": "Don't",
+      "startMs": 60388,
+      "durationMs": 250,
+      "endMs": 60638
+    },
+    {
+      "word": "just",
+      "startMs": 60650,
+      "durationMs": 238,
+      "endMs": 60888
+    },
+    {
+      "word": "open",
+      "startMs": 60900,
+      "durationMs": 213,
+      "endMs": 61113
+    },
+    {
+      "word": "a",
+      "startMs": 61125,
+      "durationMs": 50,
+      "endMs": 61175
+    },
+    {
+      "word": "random",
+      "startMs": 61188,
+      "durationMs": 388,
+      "endMs": 61575
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 61588,
+      "durationMs": 788,
+      "endMs": 62375
+    },
+    {
+      "word": "chat",
+      "startMs": 62388,
+      "durationMs": 350,
+      "endMs": 62738
+    },
+    {
+      "word": "every",
+      "startMs": 62750,
+      "durationMs": 225,
+      "endMs": 62975
+    },
+    {
+      "word": "time",
+      "startMs": 62988,
+      "durationMs": 488,
+      "endMs": 63475
+    },
+    {
+      "word": "I",
+      "startMs": 64338,
+      "durationMs": 150,
+      "endMs": 64488
+    },
+    {
+      "word": "create",
+      "startMs": 64500,
+      "durationMs": 313,
+      "endMs": 64813
+    },
+    {
+      "word": "a",
+      "startMs": 64825,
+      "durationMs": 75,
+      "endMs": 64900
+    },
+    {
+      "word": "dedicated",
+      "startMs": 64913,
+      "durationMs": 600,
+      "endMs": 65513
+    },
+    {
+      "word": "thread",
+      "startMs": 65525,
+      "durationMs": 338,
+      "endMs": 65863
+    },
+    {
+      "word": "called",
+      "startMs": 65875,
+      "durationMs": 288,
+      "endMs": 66163
+    },
+    {
+      "word": "Arc",
+      "startMs": 66213,
+      "durationMs": 250,
+      "endMs": 66463
+    },
+    {
+      "word": "Raiders",
+      "startMs": 66475,
+      "durationMs": 350,
+      "endMs": 66825
+    },
+    {
+      "word": "Update",
+      "startMs": 66838,
+      "durationMs": 325,
+      "endMs": 67163
+    },
+    {
+      "word": "Tracker",
+      "startMs": 67175,
+      "durationMs": 538,
+      "endMs": 67713
+    },
+    {
+      "word": "and",
+      "startMs": 67788,
+      "durationMs": 88,
+      "endMs": 67875
+    },
+    {
+      "word": "I",
+      "startMs": 67888,
+      "durationMs": 63,
+      "endMs": 67950
+    },
+    {
+      "word": "keep",
+      "startMs": 67963,
+      "durationMs": 225,
+      "endMs": 68188
+    },
+    {
+      "word": "it",
+      "startMs": 68200,
+      "durationMs": 88,
+      "endMs": 68288
+    },
+    {
+      "word": "pinned",
+      "startMs": 68300,
+      "durationMs": 475,
+      "endMs": 68775
+    },
+    {
+      "word": "This",
+      "startMs": 69638,
+      "durationMs": 250,
+      "endMs": 69888
+    },
+    {
+      "word": "way",
+      "startMs": 69900,
+      "durationMs": 163,
+      "endMs": 70063
+    },
+    {
+      "word": "all",
+      "startMs": 70075,
+      "durationMs": 150,
+      "endMs": 70225
+    },
+    {
+      "word": "my",
+      "startMs": 70238,
+      "durationMs": 138,
+      "endMs": 70375
+    },
+    {
+      "word": "summaries",
+      "startMs": 70388,
+      "durationMs": 638,
+      "endMs": 71025
+    },
+    {
+      "word": "prompts",
+      "startMs": 71125,
+      "durationMs": 550,
+      "endMs": 71675
+    },
+    {
+      "word": "and",
+      "startMs": 71838,
+      "durationMs": 150,
+      "endMs": 71988
+    },
+    {
+      "word": "notes",
+      "startMs": 72000,
+      "durationMs": 250,
+      "endMs": 72250
+    },
+    {
+      "word": "live",
+      "startMs": 72263,
+      "durationMs": 163,
+      "endMs": 72425
+    },
+    {
+      "word": "in",
+      "startMs": 72438,
+      "durationMs": 113,
+      "endMs": 72550
+    },
+    {
+      "word": "one",
+      "startMs": 72563,
+      "durationMs": 200,
+      "endMs": 72763
+    },
+    {
+      "word": "place",
+      "startMs": 72775,
+      "durationMs": 613,
+      "endMs": 73388
+    },
+    {
+      "word": "If",
+      "startMs": 74250,
+      "durationMs": 163,
+      "endMs": 74413
+    },
+    {
+      "word": "you're",
+      "startMs": 74425,
+      "durationMs": 125,
+      "endMs": 74550
+    },
+    {
+      "word": "on",
+      "startMs": 74563,
+      "durationMs": 125,
+      "endMs": 74688
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 74700,
+      "durationMs": 813,
+      "endMs": 75513
+    },
+    {
+      "word": "Plus",
+      "startMs": 75525,
+      "durationMs": 488,
+      "endMs": 76013
+    },
+    {
+      "word": "and",
+      "startMs": 76238,
+      "durationMs": 138,
+      "endMs": 76375
+    },
+    {
+      "word": "I'll",
+      "startMs": 76388,
+      "durationMs": 88,
+      "endMs": 76475
+    },
+    {
+      "word": "drop",
+      "startMs": 76488,
+      "durationMs": 238,
+      "endMs": 76725
+    },
+    {
+      "word": "the",
+      "startMs": 76738,
+      "durationMs": 88,
+      "endMs": 76825
+    },
+    {
+      "word": "affiliate",
+      "startMs": 76838,
+      "durationMs": 500,
+      "endMs": 77338
+    },
+    {
+      "word": "link",
+      "startMs": 77350,
+      "durationMs": 225,
+      "endMs": 77575
+    },
+    {
+      "word": "in",
+      "startMs": 77588,
+      "durationMs": 88,
+      "endMs": 77675
+    },
+    {
+      "word": "the",
+      "startMs": 77688,
+      "durationMs": 88,
+      "endMs": 77775
+    },
+    {
+      "word": "description",
+      "startMs": 77788,
+      "durationMs": 663,
+      "endMs": 78450
+    },
+    {
+      "word": "because",
+      "startMs": 78463,
+      "durationMs": 325,
+      "endMs": 78788
+    },
+    {
+      "word": "it",
+      "startMs": 78800,
+      "durationMs": 88,
+      "endMs": 78888
+    },
+    {
+      "word": "is",
+      "startMs": 78900,
+      "durationMs": 138,
+      "endMs": 79038
+    },
+    {
+      "word": "genuinely",
+      "startMs": 79050,
+      "durationMs": 500,
+      "endMs": 79550
+    },
+    {
+      "word": "worth",
+      "startMs": 79563,
+      "durationMs": 300,
+      "endMs": 79863
+    },
+    {
+      "word": "it",
+      "startMs": 79875,
+      "durationMs": 200,
+      "endMs": 80075
+    },
+    {
+      "word": "you",
+      "startMs": 80288,
+      "durationMs": 138,
+      "endMs": 80425
+    },
+    {
+      "word": "can",
+      "startMs": 80438,
+      "durationMs": 150,
+      "endMs": 80588
+    },
+    {
+      "word": "use",
+      "startMs": 80600,
+      "durationMs": 225,
+      "endMs": 80825
+    },
+    {
+      "word": "GPT-4o",
+      "startMs": 80838,
+      "durationMs": 1088,
+      "endMs": 81925
+    },
+    {
+      "word": "which",
+      "startMs": 81938,
+      "durationMs": 250,
+      "endMs": 82188
+    },
+    {
+      "word": "gives",
+      "startMs": 82200,
+      "durationMs": 188,
+      "endMs": 82388
+    },
+    {
+      "word": "you",
+      "startMs": 82400,
+      "durationMs": 100,
+      "endMs": 82500
+    },
+    {
+      "word": "faster",
+      "startMs": 82513,
+      "durationMs": 613,
+      "endMs": 83125
+    },
+    {
+      "word": "smarter",
+      "startMs": 83325,
+      "durationMs": 375,
+      "endMs": 83700
+    },
+    {
+      "word": "responses",
+      "startMs": 83713,
+      "durationMs": 875,
+      "endMs": 84588
+    },
+    {
+      "word": "The",
+      "startMs": 85450,
+      "durationMs": 138,
+      "endMs": 85588
+    },
+    {
+      "word": "free",
+      "startMs": 85600,
+      "durationMs": 225,
+      "endMs": 85825
+    },
+    {
+      "word": "tier",
+      "startMs": 85838,
+      "durationMs": 300,
+      "endMs": 86138
+    },
+    {
+      "word": "still",
+      "startMs": 86150,
+      "durationMs": 250,
+      "endMs": 86400
+    },
+    {
+      "word": "works",
+      "startMs": 86413,
+      "durationMs": 263,
+      "endMs": 86675
+    },
+    {
+      "word": "great",
+      "startMs": 86688,
+      "durationMs": 263,
+      "endMs": 86950
+    },
+    {
+      "word": "though",
+      "startMs": 86963,
+      "durationMs": 313,
+      "endMs": 87275
+    },
+    {
+      "word": "so",
+      "startMs": 87450,
+      "durationMs": 150,
+      "endMs": 87600
+    },
+    {
+      "word": "don't",
+      "startMs": 87613,
+      "durationMs": 238,
+      "endMs": 87850
+    },
+    {
+      "word": "let",
+      "startMs": 87863,
+      "durationMs": 150,
+      "endMs": 88013
+    },
+    {
+      "word": "that",
+      "startMs": 88025,
+      "durationMs": 188,
+      "endMs": 88213
+    },
+    {
+      "word": "stop",
+      "startMs": 88225,
+      "durationMs": 288,
+      "endMs": 88513
+    },
+    {
+      "word": "you",
+      "startMs": 88525,
+      "durationMs": 350,
+      "endMs": 88875
+    },
+    {
+      "word": "Point",
+      "startMs": 89738,
+      "durationMs": 313,
+      "endMs": 90050
+    },
+    {
+      "word": "two",
+      "startMs": 90063,
+      "durationMs": 350,
+      "endMs": 90413
+    },
+    {
+      "word": "feeding",
+      "startMs": 90625,
+      "durationMs": 325,
+      "endMs": 90950
+    },
+    {
+      "word": "it",
+      "startMs": 90963,
+      "durationMs": 88,
+      "endMs": 91050
+    },
+    {
+      "word": "your",
+      "startMs": 91063,
+      "durationMs": 125,
+      "endMs": 91188
+    },
+    {
+      "word": "playstyle",
+      "startMs": 91200,
+      "durationMs": 713,
+      "endMs": 91913
+    },
+    {
+      "word": "This",
+      "startMs": 92775,
+      "durationMs": 250,
+      "endMs": 93025
+    },
+    {
+      "word": "is",
+      "startMs": 93038,
+      "durationMs": 100,
+      "endMs": 93138
+    },
+    {
+      "word": "the",
+      "startMs": 93150,
+      "durationMs": 100,
+      "endMs": 93250
+    },
+    {
+      "word": "move",
+      "startMs": 93263,
+      "durationMs": 213,
+      "endMs": 93475
+    },
+    {
+      "word": "that",
+      "startMs": 93488,
+      "durationMs": 138,
+      "endMs": 93625
+    },
+    {
+      "word": "most",
+      "startMs": 93638,
+      "durationMs": 288,
+      "endMs": 93925
+    },
+    {
+      "word": "people",
+      "startMs": 93938,
+      "durationMs": 288,
+      "endMs": 94225
+    },
+    {
+      "word": "skip",
+      "startMs": 94238,
+      "durationMs": 413,
+      "endMs": 94650
+    },
+    {
+      "word": "and",
+      "startMs": 94663,
+      "durationMs": 138,
+      "endMs": 94800
+    },
+    {
+      "word": "it",
+      "startMs": 94813,
+      "durationMs": 63,
+      "endMs": 94875
+    },
+    {
+      "word": "makes",
+      "startMs": 94888,
+      "durationMs": 225,
+      "endMs": 95113
+    },
+    {
+      "word": "a",
+      "startMs": 95125,
+      "durationMs": 50,
+      "endMs": 95175
+    },
+    {
+      "word": "massive",
+      "startMs": 95188,
+      "durationMs": 375,
+      "endMs": 95563
+    },
+    {
+      "word": "difference",
+      "startMs": 95575,
+      "durationMs": 663,
+      "endMs": 96238
+    },
+    {
+      "word": "Go",
+      "startMs": 97100,
+      "durationMs": 200,
+      "endMs": 97300
+    },
+    {
+      "word": "into",
+      "startMs": 97313,
+      "durationMs": 188,
+      "endMs": 97500
+    },
+    {
+      "word": "ChatGPT's",
+      "startMs": 97513,
+      "durationMs": 875,
+      "endMs": 98388
+    },
+    {
+      "word": "Memory",
+      "startMs": 98400,
+      "durationMs": 338,
+      "endMs": 98738
+    },
+    {
+      "word": "settings",
+      "startMs": 98750,
+      "durationMs": 513,
+      "endMs": 99263
+    },
+    {
+      "word": "and",
+      "startMs": 99275,
+      "durationMs": 213,
+      "endMs": 99488
+    },
+    {
+      "word": "tell",
+      "startMs": 99500,
+      "durationMs": 213,
+      "endMs": 99713
+    },
+    {
+      "word": "it",
+      "startMs": 99725,
+      "durationMs": 88,
+      "endMs": 99813
+    },
+    {
+      "word": "exactly",
+      "startMs": 99825,
+      "durationMs": 475,
+      "endMs": 100300
+    },
+    {
+      "word": "how",
+      "startMs": 100313,
+      "durationMs": 113,
+      "endMs": 100425
+    },
+    {
+      "word": "you",
+      "startMs": 100438,
+      "durationMs": 125,
+      "endMs": 100563
+    },
+    {
+      "word": "play",
+      "startMs": 100575,
+      "durationMs": 488,
+      "endMs": 101063
+    },
+    {
+      "word": "I",
+      "startMs": 101925,
+      "durationMs": 138,
+      "endMs": 102063
+    },
+    {
+      "word": "told",
+      "startMs": 102075,
+      "durationMs": 250,
+      "endMs": 102325
+    },
+    {
+      "word": "mine",
+      "startMs": 102338,
+      "durationMs": 388,
+      "endMs": 102725
+    },
+    {
+      "word": "I",
+      "startMs": 102938,
+      "durationMs": 50,
+      "endMs": 102988
+    },
+    {
+      "word": "main",
+      "startMs": 103000,
+      "durationMs": 263,
+      "endMs": 103263
+    },
+    {
+      "word": "Arc",
+      "startMs": 103275,
+      "durationMs": 225,
+      "endMs": 103500
+    },
+    {
+      "word": "Raiders",
+      "startMs": 103513,
+      "durationMs": 400,
+      "endMs": 103913
+    },
+    {
+      "word": "as",
+      "startMs": 103925,
+      "durationMs": 100,
+      "endMs": 104025
+    },
+    {
+      "word": "a",
+      "startMs": 104038,
+      "durationMs": 63,
+      "endMs": 104100
+    },
+    {
+      "word": "solo",
+      "startMs": 104113,
+      "durationMs": 363,
+      "endMs": 104475
+    },
+    {
+      "word": "player",
+      "startMs": 104488,
+      "durationMs": 363,
+      "endMs": 104850
+    },
+    {
+      "word": "focusing",
+      "startMs": 104863,
+      "durationMs": 525,
+      "endMs": 105388
+    },
+    {
+      "word": "on",
+      "startMs": 105400,
+      "durationMs": 125,
+      "endMs": 105525
+    },
+    {
+      "word": "stealth",
+      "startMs": 105538,
+      "durationMs": 325,
+      "endMs": 105863
+    },
+    {
+      "word": "loadouts",
+      "startMs": 105875,
+      "durationMs": 500,
+      "endMs": 106375
+    },
+    {
+      "word": "and",
+      "startMs": 106388,
+      "durationMs": 225,
+      "endMs": 106613
+    },
+    {
+      "word": "efficient",
+      "startMs": 106625,
+      "durationMs": 413,
+      "endMs": 107038
+    },
+    {
+      "word": "extraction",
+      "startMs": 107050,
+      "durationMs": 775,
+      "endMs": 107825
+    },
+    {
+      "word": "Now",
+      "startMs": 108688,
+      "durationMs": 300,
+      "endMs": 108988
+    },
+    {
+      "word": "every",
+      "startMs": 109000,
+      "durationMs": 263,
+      "endMs": 109263
+    },
+    {
+      "word": "summary",
+      "startMs": 109275,
+      "durationMs": 450,
+      "endMs": 109725
+    },
+    {
+      "word": "it",
+      "startMs": 109738,
+      "durationMs": 113,
+      "endMs": 109850
+    },
+    {
+      "word": "gives",
+      "startMs": 109863,
+      "durationMs": 238,
+      "endMs": 110100
+    },
+    {
+      "word": "me",
+      "startMs": 110113,
+      "durationMs": 125,
+      "endMs": 110238
+    },
+    {
+      "word": "is",
+      "startMs": 110250,
+      "durationMs": 138,
+      "endMs": 110388
+    },
+    {
+      "word": "filtered",
+      "startMs": 110400,
+      "durationMs": 425,
+      "endMs": 110825
+    },
+    {
+      "word": "through",
+      "startMs": 110838,
+      "durationMs": 150,
+      "endMs": 110988
+    },
+    {
+      "word": "that",
+      "startMs": 111000,
+      "durationMs": 200,
+      "endMs": 111200
+    },
+    {
+      "word": "lens",
+      "startMs": 111213,
+      "durationMs": 550,
+      "endMs": 111763
+    },
+    {
+      "word": "It's",
+      "startMs": 112625,
+      "durationMs": 213,
+      "endMs": 112838
+    },
+    {
+      "word": "not",
+      "startMs": 112850,
+      "durationMs": 225,
+      "endMs": 113075
+    },
+    {
+      "word": "giving",
+      "startMs": 113088,
+      "durationMs": 250,
+      "endMs": 113338
+    },
+    {
+      "word": "me",
+      "startMs": 113350,
+      "durationMs": 113,
+      "endMs": 113463
+    },
+    {
+      "word": "irrelevant",
+      "startMs": 113475,
+      "durationMs": 538,
+      "endMs": 114013
+    },
+    {
+      "word": "squad",
+      "startMs": 114025,
+      "durationMs": 300,
+      "endMs": 114325
+    },
+    {
+      "word": "ability",
+      "startMs": 114338,
+      "durationMs": 413,
+      "endMs": 114750
+    },
+    {
+      "word": "buffs",
+      "startMs": 114763,
+      "durationMs": 450,
+      "endMs": 115213
+    },
+    {
+      "word": "it's",
+      "startMs": 115438,
+      "durationMs": 163,
+      "endMs": 115600
+    },
+    {
+      "word": "telling",
+      "startMs": 115613,
+      "durationMs": 300,
+      "endMs": 115913
+    },
+    {
+      "word": "me",
+      "startMs": 115925,
+      "durationMs": 113,
+      "endMs": 116038
+    },
+    {
+      "word": "what",
+      "startMs": 116050,
+      "durationMs": 200,
+      "endMs": 116250
+    },
+    {
+      "word": "changed",
+      "startMs": 116263,
+      "durationMs": 425,
+      "endMs": 116688
+    },
+    {
+      "word": "for",
+      "startMs": 116700,
+      "durationMs": 163,
+      "endMs": 116863
+    },
+    {
+      "word": "MY",
+      "startMs": 116875,
+      "durationMs": 313,
+      "endMs": 117188
+    },
+    {
+      "word": "game",
+      "startMs": 117200,
+      "durationMs": 450,
+      "endMs": 117650
+    },
+    {
+      "word": "Point",
+      "startMs": 118513,
+      "durationMs": 313,
+      "endMs": 118825
+    },
+    {
+      "word": "three",
+      "startMs": 118838,
+      "durationMs": 375,
+      "endMs": 119213
+    },
+    {
+      "word": "the",
+      "startMs": 119388,
+      "durationMs": 88,
+      "endMs": 119475
+    },
+    {
+      "word": "paste",
+      "startMs": 119488,
+      "durationMs": 388,
+      "endMs": 119875
+    },
+    {
+      "word": "and",
+      "startMs": 119888,
+      "durationMs": 113,
+      "endMs": 120000
+    },
+    {
+      "word": "summarize",
+      "startMs": 120013,
+      "durationMs": 475,
+      "endMs": 120488
+    },
+    {
+      "word": "method",
+      "startMs": 120500,
+      "durationMs": 475,
+      "endMs": 120975
+    },
+    {
+      "word": "Whenever",
+      "startMs": 121838,
+      "durationMs": 400,
+      "endMs": 122238
+    },
+    {
+      "word": "a",
+      "startMs": 122250,
+      "durationMs": 50,
+      "endMs": 122300
+    },
+    {
+      "word": "new",
+      "startMs": 122313,
+      "durationMs": 200,
+      "endMs": 122513
+    },
+    {
+      "word": "patch",
+      "startMs": 122525,
+      "durationMs": 388,
+      "endMs": 122913
+    },
+    {
+      "word": "drops",
+      "startMs": 122925,
+      "durationMs": 463,
+      "endMs": 123388
+    },
+    {
+      "word": "I",
+      "startMs": 123563,
+      "durationMs": 100,
+      "endMs": 123663
+    },
+    {
+      "word": "copy",
+      "startMs": 123675,
+      "durationMs": 325,
+      "endMs": 124000
+    },
+    {
+      "word": "the",
+      "startMs": 124013,
+      "durationMs": 100,
+      "endMs": 124113
+    },
+    {
+      "word": "full",
+      "startMs": 124125,
+      "durationMs": 238,
+      "endMs": 124363
+    },
+    {
+      "word": "patch",
+      "startMs": 124375,
+      "durationMs": 375,
+      "endMs": 124750
+    },
+    {
+      "word": "notes",
+      "startMs": 124763,
+      "durationMs": 438,
+      "endMs": 125200
+    },
+    {
+      "word": "even",
+      "startMs": 125413,
+      "durationMs": 213,
+      "endMs": 125625
+    },
+    {
+      "word": "if",
+      "startMs": 125638,
+      "durationMs": 88,
+      "endMs": 125725
+    },
+    {
+      "word": "they're",
+      "startMs": 125738,
+      "durationMs": 163,
+      "endMs": 125900
+    },
+    {
+      "word": "1,500",
+      "startMs": 125913,
+      "durationMs": 1263,
+      "endMs": 127175
+    },
+    {
+      "word": "words",
+      "startMs": 127188,
+      "durationMs": 300,
+      "endMs": 127488
+    },
+    {
+      "word": "of",
+      "startMs": 127500,
+      "durationMs": 100,
+      "endMs": 127600
+    },
+    {
+      "word": "dense",
+      "startMs": 127613,
+      "durationMs": 288,
+      "endMs": 127900
+    },
+    {
+      "word": "technical",
+      "startMs": 127913,
+      "durationMs": 450,
+      "endMs": 128363
+    },
+    {
+      "word": "jargon",
+      "startMs": 128375,
+      "durationMs": 488,
+      "endMs": 128863
+    },
+    {
+      "word": "and",
+      "startMs": 129100,
+      "durationMs": 113,
+      "endMs": 129213
+    },
+    {
+      "word": "paste",
+      "startMs": 129225,
+      "durationMs": 313,
+      "endMs": 129538
+    },
+    {
+      "word": "them",
+      "startMs": 129550,
+      "durationMs": 125,
+      "endMs": 129675
+    },
+    {
+      "word": "straight",
+      "startMs": 129688,
+      "durationMs": 313,
+      "endMs": 130000
+    },
+    {
+      "word": "into",
+      "startMs": 130013,
+      "durationMs": 213,
+      "endMs": 130225
+    },
+    {
+      "word": "my",
+      "startMs": 130238,
+      "durationMs": 138,
+      "endMs": 130375
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 130388,
+      "durationMs": 825,
+      "endMs": 131213
+    },
+    {
+      "word": "thread",
+      "startMs": 131225,
+      "durationMs": 488,
+      "endMs": 131713
+    },
+    {
+      "word": "Then",
+      "startMs": 132575,
+      "durationMs": 225,
+      "endMs": 132800
+    },
+    {
+      "word": "I",
+      "startMs": 132813,
+      "durationMs": 63,
+      "endMs": 132875
+    },
+    {
+      "word": "use",
+      "startMs": 132888,
+      "durationMs": 213,
+      "endMs": 133100
+    },
+    {
+      "word": "a",
+      "startMs": 133113,
+      "durationMs": 63,
+      "endMs": 133175
+    },
+    {
+      "word": "simple",
+      "startMs": 133188,
+      "durationMs": 325,
+      "endMs": 133513
+    },
+    {
+      "word": "prompt",
+      "startMs": 133525,
+      "durationMs": 488,
+      "endMs": 134013
+    },
+    {
+      "word": "Summarize",
+      "startMs": 134213,
+      "durationMs": 525,
+      "endMs": 134738
+    },
+    {
+      "word": "the",
+      "startMs": 134750,
+      "durationMs": 88,
+      "endMs": 134838
+    },
+    {
+      "word": "top",
+      "startMs": 134850,
+      "durationMs": 275,
+      "endMs": 135125
+    },
+    {
+      "word": "changes",
+      "startMs": 135138,
+      "durationMs": 438,
+      "endMs": 135575
+    },
+    {
+      "word": "that",
+      "startMs": 135588,
+      "durationMs": 138,
+      "endMs": 135725
+    },
+    {
+      "word": "affect",
+      "startMs": 135738,
+      "durationMs": 350,
+      "endMs": 136088
+    },
+    {
+      "word": "solo",
+      "startMs": 136100,
+      "durationMs": 363,
+      "endMs": 136463
+    },
+    {
+      "word": "stealth",
+      "startMs": 136475,
+      "durationMs": 338,
+      "endMs": 136813
+    },
+    {
+      "word": "players",
+      "startMs": 136825,
+      "durationMs": 425,
+      "endMs": 137250
+    },
+    {
+      "word": "in",
+      "startMs": 137263,
+      "durationMs": 125,
+      "endMs": 137388
+    },
+    {
+      "word": "Arc",
+      "startMs": 137400,
+      "durationMs": 250,
+      "endMs": 137650
+    },
+    {
+      "word": "Raiders",
+      "startMs": 137663,
+      "durationMs": 475,
+      "endMs": 138138
+    },
+    {
+      "word": "in",
+      "startMs": 138300,
+      "durationMs": 138,
+      "endMs": 138438
+    },
+    {
+      "word": "plain",
+      "startMs": 138450,
+      "durationMs": 275,
+      "endMs": 138725
+    },
+    {
+      "word": "English",
+      "startMs": 138738,
+      "durationMs": 513,
+      "endMs": 139250
+    },
+    {
+      "word": "bullet",
+      "startMs": 139363,
+      "durationMs": 288,
+      "endMs": 139650
+    },
+    {
+      "word": "points",
+      "startMs": 139663,
+      "durationMs": 313,
+      "endMs": 139975
+    },
+    {
+      "word": "only",
+      "startMs": 139988,
+      "durationMs": 488,
+      "endMs": 140475
+    },
+    {
+      "word": "Within",
+      "startMs": 141338,
+      "durationMs": 375,
+      "endMs": 141713
+    },
+    {
+      "word": "seconds",
+      "startMs": 141725,
+      "durationMs": 438,
+      "endMs": 142163
+    },
+    {
+      "word": "I",
+      "startMs": 142175,
+      "durationMs": 63,
+      "endMs": 142238
+    },
+    {
+      "word": "have",
+      "startMs": 142250,
+      "durationMs": 138,
+      "endMs": 142388
+    },
+    {
+      "word": "a",
+      "startMs": 142400,
+      "durationMs": 75,
+      "endMs": 142475
+    },
+    {
+      "word": "clean",
+      "startMs": 142488,
+      "durationMs": 338,
+      "endMs": 142825
+    },
+    {
+      "word": "10-bullet",
+      "startMs": 142838,
+      "durationMs": 550,
+      "endMs": 143388
+    },
+    {
+      "word": "breakdown",
+      "startMs": 143400,
+      "durationMs": 550,
+      "endMs": 143950
+    },
+    {
+      "word": "I",
+      "startMs": 143963,
+      "durationMs": 75,
+      "endMs": 144038
+    },
+    {
+      "word": "can",
+      "startMs": 144050,
+      "durationMs": 175,
+      "endMs": 144225
+    },
+    {
+      "word": "actually",
+      "startMs": 144238,
+      "durationMs": 425,
+      "endMs": 144663
+    },
+    {
+      "word": "use",
+      "startMs": 144675,
+      "durationMs": 525,
+      "endMs": 145200
+    },
+    {
+      "word": "What",
+      "startMs": 146063,
+      "durationMs": 213,
+      "endMs": 146275
+    },
+    {
+      "word": "used",
+      "startMs": 146288,
+      "durationMs": 238,
+      "endMs": 146525
+    },
+    {
+      "word": "to",
+      "startMs": 146538,
+      "durationMs": 75,
+      "endMs": 146613
+    },
+    {
+      "word": "take",
+      "startMs": 146625,
+      "durationMs": 250,
+      "endMs": 146875
+    },
+    {
+      "word": "me",
+      "startMs": 146888,
+      "durationMs": 113,
+      "endMs": 147000
+    },
+    {
+      "word": "20",
+      "startMs": 147013,
+      "durationMs": 350,
+      "endMs": 147363
+    },
+    {
+      "word": "minutes",
+      "startMs": 147375,
+      "durationMs": 350,
+      "endMs": 147725
+    },
+    {
+      "word": "of",
+      "startMs": 147738,
+      "durationMs": 100,
+      "endMs": 147838
+    },
+    {
+      "word": "reading",
+      "startMs": 147850,
+      "durationMs": 400,
+      "endMs": 148250
+    },
+    {
+      "word": "and",
+      "startMs": 148263,
+      "durationMs": 125,
+      "endMs": 148388
+    },
+    {
+      "word": "Googling",
+      "startMs": 148400,
+      "durationMs": 425,
+      "endMs": 148825
+    },
+    {
+      "word": "now",
+      "startMs": 148838,
+      "durationMs": 275,
+      "endMs": 149113
+    },
+    {
+      "word": "takes",
+      "startMs": 149125,
+      "durationMs": 325,
+      "endMs": 149450
+    },
+    {
+      "word": "under",
+      "startMs": 149463,
+      "durationMs": 225,
+      "endMs": 149688
+    },
+    {
+      "word": "60 seconds",
+      "startMs": 149700,
+      "durationMs": 1088,
+      "endMs": 150788
+    },
+    {
+      "word": "Point",
+      "startMs": 151650,
+      "durationMs": 300,
+      "endMs": 151950
+    },
+    {
+      "word": "four",
+      "startMs": 151963,
+      "durationMs": 488,
+      "endMs": 152450
+    },
+    {
+      "word": "going",
+      "startMs": 152638,
+      "durationMs": 275,
+      "endMs": 152913
+    },
+    {
+      "word": "deeper",
+      "startMs": 152925,
+      "durationMs": 338,
+      "endMs": 153263
+    },
+    {
+      "word": "on",
+      "startMs": 153275,
+      "durationMs": 113,
+      "endMs": 153388
+    },
+    {
+      "word": "confusing",
+      "startMs": 153400,
+      "durationMs": 550,
+      "endMs": 153950
+    },
+    {
+      "word": "changes",
+      "startMs": 153963,
+      "durationMs": 700,
+      "endMs": 154663
+    },
+    {
+      "word": "Sometimes",
+      "startMs": 155525,
+      "durationMs": 538,
+      "endMs": 156063
+    },
+    {
+      "word": "Embark",
+      "startMs": 156075,
+      "durationMs": 350,
+      "endMs": 156425
+    },
+    {
+      "word": "Studios",
+      "startMs": 156438,
+      "durationMs": 500,
+      "endMs": 156938
+    },
+    {
+      "word": "uses",
+      "startMs": 156950,
+      "durationMs": 363,
+      "endMs": 157313
+    },
+    {
+      "word": "really",
+      "startMs": 157325,
+      "durationMs": 275,
+      "endMs": 157600
+    },
+    {
+      "word": "technical",
+      "startMs": 157613,
+      "durationMs": 488,
+      "endMs": 158100
+    },
+    {
+      "word": "language",
+      "startMs": 158113,
+      "durationMs": 425,
+      "endMs": 158538
+    },
+    {
+      "word": "in",
+      "startMs": 158550,
+      "durationMs": 88,
+      "endMs": 158638
+    },
+    {
+      "word": "their",
+      "startMs": 158650,
+      "durationMs": 138,
+      "endMs": 158788
+    },
+    {
+      "word": "notes",
+      "startMs": 158800,
+      "durationMs": 525,
+      "endMs": 159325
+    },
+    {
+      "word": "Damage",
+      "startMs": 160188,
+      "durationMs": 425,
+      "endMs": 160613
+    },
+    {
+      "word": "multiplier",
+      "startMs": 160625,
+      "durationMs": 613,
+      "endMs": 161238
+    },
+    {
+      "word": "adjustments",
+      "startMs": 161250,
+      "durationMs": 688,
+      "endMs": 161938
+    },
+    {
+      "word": "hitbox",
+      "startMs": 162138,
+      "durationMs": 388,
+      "endMs": 162525
+    },
+    {
+      "word": "recalibrations",
+      "startMs": 162538,
+      "durationMs": 1063,
+      "endMs": 163600
+    },
+    {
+      "word": "loot",
+      "startMs": 163788,
+      "durationMs": 200,
+      "endMs": 163988
+    },
+    {
+      "word": "table",
+      "startMs": 164000,
+      "durationMs": 313,
+      "endMs": 164313
+    },
+    {
+      "word": "weight",
+      "startMs": 164325,
+      "durationMs": 225,
+      "endMs": 164550
+    },
+    {
+      "word": "shifts",
+      "startMs": 164563,
+      "durationMs": 525,
+      "endMs": 165088
+    },
+    {
+      "word": "stuff",
+      "startMs": 165275,
+      "durationMs": 300,
+      "endMs": 165575
+    },
+    {
+      "word": "that",
+      "startMs": 165588,
+      "durationMs": 175,
+      "endMs": 165763
+    },
+    {
+      "word": "sounds",
+      "startMs": 165775,
+      "durationMs": 263,
+      "endMs": 166038
+    },
+    {
+      "word": "important",
+      "startMs": 166050,
+      "durationMs": 538,
+      "endMs": 166588
+    },
+    {
+      "word": "but",
+      "startMs": 166600,
+      "durationMs": 163,
+      "endMs": 166763
+    },
+    {
+      "word": "you're",
+      "startMs": 166775,
+      "durationMs": 113,
+      "endMs": 166888
+    },
+    {
+      "word": "not",
+      "startMs": 166900,
+      "durationMs": 238,
+      "endMs": 167138
+    },
+    {
+      "word": "sure",
+      "startMs": 167150,
+      "durationMs": 188,
+      "endMs": 167338
+    },
+    {
+      "word": "how",
+      "startMs": 167350,
+      "durationMs": 175,
+      "endMs": 167525
+    },
+    {
+      "word": "it",
+      "startMs": 167538,
+      "durationMs": 75,
+      "endMs": 167613
+    },
+    {
+      "word": "affects",
+      "startMs": 167625,
+      "durationMs": 413,
+      "endMs": 168038
+    },
+    {
+      "word": "your",
+      "startMs": 168050,
+      "durationMs": 163,
+      "endMs": 168213
+    },
+    {
+      "word": "actual",
+      "startMs": 168225,
+      "durationMs": 363,
+      "endMs": 168588
+    },
+    {
+      "word": "gameplay",
+      "startMs": 168600,
+      "durationMs": 625,
+      "endMs": 169225
+    },
+    {
+      "word": "I",
+      "startMs": 170088,
+      "durationMs": 150,
+      "endMs": 170238
+    },
+    {
+      "word": "just",
+      "startMs": 170250,
+      "durationMs": 250,
+      "endMs": 170500
+    },
+    {
+      "word": "ask",
+      "startMs": 170513,
+      "durationMs": 200,
+      "endMs": 170713
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 170725,
+      "durationMs": 813,
+      "endMs": 171538
+    },
+    {
+      "word": "to",
+      "startMs": 171550,
+      "durationMs": 125,
+      "endMs": 171675
+    },
+    {
+      "word": "explain",
+      "startMs": 171688,
+      "durationMs": 438,
+      "endMs": 172125
+    },
+    {
+      "word": "it",
+      "startMs": 172138,
+      "durationMs": 250,
+      "endMs": 172388
+    },
+    {
+      "word": "What",
+      "startMs": 173250,
+      "durationMs": 213,
+      "endMs": 173463
+    },
+    {
+      "word": "does",
+      "startMs": 173475,
+      "durationMs": 138,
+      "endMs": 173613
+    },
+    {
+      "word": "this",
+      "startMs": 173625,
+      "durationMs": 163,
+      "endMs": 173788
+    },
+    {
+      "word": "hitbox",
+      "startMs": 173800,
+      "durationMs": 450,
+      "endMs": 174250
+    },
+    {
+      "word": "change",
+      "startMs": 174263,
+      "durationMs": 338,
+      "endMs": 174600
+    },
+    {
+      "word": "actually",
+      "startMs": 174613,
+      "durationMs": 425,
+      "endMs": 175038
+    },
+    {
+      "word": "mean",
+      "startMs": 175050,
+      "durationMs": 250,
+      "endMs": 175300
+    },
+    {
+      "word": "for",
+      "startMs": 175313,
+      "durationMs": 163,
+      "endMs": 175475
+    },
+    {
+      "word": "close-quarters",
+      "startMs": 175488,
+      "durationMs": 650,
+      "endMs": 176138
+    },
+    {
+      "word": "combat",
+      "startMs": 176150,
+      "durationMs": 600,
+      "endMs": 176750
+    },
+    {
+      "word": "It",
+      "startMs": 177613,
+      "durationMs": 150,
+      "endMs": 177763
+    },
+    {
+      "word": "breaks",
+      "startMs": 177775,
+      "durationMs": 300,
+      "endMs": 178075
+    },
+    {
+      "word": "it",
+      "startMs": 178088,
+      "durationMs": 100,
+      "endMs": 178188
+    },
+    {
+      "word": "down",
+      "startMs": 178200,
+      "durationMs": 263,
+      "endMs": 178463
+    },
+    {
+      "word": "in",
+      "startMs": 178475,
+      "durationMs": 100,
+      "endMs": 178575
+    },
+    {
+      "word": "plain",
+      "startMs": 178588,
+      "durationMs": 288,
+      "endMs": 178875
+    },
+    {
+      "word": "English",
+      "startMs": 178888,
+      "durationMs": 413,
+      "endMs": 179300
+    },
+    {
+      "word": "every",
+      "startMs": 179313,
+      "durationMs": 250,
+      "endMs": 179563
+    },
+    {
+      "word": "single",
+      "startMs": 179575,
+      "durationMs": 338,
+      "endMs": 179913
+    },
+    {
+      "word": "time",
+      "startMs": 179925,
+      "durationMs": 525,
+      "endMs": 180450
+    },
+    {
+      "word": "This",
+      "startMs": 181313,
+      "durationMs": 225,
+      "endMs": 181538
+    },
+    {
+      "word": "alone",
+      "startMs": 181550,
+      "durationMs": 313,
+      "endMs": 181863
+    },
+    {
+      "word": "has",
+      "startMs": 181875,
+      "durationMs": 163,
+      "endMs": 182038
+    },
+    {
+      "word": "improved",
+      "startMs": 182050,
+      "durationMs": 413,
+      "endMs": 182463
+    },
+    {
+      "word": "how",
+      "startMs": 182475,
+      "durationMs": 163,
+      "endMs": 182638
+    },
+    {
+      "word": "fast",
+      "startMs": 182650,
+      "durationMs": 400,
+      "endMs": 183050
+    },
+    {
+      "word": "I",
+      "startMs": 183063,
+      "durationMs": 75,
+      "endMs": 183138
+    },
+    {
+      "word": "adapt",
+      "startMs": 183150,
+      "durationMs": 438,
+      "endMs": 183588
+    },
+    {
+      "word": "to",
+      "startMs": 183600,
+      "durationMs": 88,
+      "endMs": 183688
+    },
+    {
+      "word": "new",
+      "startMs": 183700,
+      "durationMs": 138,
+      "endMs": 183838
+    },
+    {
+      "word": "metas",
+      "startMs": 183850,
+      "durationMs": 613,
+      "endMs": 184463
+    },
+    {
+      "word": "Point",
+      "startMs": 185325,
+      "durationMs": 300,
+      "endMs": 185625
+    },
+    {
+      "word": "five",
+      "startMs": 185638,
+      "durationMs": 463,
+      "endMs": 186100
+    },
+    {
+      "word": "building",
+      "startMs": 186263,
+      "durationMs": 338,
+      "endMs": 186600
+    },
+    {
+      "word": "a",
+      "startMs": 186613,
+      "durationMs": 63,
+      "endMs": 186675
+    },
+    {
+      "word": "weekly",
+      "startMs": 186688,
+      "durationMs": 363,
+      "endMs": 187050
+    },
+    {
+      "word": "habit",
+      "startMs": 187063,
+      "durationMs": 525,
+      "endMs": 187588
+    },
+    {
+      "word": "The",
+      "startMs": 188450,
+      "durationMs": 138,
+      "endMs": 188588
+    },
+    {
+      "word": "real",
+      "startMs": 188600,
+      "durationMs": 238,
+      "endMs": 188838
+    },
+    {
+      "word": "power",
+      "startMs": 188850,
+      "durationMs": 338,
+      "endMs": 189188
+    },
+    {
+      "word": "of",
+      "startMs": 189200,
+      "durationMs": 75,
+      "endMs": 189275
+    },
+    {
+      "word": "this",
+      "startMs": 189288,
+      "durationMs": 188,
+      "endMs": 189475
+    },
+    {
+      "word": "workflow",
+      "startMs": 189488,
+      "durationMs": 513,
+      "endMs": 190000
+    },
+    {
+      "word": "is",
+      "startMs": 190013,
+      "durationMs": 150,
+      "endMs": 190163
+    },
+    {
+      "word": "consistency",
+      "startMs": 190175,
+      "durationMs": 938,
+      "endMs": 191113
+    },
+    {
+      "word": "I",
+      "startMs": 191975,
+      "durationMs": 150,
+      "endMs": 192125
+    },
+    {
+      "word": "check",
+      "startMs": 192138,
+      "durationMs": 250,
+      "endMs": 192388
+    },
+    {
+      "word": "for",
+      "startMs": 192400,
+      "durationMs": 175,
+      "endMs": 192575
+    },
+    {
+      "word": "Arc",
+      "startMs": 192588,
+      "durationMs": 238,
+      "endMs": 192825
+    },
+    {
+      "word": "Raiders",
+      "startMs": 192838,
+      "durationMs": 375,
+      "endMs": 193213
+    },
+    {
+      "word": "updates",
+      "startMs": 193225,
+      "durationMs": 425,
+      "endMs": 193650
+    },
+    {
+      "word": "once",
+      "startMs": 193663,
+      "durationMs": 225,
+      "endMs": 193888
+    },
+    {
+      "word": "a",
+      "startMs": 193900,
+      "durationMs": 63,
+      "endMs": 193963
+    },
+    {
+      "word": "week",
+      "startMs": 193975,
+      "durationMs": 375,
+      "endMs": 194350
+    },
+    {
+      "word": "spend",
+      "startMs": 194538,
+      "durationMs": 313,
+      "endMs": 194850
+    },
+    {
+      "word": "five",
+      "startMs": 194863,
+      "durationMs": 288,
+      "endMs": 195150
+    },
+    {
+      "word": "to",
+      "startMs": 195163,
+      "durationMs": 75,
+      "endMs": 195238
+    },
+    {
+      "word": "ten",
+      "startMs": 195250,
+      "durationMs": 250,
+      "endMs": 195500
+    },
+    {
+      "word": "minutes",
+      "startMs": 195513,
+      "durationMs": 350,
+      "endMs": 195863
+    },
+    {
+      "word": "running",
+      "startMs": 195875,
+      "durationMs": 263,
+      "endMs": 196138
+    },
+    {
+      "word": "the",
+      "startMs": 196150,
+      "durationMs": 75,
+      "endMs": 196225
+    },
+    {
+      "word": "process",
+      "startMs": 196238,
+      "durationMs": 675,
+      "endMs": 196913
+    },
+    {
+      "word": "and",
+      "startMs": 197100,
+      "durationMs": 138,
+      "endMs": 197238
+    },
+    {
+      "word": "I'm",
+      "startMs": 197250,
+      "durationMs": 138,
+      "endMs": 197388
+    },
+    {
+      "word": "done",
+      "startMs": 197400,
+      "durationMs": 413,
+      "endMs": 197813
+    },
+    {
+      "word": "I've",
+      "startMs": 198675,
+      "durationMs": 175,
+      "endMs": 198850
+    },
+    {
+      "word": "even",
+      "startMs": 198863,
+      "durationMs": 225,
+      "endMs": 199088
+    },
+    {
+      "word": "started",
+      "startMs": 199100,
+      "durationMs": 338,
+      "endMs": 199438
+    },
+    {
+      "word": "asking",
+      "startMs": 199450,
+      "durationMs": 413,
+      "endMs": 199863
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 199875,
+      "durationMs": 975,
+      "endMs": 200850
+    },
+    {
+      "word": "to",
+      "startMs": 200863,
+      "durationMs": 138,
+      "endMs": 201000
+    },
+    {
+      "word": "compare",
+      "startMs": 201013,
+      "durationMs": 350,
+      "endMs": 201363
+    },
+    {
+      "word": "the",
+      "startMs": 201375,
+      "durationMs": 100,
+      "endMs": 201475
+    },
+    {
+      "word": "current",
+      "startMs": 201488,
+      "durationMs": 300,
+      "endMs": 201788
+    },
+    {
+      "word": "patch",
+      "startMs": 201800,
+      "durationMs": 325,
+      "endMs": 202125
+    },
+    {
+      "word": "to",
+      "startMs": 202138,
+      "durationMs": 88,
+      "endMs": 202225
+    },
+    {
+      "word": "the",
+      "startMs": 202238,
+      "durationMs": 88,
+      "endMs": 202325
+    },
+    {
+      "word": "previous",
+      "startMs": 202338,
+      "durationMs": 475,
+      "endMs": 202813
+    },
+    {
+      "word": "one",
+      "startMs": 202825,
+      "durationMs": 338,
+      "endMs": 203163
+    },
+    {
+      "word": "so",
+      "startMs": 203175,
+      "durationMs": 150,
+      "endMs": 203325
+    },
+    {
+      "word": "I",
+      "startMs": 203338,
+      "durationMs": 88,
+      "endMs": 203425
+    },
+    {
+      "word": "can",
+      "startMs": 203438,
+      "durationMs": 163,
+      "endMs": 203600
+    },
+    {
+      "word": "spot",
+      "startMs": 203613,
+      "durationMs": 275,
+      "endMs": 203888
+    },
+    {
+      "word": "patterns",
+      "startMs": 203900,
+      "durationMs": 488,
+      "endMs": 204388
+    },
+    {
+      "word": "in",
+      "startMs": 204400,
+      "durationMs": 100,
+      "endMs": 204500
+    },
+    {
+      "word": "how",
+      "startMs": 204513,
+      "durationMs": 150,
+      "endMs": 204663
+    },
+    {
+      "word": "Embark",
+      "startMs": 204675,
+      "durationMs": 375,
+      "endMs": 205050
+    },
+    {
+      "word": "is",
+      "startMs": 205063,
+      "durationMs": 113,
+      "endMs": 205175
+    },
+    {
+      "word": "tuning",
+      "startMs": 205188,
+      "durationMs": 300,
+      "endMs": 205488
+    },
+    {
+      "word": "the",
+      "startMs": 205500,
+      "durationMs": 88,
+      "endMs": 205588
+    },
+    {
+      "word": "game",
+      "startMs": 205600,
+      "durationMs": 463,
+      "endMs": 206063
+    },
+    {
+      "word": "That",
+      "startMs": 206925,
+      "durationMs": 250,
+      "endMs": 207175
+    },
+    {
+      "word": "kind",
+      "startMs": 207188,
+      "durationMs": 213,
+      "endMs": 207400
+    },
+    {
+      "word": "of",
+      "startMs": 207413,
+      "durationMs": 75,
+      "endMs": 207488
+    },
+    {
+      "word": "meta",
+      "startMs": 207500,
+      "durationMs": 238,
+      "endMs": 207738
+    },
+    {
+      "word": "awareness",
+      "startMs": 207750,
+      "durationMs": 513,
+      "endMs": 208263
+    },
+    {
+      "word": "is",
+      "startMs": 208275,
+      "durationMs": 138,
+      "endMs": 208413
+    },
+    {
+      "word": "what",
+      "startMs": 208425,
+      "durationMs": 163,
+      "endMs": 208588
+    },
+    {
+      "word": "separates",
+      "startMs": 208600,
+      "durationMs": 438,
+      "endMs": 209038
+    },
+    {
+      "word": "players",
+      "startMs": 209050,
+      "durationMs": 463,
+      "endMs": 209513
+    },
+    {
+      "word": "who",
+      "startMs": 209525,
+      "durationMs": 113,
+      "endMs": 209638
+    },
+    {
+      "word": "adapt",
+      "startMs": 209650,
+      "durationMs": 388,
+      "endMs": 210038
+    },
+    {
+      "word": "fast",
+      "startMs": 210050,
+      "durationMs": 400,
+      "endMs": 210450
+    },
+    {
+      "word": "from",
+      "startMs": 210463,
+      "durationMs": 138,
+      "endMs": 210600
+    },
+    {
+      "word": "players",
+      "startMs": 210613,
+      "durationMs": 450,
+      "endMs": 211063
+    },
+    {
+      "word": "who",
+      "startMs": 211075,
+      "durationMs": 100,
+      "endMs": 211175
+    },
+    {
+      "word": "keep",
+      "startMs": 211188,
+      "durationMs": 275,
+      "endMs": 211463
+    },
+    {
+      "word": "dying",
+      "startMs": 211475,
+      "durationMs": 288,
+      "endMs": 211763
+    },
+    {
+      "word": "to",
+      "startMs": 211775,
+      "durationMs": 88,
+      "endMs": 211863
+    },
+    {
+      "word": "things",
+      "startMs": 211875,
+      "durationMs": 338,
+      "endMs": 212213
+    },
+    {
+      "word": "they",
+      "startMs": 212225,
+      "durationMs": 100,
+      "endMs": 212325
+    },
+    {
+      "word": "don't",
+      "startMs": 212338,
+      "durationMs": 225,
+      "endMs": 212563
+    },
+    {
+      "word": "understand",
+      "startMs": 212575,
+      "durationMs": 713,
+      "endMs": 213288
+    },
+    {
+      "word": "Look",
+      "startMs": 214150,
+      "durationMs": 438,
+      "endMs": 214588
+    },
+    {
+      "word": "if",
+      "startMs": 214775,
+      "durationMs": 113,
+      "endMs": 214888
+    },
+    {
+      "word": "you're",
+      "startMs": 214900,
+      "durationMs": 138,
+      "endMs": 215038
+    },
+    {
+      "word": "serious",
+      "startMs": 215050,
+      "durationMs": 500,
+      "endMs": 215550
+    },
+    {
+      "word": "about",
+      "startMs": 215563,
+      "durationMs": 263,
+      "endMs": 215825
+    },
+    {
+      "word": "Arc",
+      "startMs": 215838,
+      "durationMs": 238,
+      "endMs": 216075
+    },
+    {
+      "word": "Raiders",
+      "startMs": 216088,
+      "durationMs": 350,
+      "endMs": 216438
+    },
+    {
+      "word": "in 2025",
+      "startMs": 216450,
+      "durationMs": 1213,
+      "endMs": 217663
+    },
+    {
+      "word": "you",
+      "startMs": 217850,
+      "durationMs": 113,
+      "endMs": 217963
+    },
+    {
+      "word": "need",
+      "startMs": 217975,
+      "durationMs": 175,
+      "endMs": 218150
+    },
+    {
+      "word": "a",
+      "startMs": 218163,
+      "durationMs": 50,
+      "endMs": 218213
+    },
+    {
+      "word": "system",
+      "startMs": 218225,
+      "durationMs": 613,
+      "endMs": 218838
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 219700,
+      "durationMs": 838,
+      "endMs": 220538
+    },
+    {
+      "word": "is",
+      "startMs": 220550,
+      "durationMs": 125,
+      "endMs": 220675
+    },
+    {
+      "word": "that",
+      "startMs": 220688,
+      "durationMs": 213,
+      "endMs": 220900
+    },
+    {
+      "word": "system",
+      "startMs": 220913,
+      "durationMs": 538,
+      "endMs": 221450
+    },
+    {
+      "word": "The",
+      "startMs": 222313,
+      "durationMs": 138,
+      "endMs": 222450
+    },
+    {
+      "word": "full",
+      "startMs": 222463,
+      "durationMs": 238,
+      "endMs": 222700
+    },
+    {
+      "word": "written",
+      "startMs": 222713,
+      "durationMs": 225,
+      "endMs": 222938
+    },
+    {
+      "word": "guide",
+      "startMs": 222950,
+      "durationMs": 300,
+      "endMs": 223250
+    },
+    {
+      "word": "with",
+      "startMs": 223263,
+      "durationMs": 138,
+      "endMs": 223400
+    },
+    {
+      "word": "every",
+      "startMs": 223413,
+      "durationMs": 250,
+      "endMs": 223663
+    },
+    {
+      "word": "prompt",
+      "startMs": 223675,
+      "durationMs": 338,
+      "endMs": 224013
+    },
+    {
+      "word": "I",
+      "startMs": 224025,
+      "durationMs": 38,
+      "endMs": 224063
+    },
+    {
+      "word": "use",
+      "startMs": 224075,
+      "durationMs": 338,
+      "endMs": 224413
+    },
+    {
+      "word": "is",
+      "startMs": 224425,
+      "durationMs": 150,
+      "endMs": 224575
+    },
+    {
+      "word": "linked",
+      "startMs": 224588,
+      "durationMs": 250,
+      "endMs": 224838
+    },
+    {
+      "word": "in",
+      "startMs": 224850,
+      "durationMs": 75,
+      "endMs": 224925
+    },
+    {
+      "word": "the",
+      "startMs": 224938,
+      "durationMs": 75,
+      "endMs": 225013
+    },
+    {
+      "word": "description",
+      "startMs": 225025,
+      "durationMs": 713,
+      "endMs": 225738
+    },
+    {
+      "word": "it's",
+      "startMs": 225988,
+      "durationMs": 138,
+      "endMs": 226125
+    },
+    {
+      "word": "completely",
+      "startMs": 226138,
+      "durationMs": 550,
+      "endMs": 226688
+    },
+    {
+      "word": "free",
+      "startMs": 226700,
+      "durationMs": 225,
+      "endMs": 226925
+    },
+    {
+      "word": "to",
+      "startMs": 226938,
+      "durationMs": 113,
+      "endMs": 227050
+    },
+    {
+      "word": "read",
+      "startMs": 227063,
+      "durationMs": 350,
+      "endMs": 227413
+    },
+    {
+      "word": "and",
+      "startMs": 227425,
+      "durationMs": 163,
+      "endMs": 227588
+    },
+    {
+      "word": "it'll",
+      "startMs": 227600,
+      "durationMs": 163,
+      "endMs": 227763
+    },
+    {
+      "word": "get",
+      "startMs": 227775,
+      "durationMs": 188,
+      "endMs": 227963
+    },
+    {
+      "word": "you",
+      "startMs": 227975,
+      "durationMs": 113,
+      "endMs": 228088
+    },
+    {
+      "word": "set",
+      "startMs": 228100,
+      "durationMs": 200,
+      "endMs": 228300
+    },
+    {
+      "word": "up",
+      "startMs": 228313,
+      "durationMs": 175,
+      "endMs": 228488
+    },
+    {
+      "word": "in",
+      "startMs": 228500,
+      "durationMs": 100,
+      "endMs": 228600
+    },
+    {
+      "word": "about",
+      "startMs": 228613,
+      "durationMs": 250,
+      "endMs": 228863
+    },
+    {
+      "word": "30",
+      "startMs": 228875,
+      "durationMs": 238,
+      "endMs": 229113
+    },
+    {
+      "word": "minutes",
+      "startMs": 229125,
+      "durationMs": 588,
+      "endMs": 229713
+    },
+    {
+      "word": "If",
+      "startMs": 230575,
+      "durationMs": 163,
+      "endMs": 230738
+    },
+    {
+      "word": "you",
+      "startMs": 230750,
+      "durationMs": 113,
+      "endMs": 230863
+    },
+    {
+      "word": "want",
+      "startMs": 230875,
+      "durationMs": 175,
+      "endMs": 231050
+    },
+    {
+      "word": "to",
+      "startMs": 231063,
+      "durationMs": 88,
+      "endMs": 231150
+    },
+    {
+      "word": "upgrade",
+      "startMs": 231163,
+      "durationMs": 375,
+      "endMs": 231538
+    },
+    {
+      "word": "to",
+      "startMs": 231550,
+      "durationMs": 88,
+      "endMs": 231638
+    },
+    {
+      "word": "ChatGPT",
+      "startMs": 231650,
+      "durationMs": 850,
+      "endMs": 232500
+    },
+    {
+      "word": "Plus",
+      "startMs": 232513,
+      "durationMs": 338,
+      "endMs": 232850
+    },
+    {
+      "word": "for",
+      "startMs": 232863,
+      "durationMs": 113,
+      "endMs": 232975
+    },
+    {
+      "word": "the",
+      "startMs": 232988,
+      "durationMs": 88,
+      "endMs": 233075
+    },
+    {
+      "word": "faster",
+      "startMs": 233088,
+      "durationMs": 388,
+      "endMs": 233475
+    },
+    {
+      "word": "model",
+      "startMs": 233488,
+      "durationMs": 425,
+      "endMs": 233913
+    },
+    {
+      "word": "that",
+      "startMs": 234150,
+      "durationMs": 200,
+      "endMs": 234350
+    },
+    {
+      "word": "link",
+      "startMs": 234363,
+      "durationMs": 225,
+      "endMs": 234588
+    },
+    {
+      "word": "is",
+      "startMs": 234600,
+      "durationMs": 113,
+      "endMs": 234713
+    },
+    {
+      "word": "down",
+      "startMs": 234725,
+      "durationMs": 213,
+      "endMs": 234938
+    },
+    {
+      "word": "there",
+      "startMs": 234950,
+      "durationMs": 163,
+      "endMs": 235113
+    },
+    {
+      "word": "too",
+      "startMs": 235125,
+      "durationMs": 350,
+      "endMs": 235475
+    },
+    {
+      "word": "and",
+      "startMs": 235488,
+      "durationMs": 175,
+      "endMs": 235663
+    },
+    {
+      "word": "it",
+      "startMs": 235675,
+      "durationMs": 100,
+      "endMs": 235775
+    },
+    {
+      "word": "genuinely",
+      "startMs": 235788,
+      "durationMs": 538,
+      "endMs": 236325
+    },
+    {
+      "word": "helps",
+      "startMs": 236338,
+      "durationMs": 538,
+      "endMs": 236875
+    },
+    {
+      "word": "If",
+      "startMs": 237738,
+      "durationMs": 150,
+      "endMs": 237888
+    },
+    {
+      "word": "this",
+      "startMs": 237900,
+      "durationMs": 200,
+      "endMs": 238100
+    },
+    {
+      "word": "video",
+      "startMs": 238113,
+      "durationMs": 363,
+      "endMs": 238475
+    },
+    {
+      "word": "saved",
+      "startMs": 238488,
+      "durationMs": 313,
+      "endMs": 238800
+    },
+    {
+      "word": "you",
+      "startMs": 238813,
+      "durationMs": 100,
+      "endMs": 238913
+    },
+    {
+      "word": "time",
+      "startMs": 238925,
+      "durationMs": 463,
+      "endMs": 239388
+    },
+    {
+      "word": "hit",
+      "startMs": 239563,
+      "durationMs": 138,
+      "endMs": 239700
+    },
+    {
+      "word": "that",
+      "startMs": 239713,
+      "durationMs": 175,
+      "endMs": 239888
+    },
+    {
+      "word": "like",
+      "startMs": 239900,
+      "durationMs": 200,
+      "endMs": 240100
+    },
+    {
+      "word": "button",
+      "startMs": 240113,
+      "durationMs": 325,
+      "endMs": 240438
+    },
+    {
+      "word": "it",
+      "startMs": 240663,
+      "durationMs": 75,
+      "endMs": 240738
+    },
+    {
+      "word": "actually",
+      "startMs": 240750,
+      "durationMs": 413,
+      "endMs": 241163
+    },
+    {
+      "word": "helps",
+      "startMs": 241175,
+      "durationMs": 250,
+      "endMs": 241425
+    },
+    {
+      "word": "this",
+      "startMs": 241438,
+      "durationMs": 188,
+      "endMs": 241625
+    },
+    {
+      "word": "channel",
+      "startMs": 241638,
+      "durationMs": 338,
+      "endMs": 241975
+    },
+    {
+      "word": "grow",
+      "startMs": 241988,
+      "durationMs": 425,
+      "endMs": 242413
+    },
+    {
+      "word": "Subscribe",
+      "startMs": 243275,
+      "durationMs": 563,
+      "endMs": 243838
+    },
+    {
+      "word": "so",
+      "startMs": 243850,
+      "durationMs": 125,
+      "endMs": 243975
+    },
+    {
+      "word": "you",
+      "startMs": 243988,
+      "durationMs": 125,
+      "endMs": 244113
+    },
+    {
+      "word": "don't",
+      "startMs": 244125,
+      "durationMs": 200,
+      "endMs": 244325
+    },
+    {
+      "word": "miss",
+      "startMs": 244338,
+      "durationMs": 188,
+      "endMs": 244525
+    },
+    {
+      "word": "the",
+      "startMs": 244538,
+      "durationMs": 75,
+      "endMs": 244613
+    },
+    {
+      "word": "next",
+      "startMs": 244625,
+      "durationMs": 350,
+      "endMs": 244975
+    },
+    {
+      "word": "AI",
+      "startMs": 244988,
+      "durationMs": 188,
+      "endMs": 245175
+    },
+    {
+      "word": "gaming",
+      "startMs": 245188,
+      "durationMs": 350,
+      "endMs": 245538
+    },
+    {
+      "word": "workflow",
+      "startMs": 245550,
+      "durationMs": 413,
+      "endMs": 245963
+    },
+    {
+      "word": "I",
+      "startMs": 245975,
+      "durationMs": 88,
+      "endMs": 246063
+    },
+    {
+      "word": "cover",
+      "startMs": 246075,
+      "durationMs": 513,
+      "endMs": 246588
+    },
+    {
+      "word": "And",
+      "startMs": 247450,
+      "durationMs": 163,
+      "endMs": 247613
+    },
+    {
+      "word": "drop",
+      "startMs": 247625,
+      "durationMs": 225,
+      "endMs": 247850
+    },
+    {
+      "word": "a",
+      "startMs": 247863,
+      "durationMs": 75,
+      "endMs": 247938
+    },
+    {
+      "word": "comment",
+      "startMs": 247950,
+      "durationMs": 413,
+      "endMs": 248363
+    },
+    {
+      "word": "below",
+      "startMs": 248375,
+      "durationMs": 300,
+      "endMs": 248675
+    },
+    {
+      "word": "telling",
+      "startMs": 248688,
+      "durationMs": 350,
+      "endMs": 249038
+    },
+    {
+      "word": "me",
+      "startMs": 249050,
+      "durationMs": 113,
+      "endMs": 249163
+    },
+    {
+      "word": "what",
+      "startMs": 249175,
+      "durationMs": 175,
+      "endMs": 249350
+    },
+    {
+      "word": "loadout",
+      "startMs": 249363,
+      "durationMs": 363,
+      "endMs": 249725
+    },
+    {
+      "word": "you're",
+      "startMs": 249738,
+      "durationMs": 138,
+      "endMs": 249875
+    },
+    {
+      "word": "running",
+      "startMs": 249888,
+      "durationMs": 275,
+      "endMs": 250163
+    },
+    {
+      "word": "in",
+      "startMs": 250175,
+      "durationMs": 100,
+      "endMs": 250275
+    },
+    {
+      "word": "Arc",
+      "startMs": 250288,
+      "durationMs": 238,
+      "endMs": 250525
+    },
+    {
+      "word": "Raiders",
+      "startMs": 250538,
+      "durationMs": 363,
+      "endMs": 250900
+    },
+    {
+      "word": "right",
+      "startMs": 250913,
+      "durationMs": 188,
+      "endMs": 251100
+    },
+    {
+      "word": "now",
+      "startMs": 251113,
+      "durationMs": 338,
+      "endMs": 251450
+    },
+    {
+      "word": "I",
+      "startMs": 252313,
+      "durationMs": 163,
+      "endMs": 252475
+    },
+    {
+      "word": "read",
+      "startMs": 252488,
+      "durationMs": 250,
+      "endMs": 252738
+    },
+    {
+      "word": "every",
+      "startMs": 252750,
+      "durationMs": 263,
+      "endMs": 253013
+    },
+    {
+      "word": "single",
+      "startMs": 253025,
+      "durationMs": 375,
+      "endMs": 253400
+    },
+    {
+      "word": "one",
+      "startMs": 253413,
+      "durationMs": 375,
+      "endMs": 253788
+    },
+    {
+      "word": "See",
+      "startMs": 254650,
+      "durationMs": 225,
+      "endMs": 254875
+    },
+    {
+      "word": "you",
+      "startMs": 254888,
+      "durationMs": 138,
+      "endMs": 255025
+    },
+    {
+      "word": "in",
+      "startMs": 255038,
+      "durationMs": 88,
+      "endMs": 255125
+    },
+    {
+      "word": "the",
+      "startMs": 255138,
+      "durationMs": 75,
+      "endMs": 255213
+    },
+    {
+      "word": "next",
+      "startMs": 255225,
+      "durationMs": 363,
+      "endMs": 255588
+    },
+    {
+      "word": "one",
+      "startMs": 255600,
+      "durationMs": 338,
+      "endMs": 255938
+    }
+  ]
+}
