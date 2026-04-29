@@ -300,7 +300,7 @@ jobs:
         run: |
           git config user.name "gamma-stream-bot"
           git config user.email "bot@gammacash.online"
-          git add analytics/medium-published.json
+          [ -f analytics/medium-published.json ] && git add analytics/medium-published.json || true
           git diff --cached --quiet || git commit -m "chore: update Medium publish log [skip ci]"
           git push origin ${{ github.ref_name }} || true
 
