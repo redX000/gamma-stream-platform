@@ -99,7 +99,12 @@ jobs:
             echo "No new timing files."
           else
             git commit -m "chore: voiceover timing data [run #${{ github.run_number }}]"
-            git push
+            for i in 1 2 3; do
+              git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
+              git push && break
+              echo "Push attempt $i failed, retrying in 10s..."
+              sleep 10
+            done
           fi
 
       # ── YouTube upload (skipped when secret is not configured) ──────────────
@@ -119,13 +124,17 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
           git add videos/uploads.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No new upload records."
           else
             git commit -m "chore: youtube upload records (shorts) [run #${{ github.run_number }}]"
-            git push
+            for i in 1 2 3; do
+              git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
+              git push && break
+              echo "Push attempt $i failed, retrying in 10s..."
+              sleep 10
+            done
           fi
 
   # ── Horizontal (standard YouTube) — slower, separate job ───────────────────
@@ -202,13 +211,17 @@ jobs:
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
           git add videos/uploads.json 2>/dev/null || true
           if git diff --cached --quiet; then
             echo "No new upload records."
           else
             git commit -m "chore: youtube upload records (long-form) [run #${{ github.run_number }}]"
-            git push
+            for i in 1 2 3; do
+              git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
+              git push && break
+              echo "Push attempt $i failed, retrying in 10s..."
+              sleep 10
+            done
           fi
 
   # ── Failure notification ────────────────────────────────────────────────────

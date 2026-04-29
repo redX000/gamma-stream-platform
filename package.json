@@ -25,7 +25,10 @@
     "redirects": "node scripts/create-redirects.js",
     "redirects:update": "node scripts/create-redirects.js --update",
     "redirects:dry": "node scripts/create-redirects.js --dry-run",
-    "convertkit": "node automation/convertkit-setup.js"
+    "convertkit": "node automation/convertkit-setup.js",
+    "sales-page": "node scripts/create-sales-page.js",
+    "test-ga4": "node scripts/test-ga4.js",
+    "health-check": "node scripts/health-check.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
