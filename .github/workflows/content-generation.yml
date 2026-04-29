@@ -126,7 +126,12 @@ jobs:
             echo "No changes to commit"
           else
             git commit -m "chore: auto video script + Medium log [skip ci]"
-            git push origin main
+            for i in 1 2 3; do
+              git pull --rebase origin main 2>/dev/null || true
+              if git push origin main; then break; fi
+              echo "Push attempt $i failed, retrying in 10s..."
+              sleep 10
+            done
           fi
 
       - name: Send failure notification

@@ -101,7 +101,7 @@ jobs:
             git commit -m "chore: voiceover timing data [run #${{ github.run_number }}]"
             for i in 1 2 3; do
               git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
-              git push && break
+              if git push; then break; fi
               echo "Push attempt $i failed, retrying in 10s..."
               sleep 10
             done
@@ -131,7 +131,7 @@ jobs:
             git commit -m "chore: youtube upload records (shorts) [run #${{ github.run_number }}]"
             for i in 1 2 3; do
               git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
-              git push && break
+              if git push; then break; fi
               echo "Push attempt $i failed, retrying in 10s..."
               sleep 10
             done
@@ -218,7 +218,7 @@ jobs:
             git commit -m "chore: youtube upload records (long-form) [run #${{ github.run_number }}]"
             for i in 1 2 3; do
               git pull --rebase origin ${{ github.ref_name }} 2>/dev/null || true
-              git push && break
+              if git push; then break; fi
               echo "Push attempt $i failed, retrying in 10s..."
               sleep 10
             done
