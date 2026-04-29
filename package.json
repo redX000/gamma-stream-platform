@@ -28,7 +28,9 @@
     "convertkit": "node automation/convertkit-setup.js",
     "sales-page": "node scripts/create-sales-page.js",
     "test-ga4": "node scripts/test-ga4.js",
-    "health-check": "node scripts/health-check.js"
+    "health-check": "node scripts/health-check.js",
+    "site-upgrade": "node scripts/site-upgrade.js",
+    "rebuild-homepage": "node scripts/rebuild-homepage.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
