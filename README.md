@@ -1,7 +1,7 @@
 # 🚀 Gamma Stream Platform
 
 > Fully autonomous AI-powered affiliate income platform — AI & SaaS tools niche
-
+EVERYTHING AND MORE
 [![System Status](https://img.shields.io/badge/System%20Status-LIVE-brightgreen)](https://github.com/redX000/gamma-stream-platform)
 [![Version](https://img.shields.io/badge/version-2.0.0-blue)](CHANGELOG.md)
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/features/actions)
@@ -129,7 +129,7 @@ SMTP_PASS                  # SMTP password or app password
 ```
 
 Once secrets are set, all four workflows activate automatically on their schedules.
-
+NOTE: You gotta do it manually!
 ---
 
 ## All Commands
