@@ -103,8 +103,8 @@ Once approved:
 
 ## STEP 7 — AdSense (do NOT apply before 10 posts)
 
-Current posts: **4** — pipeline auto-publishes Mon/Wed/Fri.
-**Estimated ready: ~2026-05-12**
+Current posts: **3** (Hello World deleted) — pipeline auto-publishes Mon/Wed/Fri.
+**Estimated ready: ~2026-05-14**
 
 1. Run `npm run adsense-check` to verify 10+ posts and all required pages
 2. Apply at: https://www.google.com/adsense/start/
