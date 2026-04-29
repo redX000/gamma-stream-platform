@@ -2,7 +2,7 @@
 
 > **Single source of truth.** Check a box the moment a task is done.
 > Update STATUS.md after every session. Commit both files together.
-> Last updated: 2026-04-29 (session 2)
+> Last updated: 2026-04-29 (session 3)
 
 ---
 
@@ -17,6 +17,9 @@
 - [x] Add `YOUTUBE_REFRESH_TOKEN` to GitHub Secrets ✅ done 2026-04-28
 - [x] Add `PEXELS_API_KEY` to GitHub Secrets ✅ done 2026-04-28
 - [x] Manually trigger `video-assembler.yml` workflow once to verify end-to-end ✅ done 2026-04-29
+- [x] Fix `set -e` bash bug in all 3 push retry loops in `video-assembler.yml` ✅ done 2026-04-29
+- [x] Add push retry loop to `content-generation.yml` ✅ done 2026-04-29
+- [x] All 6 workflows green: 19 passed · 0 failed ✅ done 2026-04-29
 
 ### A2. GA4 Analytics
 - [x] Add `GA4_MEASUREMENT_ID = G-6DJVSLX7WX` to GitHub Secrets ✅ done 2026-04-27
@@ -33,6 +36,7 @@
 - [x] Update `NOTIFICATION_EMAIL` GitHub Secret → `gammacash.platform@gmail.com` ✅ done 2026-04-29
 - [ ] Optionally migrate WordPress admin email to `gammacash.platform@gmail.com`
   - WordPress Admin → Users → Profile → Email → Update
+- [x] Delete default "Hello world!" post (15 words, was blocking AdSense word-count check) ✅ done 2026-04-29
 
 ---
 
@@ -68,6 +72,7 @@
 
 ### B3. AdSense Application
 - [ ] Verify site has 10+ published posts (`node scripts/adsense-checker.js` shows count)
+  - Current: **3 posts** (Hello World deleted 2026-04-29) — need 7 more, ETA ~2026-05-14
 - [ ] Apply at https://www.google.com/adsense/start/
   - Site URL: https://gammacash.online
   - Content language: English
@@ -189,22 +194,25 @@
 | `WORDPRESS_URL` | ✅ Set | https://gammacash.online |
 | `WORDPRESS_USERNAME` | ✅ Set | WP admin email |
 | `WORDPRESS_PASSWORD` | ✅ Set | WP admin password |
-| `NOTIFICATION_EMAIL` | ✅ Set (needs update) | → change to gammacash.platform@gmail.com |
+| `NOTIFICATION_EMAIL` | ✅ Set | gammacash.platform@gmail.com ✅ done 2026-04-29 |
 | `SMTP_HOST` | ✅ Set | smtp.hostinger.com |
 | `SMTP_PORT` | ✅ Set | 587 |
 | `SMTP_USER` | ✅ Set | noreply@gammacash.online |
 | `SMTP_PASS` | ✅ Set | Hostinger email password |
 | `GA4_MEASUREMENT_ID` | ✅ Set | G-6DJVSLX7WX |
-| `GA4_API_SECRET` | ❌ Needed | GA4 → Data Streams → MP API secrets |
-| `GA4_PROPERTY_ID` | ❌ Needed | GA4 → Property Settings |
-| `GA4_SERVICE_ACCOUNT_JSON` | ❌ Needed | Google Cloud → IAM → Service Account |
-| `CONVERTKIT_API_KEY` | ❌ Needed | ConvertKit → Settings → API |
-| `PINTEREST_APP_ID` | ❌ Pending | Pinterest app approval |
+| `GA4_API_SECRET` | ✅ Set | ✅ done 2026-04-28 |
+| `GA4_PROPERTY_ID` | ✅ Set | ✅ done 2026-04-28 |
+| `GA4_SERVICE_ACCOUNT_JSON` | ✅ Set | ✅ done 2026-04-28 |
+| `CONVERTKIT_API_KEY` | ❌ Needed | Family member creates ConvertKit account first |
+| `CONVERTKIT_FORM_ID` | ❌ Needed | Output of `npm run convertkit` after API key set |
+| `PINTEREST_APP_ID` | ❌ Pending | Pinterest app approval (applied 2026-04-27) |
 | `PINTEREST_APP_SECRET` | ❌ Pending | Pinterest app approval |
 | `PINTEREST_REFRESH_TOKEN` | ❌ Pending | Run pinterest-auth.js after approval |
 | `PINTEREST_BOARD_ID` | ❌ Pending | Run pinterest-auth.js after approval |
 | `YOUTUBE_CLIENT_ID` | ✅ Set | Google Cloud Console |
 | `YOUTUBE_CLIENT_SECRET` | ✅ Set | Google Cloud Console |
-| `YOUTUBE_REFRESH_TOKEN` | ❌ Needed | Run scripts/youtube-auth.js |
-| `PEXELS_API_KEY` | ❌ Needed | https://www.pexels.com/api/ |
+| `YOUTUBE_REFRESH_TOKEN` | ✅ Set | ✅ done 2026-04-28 — ran scripts/youtube-auth.js |
+| `PEXELS_API_KEY` | ✅ Set | ✅ done 2026-04-28 |
+| `GUMROAD_ACCESS_TOKEN` | ❌ Needed | Family member creates Gumroad account first |
+| `GUMROAD_PRODUCT_URL` | ❌ Needed | Output of `npm run gumroad:paid` after token set |
 | `REDDIT_*` (5 secrets) | ❌ Skipped | Reddit permanently blocked |
