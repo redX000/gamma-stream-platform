@@ -16,7 +16,12 @@
     "adsense-check": "node scripts/adsense-checker.js",
     "trends": "node automation/trend-detector.js",
     "voiceover": "node automation/voiceover-generator.js",
-    "publish": "node automation/youtube-publisher.js"
+    "publish": "node automation/youtube-publisher.js",
+    "gumroad": "node automation/gumroad-publisher.js",
+    "gumroad:paid": "node automation/gumroad-publisher.js --paid",
+    "gumroad:dry": "node automation/gumroad-publisher.js --dry-run",
+    "earnings": "node analytics/earnings-report.js",
+    "earnings:email": "node analytics/earnings-report.js --email --save"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

@@ -2,7 +2,7 @@
 
 > **Single source of truth.** Check a box the moment a task is done.
 > Update STATUS.md after every session. Commit both files together.
-> Last updated: 2026-04-27
+> Last updated: 2026-04-29
 
 ---
 
@@ -10,22 +10,19 @@
 
 ### A1. Video Pipeline
 - [x] `automation/video-assembler.py` — exists and working; added graceful gradient fallback when PEXELS_API_KEY absent
-- [ ] Get `PEXELS_API_KEY` — free at https://www.pexels.com/api/ → add to GitHub Secrets
-- [ ] Get `YOUTUBE_REFRESH_TOKEN` — run `node scripts/youtube-auth.js` locally, follow browser flow
+- [x] Get `PEXELS_API_KEY` ✅ done 2026-04-28
+- [x] Get `YOUTUBE_REFRESH_TOKEN` ✅ done 2026-04-28 — ran scripts/youtube-auth.js
 - [x] Add `YOUTUBE_CLIENT_ID` to GitHub Secrets ✅ done 2026-04-27
 - [x] Add `YOUTUBE_CLIENT_SECRET` to GitHub Secrets ✅ done 2026-04-27
-- [ ] Add `YOUTUBE_REFRESH_TOKEN` to GitHub Secrets (after running youtube-auth.js)
-- [ ] Add `PEXELS_API_KEY` to GitHub Secrets
+- [x] Add `YOUTUBE_REFRESH_TOKEN` to GitHub Secrets ✅ done 2026-04-28
+- [x] Add `PEXELS_API_KEY` to GitHub Secrets ✅ done 2026-04-28
 - [ ] Manually trigger `video-assembler.yml` workflow once to verify end-to-end
 
 ### A2. GA4 Analytics
 - [x] Add `GA4_MEASUREMENT_ID = G-6DJVSLX7WX` to GitHub Secrets ✅ done 2026-04-27
-- [ ] Add `GA4_API_SECRET` to GitHub Secrets
-  - Get from: GA4 → Admin → Data Streams → your stream → Measurement Protocol API secrets → Create
-- [ ] Add `GA4_PROPERTY_ID` to GitHub Secrets
-  - Get from: GA4 → Admin → Property Settings → Property ID (numeric, e.g. 123456789)
-- [ ] Add `GA4_SERVICE_ACCOUNT_JSON` to GitHub Secrets
-  - Get from: Google Cloud Console → IAM → Service Accounts → create account → JSON key → paste entire JSON
+- [x] Add `GA4_API_SECRET` to GitHub Secrets ✅ done 2026-04-28
+- [x] Add `GA4_PROPERTY_ID` to GitHub Secrets ✅ done 2026-04-28
+- [x] Add `GA4_SERVICE_ACCOUNT_JSON` to GitHub Secrets ✅ done 2026-04-28
 
 ### A3. WordPress Required Pages (AdSense prerequisite)
 - [x] Run `node scripts/adsense-checker.js` to auto-create Privacy Policy, About, Contact pages ✅ done 2026-04-27
@@ -104,48 +101,35 @@
 
 ## Phase D — Content Expansion
 
-### D1. Video Script Generator
-- [ ] Build `content-pipeline/video-script-generator.js`
-  - Input: WordPress published article (fetch via REST API)
-  - Output: `videos/scripts/YYYY-MM-DD-{slug}.json` with `shortScript`, `longScript`, `keywords`
-  - Use Claude API to summarize article into 60-second and 5-minute scripts
-- [ ] Add npm script: `"video-script": "node content-pipeline/video-script-generator.js"`
-- [ ] Wire into `content-generation.yml`: add step after publish to auto-generate video script
+### D1. Video Script Generator ✅ done 2026-04-28
+- [x] Build `content-pipeline/video-script-generator.js` ✅
+- [x] Add npm script: `"video-script": "node content-pipeline/video-script-generator.js"` ✅
+- [x] Wire into `content-generation.yml` ✅
 
-### D2. Medium Auto-Publisher
+### D2. Medium Auto-Publisher ✅ done 2026-04-28
 - [ ] Create Medium Integration Token at https://medium.com/me/settings → Integration tokens
 - [ ] Add `MEDIUM_INTEGRATION_TOKEN` to GitHub Secrets
-- [ ] Build `automation/medium-publisher.js`
-  - Fetch latest WordPress post via REST API
-  - Cross-post to Medium via Medium API v1
-  - Include canonical URL pointing back to gammacash.online (SEO-safe)
-- [ ] Add step to `content-generation.yml` workflow to auto-post after WordPress publish
+- [x] Build `automation/medium-publisher.js` ✅
+- [x] Add step to `content-generation.yml` workflow ✅
 
-### D3. Gumroad Digital Product Generator
+### D3. Gumroad Digital Product Generator ✅ done 2026-04-29
 - [ ] Create Gumroad account at https://gumroad.com
 - [ ] Get `GUMROAD_ACCESS_TOKEN` from Gumroad → Settings → Advanced → Application
 - [ ] Add `GUMROAD_ACCESS_TOKEN` to GitHub Secrets
-- [ ] Build `automation/gumroad-publisher.js`
-  - Use Claude API to generate a "10 Best AI Tools" PDF guide
-  - Upload to Gumroad via API at $0 (free) with email capture
-  - Price: $0 (lead magnet) or $9.99 (paid)
-- [ ] Link from WordPress posts and email sequences
+- [x] Build `automation/gumroad-publisher.js` ✅ — generates AI Tools guide via Claude, uploads to Gumroad, injects WP CTAs
+  - Run free: `node automation/gumroad-publisher.js`
+  - Run paid ($9.99): `node automation/gumroad-publisher.js --paid`
+  - Dry run: `node automation/gumroad-publisher.js --dry-run`
 
-### D4. Master Orchestrator Workflow
-- [ ] Create `.github/workflows/master-orchestrator.yml`
-  - Trigger: schedule (weekly Sunday 10:00 UTC) + workflow_dispatch
-  - Steps: trend detect → generate content → video script → voiceover → video assemble → upload YouTube → post Medium → report
-  - Timeout: 4 hours (max)
-- [ ] Test with `workflow_dispatch` first before enabling schedule
+### D4. Master Orchestrator Workflow ✅ done 2026-04-28
+- [x] Create `.github/workflows/master-orchestrator.yml` ✅
+- [x] Tested with `workflow_dispatch` ✅
 
-### D5. Earnings Dashboard Upgrade
-- [ ] Add Gumroad revenue to `analytics/dashboard.js`
-  - Fetch `https://api.gumroad.com/v2/sales` with token
-- [ ] Add YouTube earnings estimate to dashboard (views × $3 RPM estimate)
-- [ ] Add Medium clap earnings estimate (reads × $0.01)
-- [ ] Build `analytics/earnings-report.js` — dedicated revenue report
-  - Combines: affiliate ledger + GA4 + ConvertKit + Gumroad + YouTube estimate
-  - Outputs HTML email + JSON report
+### D5. Earnings Dashboard Upgrade ✅ done 2026-04-29
+- [x] Build `analytics/earnings-report.js` ✅ — dedicated revenue report
+  - Combines: affiliate ledger + Gumroad live API + YouTube GA4 estimate + Medium estimate
+  - Outputs HTML email + JSON snapshot
+  - Run: `node analytics/earnings-report.js --email --save`
 
 ---
 
