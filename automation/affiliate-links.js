@@ -29,6 +29,11 @@ export const AFFILIATE_LINKS = {
   'Canva':         'https://gammacash.online/go/canva',
   'ChatGPT Plus':  'https://gammacash.online/go/chatgpt-plus',
   'Midjourney':    'https://gammacash.online/go/midjourney',
+  'Systeme.io':    'https://gammacash.online/go/systeme-io',
+  'Zapier':        'https://gammacash.online/go/zapier',
+  'Scalenut':      'https://gammacash.online/go/scalenut',
+  'Notion AI':     'https://gammacash.online/go/notion',
+  'Notion':        'https://gammacash.online/go/notion',
 };
 
 // ---------------------------------------------------------------------------

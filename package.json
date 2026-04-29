@@ -21,7 +21,11 @@
     "gumroad:paid": "node automation/gumroad-publisher.js --paid",
     "gumroad:dry": "node automation/gumroad-publisher.js --dry-run",
     "earnings": "node analytics/earnings-report.js",
-    "earnings:email": "node analytics/earnings-report.js --email --save"
+    "earnings:email": "node analytics/earnings-report.js --email --save",
+    "redirects": "node scripts/create-redirects.js",
+    "redirects:update": "node scripts/create-redirects.js --update",
+    "redirects:dry": "node scripts/create-redirects.js --dry-run",
+    "convertkit": "node automation/convertkit-setup.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
