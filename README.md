@@ -284,4 +284,4 @@ MIT — see [LICENSE](LICENSE)
 
 ---
 
-*Built end-to-end with [Claude Code](https://claude.ai/code) by Anthropic — Gamma Stream Platform v2.0.0*
+*MAKING MONEY IS THE ONLY WAY— Gamma Stream Platform v2.0.0*
