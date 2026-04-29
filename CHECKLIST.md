@@ -2,7 +2,7 @@
 
 > **Single source of truth.** Check a box the moment a task is done.
 > Update STATUS.md after every session. Commit both files together.
-> Last updated: 2026-04-29
+> Last updated: 2026-04-29 (session 2)
 
 ---
 
@@ -16,7 +16,7 @@
 - [x] Add `YOUTUBE_CLIENT_SECRET` to GitHub Secrets ✅ done 2026-04-27
 - [x] Add `YOUTUBE_REFRESH_TOKEN` to GitHub Secrets ✅ done 2026-04-28
 - [x] Add `PEXELS_API_KEY` to GitHub Secrets ✅ done 2026-04-28
-- [ ] Manually trigger `video-assembler.yml` workflow once to verify end-to-end
+- [x] Manually trigger `video-assembler.yml` workflow once to verify end-to-end ✅ done 2026-04-29
 
 ### A2. GA4 Analytics
 - [x] Add `GA4_MEASUREMENT_ID = G-6DJVSLX7WX` to GitHub Secrets ✅ done 2026-04-27
@@ -26,12 +26,11 @@
 
 ### A3. WordPress Required Pages (AdSense prerequisite)
 - [x] Run `node scripts/adsense-checker.js` to auto-create Privacy Policy, About, Contact pages ✅ done 2026-04-27
-  - Note: Privacy Policy created at `/privacy-policy-2/` (slug conflict) — fix in WP Admin → Pages → rename slug
+  - ~~Note: Privacy Policy created at `/privacy-policy-2/` (slug conflict)~~ — Fixed via API 2026-04-29, now at `/privacy-policy/`
   - Requires: `WORDPRESS_URL`, `WORDPRESS_USERNAME`, `WORDPRESS_PASSWORD` in local `.env`
 
 ### A4. Email — Update NOTIFICATION_EMAIL
-- [ ] Update `NOTIFICATION_EMAIL` GitHub Secret from personal email → `gammacash.platform@gmail.com`
-  - Command: `gh secret set NOTIFICATION_EMAIL --body "gammacash.platform@gmail.com"`
+- [x] Update `NOTIFICATION_EMAIL` GitHub Secret → `gammacash.platform@gmail.com` ✅ done 2026-04-29
 - [ ] Optionally migrate WordPress admin email to `gammacash.platform@gmail.com`
   - WordPress Admin → Users → Profile → Email → Update
 
@@ -49,18 +48,23 @@
 - [ ] **Scalenut** (30% lifetime) — apply at https://scalenut.com/affiliate
 - [ ] **Notion AI** (20% per sale) — apply at https://notion.so/affiliate
 
-### B2. Pretty Links Redirects (WordPress Admin → Pretty Links)
-> Until approved: point to `#` placeholder. Replace with real URLs when approved.
-- [ ] Create `/go/jasper` → your Jasper AI affiliate URL
-- [ ] Create `/go/copyai` → your Copy.ai affiliate URL
-- [ ] Create `/go/surfer-seo` → your Surfer SEO affiliate URL
-- [ ] Create `/go/convertkit` → your ConvertKit affiliate URL
-- [ ] Create `/go/writesonic` → your Writesonic affiliate URL
-- [ ] Create `/go/grammarly` → your Grammarly affiliate URL
-- [ ] Create `/go/canva` → your Canva affiliate URL
-- [ ] Create `/go/chatgpt-plus` → your ChatGPT Plus affiliate URL
-- [ ] Create `/go/midjourney` → your Midjourney affiliate URL
-- [ ] Create `/go/systeme-io` → your Systeme.io affiliate URL
+### B2. Affiliate Redirect Pages ✅ infrastructure done 2026-04-29
+> Pages created via `scripts/create-redirects.js`. Currently showing placeholder.
+> **When you get an affiliate URL**: edit `REDIRECTS` in `scripts/create-redirects.js`, then run `npm run redirects:update`.
+- [x] `/go/jasper` — created (placeholder) ✅
+- [x] `/go/copyai` — created (placeholder) ✅
+- [x] `/go/surfer-seo` — created (placeholder) ✅
+- [x] `/go/convertkit` — created (placeholder) ✅
+- [x] `/go/writesonic` — created (placeholder) ✅
+- [x] `/go/grammarly` — created (placeholder) ✅
+- [x] `/go/canva` — created (placeholder) ✅
+- [x] `/go/chatgpt-plus` — created (placeholder) ✅
+- [x] `/go/midjourney` — created (placeholder) ✅
+- [x] `/go/systeme-io` — created (placeholder) ✅
+- [x] `/go/zapier` — created (placeholder) ✅
+- [x] `/go/scalenut` — created (placeholder) ✅
+- [x] `/go/notion` — created (placeholder) ✅
+- [ ] **ACTION**: Update redirect URLs once affiliate programs are approved (npm run redirects:update)
 
 ### B3. AdSense Application
 - [ ] Verify site has 10+ published posts (`node scripts/adsense-checker.js` shows count)
