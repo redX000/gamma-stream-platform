@@ -32,7 +32,10 @@
     "site-upgrade": "node scripts/site-upgrade.js",
     "rebuild-homepage": "node scripts/rebuild-homepage.js",
     "deals:update": "node automation/appsumo-deals-fetcher.js",
-    "deals:dry": "node automation/appsumo-deals-fetcher.js --dry-run"
+    "deals:dry": "node automation/appsumo-deals-fetcher.js --dry-run",
+    "inject-css": "node scripts/inject-theme-css.js",
+    "install-plugins": "node scripts/install-plugins.js",
+    "activate-adsense": "node scripts/activate-adsense.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

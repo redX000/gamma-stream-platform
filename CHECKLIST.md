@@ -2,7 +2,7 @@
 
 > **Single source of truth.** Check a box the moment a task is done.
 > Update STATUS.md after every session. Commit both files together.
-> Last updated: 2026-04-29 (session 3)
+> Last updated: 2026-04-30 (session 5)
 
 ---
 
@@ -68,16 +68,21 @@
 - [x] `/go/zapier` — created (placeholder) ✅
 - [x] `/go/scalenut` — created (placeholder) ✅
 - [x] `/go/notion` — created (placeholder) ✅
+- [x] `/go/appsumo` — created (placeholder) ✅ done 2026-04-30
+- [x] `/go/appsumo-deals` — created (placeholder) ✅ done 2026-04-30
 - [ ] **ACTION**: Update redirect URLs once affiliate programs are approved (npm run redirects:update)
 
 ### B3. AdSense Application
-- [ ] Verify site has 10+ published posts (`node scripts/adsense-checker.js` shows count)
+- [ ] Wait for email from `adsense-readiness-check` workflow — fires automatically when 10+ posts AND all required pages exist
   - Current: **3 posts** (Hello World deleted 2026-04-29) — need 7 more, ETA ~2026-05-14
-- [ ] Apply at https://www.google.com/adsense/start/
-  - Site URL: https://gammacash.online
-  - Content language: English
+  - Workflow runs daily at 07:00 UTC — no manual monitoring needed
+- [ ] After notification: Apply at https://www.google.com/adsense/start/
+  - Use Moroccan operator's Google account. Site URL: https://gammacash.online
 - [ ] Wait for AdSense approval (1–14 days)
-- [ ] Add AdSense script to WordPress (via Appearance → Theme Editor or a plugin)
+- [ ] Add `ADSENSE_PUBLISHER_ID=ca-pub-XXXX` to .env + GitHub Secrets
+- [ ] Add AdSense auto-ads tag via WP Site Kit plugin (easiest) or FSE footer template
+- [ ] Payout: Payoneer USD — select "International wire" in AdSense Payments, use Payoneer virtual account details
+- [ ] See full guide: `docs/adsense-readiness.md`
 
 ---
 
@@ -153,24 +158,65 @@
 - [x] Navigation menu created — Home | AI Tools Reviews | Make Money Online | YouTube | TikTok | 🔥 Top Picks
 - [x] Site tagline updated, front page set to homepage
 - [x] Reading progress bar, social proof popups, auto-TOC, author box, share buttons (via JS)
-- [ ] **MANUAL STEP REQUIRED** — Paste `scripts/theme.css` into WordPress Customizer → Additional CSS
-  - Go to: https://gammacash.online/wp-admin/customize.php → Additional CSS → paste → Publish
-  - This makes the dark theme apply to ALL pages (posts, archives, etc.)
-  - Without this step: homepage has the theme, other pages use the default WordPress theme
+- [x] `scripts/inject-theme-css.js` built ✅ done 2026-04-30 — auto-injects via FSE global-styles → custom_css → plugin fallback
+- [ ] Run: `npm run inject-css` — injects dark theme to ALL pages (posts, archives, inner pages)
 
-### E2. SEO Improvements
-- [ ] Install Rank Math or verify Yoast SEO is properly configured
-- [ ] Submit sitemap to Google Search Console: https://search.google.com/search-console
-  - Sitemap URL: https://gammacash.online/sitemap_xml
+### E2. SEO Improvements ✅ automated 2026-04-30
+- [x] `scripts/install-plugins.js` built — installs Rank Math SEO, Wordfence, LiteSpeed Cache via WP REST API
+- [ ] Run: `npm run install-plugins` — installs all 3 plugins in one command
+- [ ] After Rank Math install: run Setup Wizard at https://gammacash.online/wp-admin/admin.php?page=rank-math-wizard
+- [ ] Submit sitemap to Google Search Console: https://search.google.com/search-console → Sitemaps → `sitemap.xml`
 - [ ] Submit to Bing Webmaster Tools: https://www.bing.com/webmasters
-- [ ] Set up internal linking between published posts (pillar + cluster structure)
 
-### E3. Performance & Security
-- [ ] Install WP Rocket or W3 Total Cache plugin for caching
-- [ ] Enable Hostinger's LiteSpeed cache
-- [ ] Add Cloudflare (free plan) for CDN + DDoS protection
+### E3. Performance & Security ✅ automated 2026-04-30
+- [x] `scripts/install-plugins.js` — also installs Wordfence + LiteSpeed Cache
+- [ ] Run: `npm run install-plugins` (same command as E2 — installs all 3)
+- [ ] After Wordfence install: complete security setup at https://gammacash.online/wp-admin/admin.php?page=Wordfence
+- [ ] Enable Hostinger's LiteSpeed cache in hosting panel (automatic with LiteSpeed Cache plugin active)
 - [ ] Verify SSL certificate is active (https://gammacash.online)
-- [ ] Install Wordfence Security plugin
+
+---
+
+## Phase F — Passive Income Streams (session 4 — 2026-04-30)
+
+### F1. AppSumo Affiliate ✅ scaffolded 2026-04-30
+- [x] `automation/appsumo-deals-fetcher.js` — /deals page builder, dry-run support ✅
+- [x] `/deals` page live at https://gammacash.online/deals/ (placeholder affiliate ID) ✅
+- [x] `/go/appsumo` + `/go/appsumo-deals` redirect pages created ✅
+- [x] `npm run deals:update` + `npm run deals:dry` scripts added ✅
+- [ ] **ACTION NOW**: Sign up at appsumo.com/affiliates (instant approval, free)
+  - Add `APPSUMO_AFFILIATE_ID=<id>` to `.env` + GitHub Secrets
+  - Run `npm run redirects:update` → `npm run deals:update`
+  - Commission: $10–$150 per sale. Payout: Payoneer USD.
+
+### F2. Google AdSense ✅ scaffolded 2026-04-30
+- [x] `.github/workflows/adsense-readiness-check.yml` — daily monitor, emails at 10 posts ✅
+- [x] `docs/adsense-readiness.md` — full preflight checklist + Payoneer routing guide ✅
+- [ ] Wait for email notification from `adsense-readiness-check` workflow (~2026-05-14)
+- [ ] Apply at google.com/adsense in Moroccan operator's Google account
+- [x] `scripts/activate-adsense.js` built ✅ done 2026-04-30 — installs Insert Headers & Footers + Site Kit, injects auto-ads snippet
+- [ ] After approval: add `ADSENSE_PUBLISHER_ID=ca-pub-XXXX` to .env + GitHub Secrets
+- [ ] Run: `npm run activate-adsense` — auto-installs plugins and injects the AdSense snippet
+
+### F3. SparkLoop Upscribe ✅ scaffolded 2026-04-30
+- [x] `scripts/sparkloop-widget.html` — Upscribe embed with SPARKLOOP_PARTNER_ID placeholder ✅
+- [x] `.github/workflows/subscriber-milestone.yml` — notifies at 500 subs ✅
+- [x] `automation/convertkit-setup.js` — SparkLoop activation instructions added to output ✅
+- [ ] Wait for email notification from `subscriber-milestone` workflow (at 500 subs)
+- [ ] Apply at sparkloop.app (free, 2–5 days approval)
+- [ ] After approval: add `SPARKLOOP_API_KEY` + `SPARKLOOP_PARTNER_ID` to .env + GitHub Secrets
+- [ ] Create /newsletter-confirmed WP page, paste sparkloop-widget.html, update ConvertKit redirect
+- [ ] Revenue: $1–$5 per referral subscriber. Payout: PayPal Morocco → Payoneer USD.
+
+### F4. Paved + Beehiiv Boosts ✅ scaffolded 2026-04-30
+- [x] `docs/newsletter-sponsorships.md` — full activation guide for all 3 newsletter monetization layers ✅
+- [x] `templates/sponsored-email.md` — FTC-compliant sponsored email template + rate card ✅
+- [x] `.github/workflows/subscriber-milestone.yml` — also notifies at 1,000 subs ✅
+- [ ] Wait for email notification from `subscriber-milestone` workflow (at 1,000 subs)
+- [ ] Apply at paved.com (publishers tab) — CPM: $25–$60
+- [ ] Apply at beehiiv.com → Grow → Boosts → Get Boosted
+- [ ] Payout: Payoneer USD virtual account (US ACH from Paved)
+- [ ] Revenue at 1,000 subs: $100–$240/mo from Paved; $1–$3/boost from Beehiiv
 
 ---
 
@@ -215,4 +261,8 @@
 | `PEXELS_API_KEY` | ✅ Set | ✅ done 2026-04-28 |
 | `GUMROAD_ACCESS_TOKEN` | ❌ Needed | Family member creates Gumroad account first |
 | `GUMROAD_PRODUCT_URL` | ❌ Needed | Output of `npm run gumroad:paid` after token set |
+| `APPSUMO_AFFILIATE_ID` | ❌ Needed | appsumo.com/affiliates (instant approval) → run `npm run deals:update` |
+| `ADSENSE_PUBLISHER_ID` | ❌ Pending | Apply when `adsense-readiness-check` emails (~2026-05-14) |
+| `SPARKLOOP_API_KEY` | ❌ Pending | Apply at sparkloop.app when `subscriber-milestone` emails (500 subs) |
+| `SPARKLOOP_PARTNER_ID` | ❌ Pending | Same as above — from SparkLoop Upscribe dashboard |
 | `REDDIT_*` (5 secrets) | ❌ Skipped | Reddit permanently blocked |

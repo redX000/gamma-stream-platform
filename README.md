@@ -1,9 +1,9 @@
-# 🚀 Gamma Stream Platform
+# Gamma Stream Platform
 
 > Fully autonomous AI-powered affiliate income platform — AI & SaaS tools niche
-EVERYTHING AND MORE
+
 [![System Status](https://img.shields.io/badge/System%20Status-LIVE-brightgreen)](https://github.com/redX000/gamma-stream-platform)
-[![Version](https://img.shields.io/badge/version-2.0.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.0.0-blue)](CHANGELOG.md)
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/features/actions)
 [![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-orange)](https://claude.ai/code)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -12,14 +12,15 @@ EVERYTHING AND MORE
 
 ## What is Gamma Stream?
 
-Gamma Stream is a fully autonomous online income system built with Claude Code. It combines multiple revenue streams into a single self-running platform targeting the AI & SaaS tools niche — one of the highest-commission affiliate markets in 2026.
+Gamma Stream is a fully autonomous online income system built with Claude Code. It combines multiple stacked revenue streams into a single self-running platform targeting the AI & SaaS tools niche — one of the highest-commission affiliate markets in 2026.
 
 Once deployed, the system runs daily without manual input:
-- ✅ Generates and publishes SEO-optimized content automatically (Mon/Wed/Fri)
-- ✅ Posts to Reddit and Pinterest daily after each article publishes
-- ✅ Captures email subscribers via lead magnet and runs automated sequences
-- ✅ Tracks affiliate revenue across all 8 programs in a local ledger
-- ✅ Reports weekly KPIs to your inbox every Monday
+- Generates and publishes SEO-optimized content automatically (Mon/Wed/Fri)
+- Posts to Reddit and Pinterest daily after each article publishes
+- Captures email subscribers via lead magnet and runs automated sequences
+- Tracks affiliate revenue across all programs in a local ledger
+- Reports weekly KPIs and earnings to your inbox every Monday
+- Monitors AdSense readiness and subscriber milestones — emails you exactly when to act
 
 ---
 
@@ -30,22 +31,39 @@ Once deployed, the system runs daily without manual input:
 | Phase 1 — Foundation | Project structure, docs, .env, README | ✅ Complete |
 | Phase 2 — Content Pipeline | generator.js, templates, seo-optimizer.js, publisher.js, scheduler.js | ✅ Complete |
 | Phase 3 — Automation | social-poster.js, email sequences, affiliate-tracker.js, lead magnet | ✅ Complete |
-| Phase 4 — Analytics | dashboard.js, kpis.md, weekly report pipeline | ✅ Complete |
-| Phase 5 — GitHub Actions CI/CD | content-generation.yml, social-posting.yml, analytics-report.yml, claude-review.yml | ✅ Complete |
+| Phase 4 — Analytics | dashboard.js, earnings-report.js, kpis.md, weekly report pipeline | ✅ Complete |
+| Phase 5 — GitHub Actions CI/CD | 10 workflows — content, video, social, analytics, monitoring | ✅ Complete |
+| Phase 6 — Passive Income Streams | AppSumo, AdSense, SparkLoop, Paved/Beehiiv — scaffolded + monitored | ✅ Complete |
 
 ---
 
 ## Revenue Streams
 
-| Stream | Status | Est. Monthly (Month 12) |
+| Stream | Activate When | Est. Monthly (Month 12) |
 |---|---|---|
-| Affiliate commissions | 🟢 Active from Day 1 | $500–$5,000 |
-| Display ads (AdSense → Mediavine) | 🟡 Month 3 | $200–$2,000 |
-| Email marketing | 🟢 Active from Day 1 | $500–$2,000 |
-| Digital products | 🟡 Month 6 | $300–$3,000 |
-| Brand sponsorships | 🟡 Month 8 | $500–$3,000 |
-| YouTube Shorts | 🟡 Month 3 | $200–$2,000 |
-| **Total potential** | | **$2,200–$17,000/mo** |
+| Affiliate commissions (13 programs) | Day 1 — `/deals` page live | $500–$5,000 |
+| AppSumo affiliate (up to $150/sale) | Now — instant approval | $100–$1,000 |
+| Display ads (Google AdSense) | 10+ published posts (~May 2026) | $200–$2,000 |
+| Email list — SparkLoop referrals | 500 subscribers | $50–$500 |
+| Email list — Paved sponsorships | 1,000 subscribers | $100–$1,200 |
+| Email list — Beehiiv Boosts | 1,000 subscribers | $50–$300 |
+| Digital products (Gumroad) | Month 3 — $9.99/guide | $300–$3,000 |
+| YouTube Shorts | Month 3 | $200–$2,000 |
+| **Total potential** | | **$1,500–$15,000/mo** |
+
+---
+
+## Monitoring — Threshold Automations
+
+The platform watches two critical milestones and emails you exactly when to act:
+
+| Threshold | Workflow | Action Required |
+|---|---|---|
+| 10 published posts | `adsense-readiness-check` (daily) | Apply at google.com/adsense |
+| 500 ConvertKit subscribers | `subscriber-milestone` (daily) | Apply at sparkloop.app |
+| 1,000 ConvertKit subscribers | `subscriber-milestone` (daily) | Apply at paved.com + beehiiv.com |
+
+No manual monitoring needed — the system notifies you at the right time.
 
 ---
 
@@ -55,14 +73,17 @@ Once deployed, the system runs daily without manual input:
 |---|---|
 | Content Generation | Claude API (claude-sonnet-4-6) with prompt caching |
 | SEO Optimization | Claude Haiku (titles/meta) + Surfer SEO integration |
-| Site | WordPress REST API |
+| Site | WordPress REST API (JWT auth) |
 | Email | ConvertKit API v3 |
-| CI/CD | GitHub Actions (4 cron workflows) |
+| CI/CD | GitHub Actions (10 cron workflows) |
 | Analytics | Google Analytics 4 + BetaAnalyticsDataClient |
-| Affiliate Tracking | Local JSON ledger + Pretty Links (WP plugin) |
-| Hosting | Vercel / Netlify (free tier) |
+| Affiliate Tracking | Local JSON ledger + /go/* WP redirect pages |
+| Deals Page | AppSumo RSS feed → /deals WP page (auto-updated) |
+| Newsletter Monetization | SparkLoop Upscribe + Paved + Beehiiv Boosts |
+| Hosting | Hostinger WordPress (gammacash.online) |
 | Social Automation | snoowrap (Reddit) + Pinterest API v5 |
-| Notifications | nodemailer (SMTP) |
+| Video Pipeline | msedge-tts + Pexels + YouTube Data API v3 |
+| Notifications | nodemailer (SMTP via Hostinger) |
 
 ---
 
@@ -95,41 +116,26 @@ cp .env.example .env
 # Dry run — generates one article, SEO-scores it, skips WordPress publish
 node content-pipeline/scheduler.js --dry-run --force
 
-# Generate a single article to see the output
+# Generate a single article
 node content-pipeline/generator.js review "best Jasper AI review" "Jasper AI"
-
-# View the generated file
-ls content-pipeline/generated/
 ```
 
 ### 4 — Set up GitHub Actions (full automation)
 
-Add these as **GitHub Secrets** (repo Settings → Secrets → Actions):
+Add these as **GitHub Secrets** (repo Settings → Secrets → Actions).
+See `.env.example` for the full annotated list and where to get each key.
+
+**Minimum required secrets to go live:**
 
 ```
-ANTHROPIC_API_KEY          # Required — content generation + Claude PR review
-WORDPRESS_URL              # Your WordPress site URL
-WORDPRESS_USERNAME         # WP admin username
-WORDPRESS_APP_PASSWORD     # WP application password
-CONVERTKIT_API_KEY         # ConvertKit API secret key
-GA4_PROPERTY_ID            # GA4 numeric property ID
-GA4_SERVICE_ACCOUNT_JSON   # GA4 service account key file contents (JSON string)
-REDDIT_CLIENT_ID           # Reddit script-app client ID
-REDDIT_SECRET              # Reddit app secret
-REDDIT_USERNAME            # Reddit account username
-REDDIT_PASSWORD            # Reddit account password
-REDDIT_USER_AGENT          # e.g., GammaStream/1.0 by YOUR_USERNAME
-PINTEREST_ACCESS_TOKEN     # Pinterest API access token
-PINTEREST_BOARD_ID         # Pinterest board ID
-NOTIFICATION_EMAIL         # Email for failure alerts + weekly reports
-SMTP_HOST                  # e.g., smtp.gmail.com
-SMTP_PORT                  # 587 (TLS) or 465 (SSL)
-SMTP_USER                  # SMTP login email
-SMTP_PASS                  # SMTP password or app password
+ANTHROPIC_API_KEY        WORDPRESS_URL            WORDPRESS_USERNAME
+WORDPRESS_PASSWORD       NOTIFICATION_EMAIL       SMTP_HOST / PORT / USER / PASS
+GA4_MEASUREMENT_ID       GA4_SERVICE_ACCOUNT_JSON YOUTUBE_REFRESH_TOKEN
+PEXELS_API_KEY
 ```
 
-Once secrets are set, all four workflows activate automatically on their schedules.
-NOTE: You gotta do it manually!
+Once secrets are set, all workflows activate automatically on their schedules.
+
 ---
 
 ## All Commands
@@ -153,28 +159,58 @@ npm run seo -- titles "Jasper AI" "best Jasper AI review"
 npm run seo -- meta "best Jasper AI review" "article content here"
 ```
 
+### Affiliate & Deals
+
+```bash
+npm run redirects                                     # Create /go/* redirect pages
+npm run redirects:update                              # Update existing redirect URLs
+npm run redirects:dry                                 # Preview only
+
+npm run deals:update                                  # Rebuild /deals page with AppSumo links
+npm run deals:dry                                     # Preview /deals page output
+
+node automation/affiliate-tracker.js add jasper-ai 49.75   # Log a commission
+node automation/affiliate-tracker.js summary               # All-time totals
+npm run tracker:report                                      # Email weekly report
+```
+
 ### Automation
 
 ```bash
 npm run social -- --platform all        # Post to Reddit + Pinterest
-npm run social -- --platform reddit
-npm run social -- --platform pinterest
-
-node automation/affiliate-tracker.js add jasper-ai 49.75          # Log commission
-node automation/affiliate-tracker.js add surfer-seo 29.00 2026-04-15
-node automation/affiliate-tracker.js list                          # All entries
-node automation/affiliate-tracker.js summary                       # All-time totals
-npm run tracker:report                                             # Email weekly report
+npm run gumroad:paid                    # Publish AI Tools guide to Gumroad at $9.99
+npm run gumroad:dry                     # Preview without publishing
+npm run convertkit                      # Create ConvertKit form + WP landing page
+npm run site-upgrade                    # Apply dark theme CSS + global JS site-wide
+npm run rebuild-homepage                # Rebuild homepage with live post cards + stats
 ```
 
 ### Analytics
 
 ```bash
-npm run dashboard                                    # Live console snapshot
-npm run dashboard:report                             # Console + save JSON + email
-node analytics/dashboard.js --report                 # Save JSON only
-node analytics/dashboard.js --report --weekly        # Full weekly mode + email
+npm run dashboard                       # Live console snapshot
+npm run dashboard:report                # Console + save JSON + email
+npm run earnings:email                  # Combined revenue report (all streams)
+npm run health-check                    # Full platform health check
+npm run adsense-check                   # Manual AdSense readiness check
 ```
+
+---
+
+## GitHub Actions Workflows (10 total)
+
+| Workflow | Schedule | Purpose |
+|---|---|---|
+| `content-generation.yml` | Daily 06:00 UTC | Generate + publish article (Mon/Wed/Fri active) |
+| `social-posting.yml` | Daily 09:00 UTC | Post to Reddit + Pinterest |
+| `analytics-report.yml` | Monday 08:00 UTC | Weekly dashboard + email + commit JSON report |
+| `claude-review.yml` | Every PR | Security, quality, CLAUDE.md compliance review |
+| `trend-detection.yml` | Daily 05:00 UTC | Detect trending AI topics for content queue |
+| `voiceover-generator.yml` | Sundays 07:00 UTC | Generate TTS voiceovers for video queue |
+| `video-assembler.yml` | workflow_dispatch | Assemble + upload Shorts and long-form videos |
+| `master-orchestrator.yml` | Sundays 10:00 UTC | Full weekly pipeline run |
+| `adsense-readiness-check.yml` | Daily 07:00 UTC | Email notification when 10-post AdSense threshold met |
+| `subscriber-milestone.yml` | Daily 08:00 UTC | Email at 500 subs (SparkLoop) + 1,000 subs (Paved) |
 
 ---
 
@@ -182,58 +218,65 @@ node analytics/dashboard.js --report --weekly        # Full weekly mode + email
 
 ```
 gamma-stream-platform/
-├── CLAUDE.md                              ← Claude Code master instructions
-├── README.md                              ← This file
-├── CHANGELOG.md                           ← Full version history (v1.0.0 → v2.0.0)
-├── package.json                           ← Node.js v2.0.0, all scripts + deps
-├── .env.example                           ← Template for all 20 environment variables
-├── .gitignore
+├── CLAUDE.md                                  ← Claude Code master instructions
+├── README.md                                  ← This file
+├── CHECKLIST.md                               ← Master task checklist (single source of truth)
+├── package.json                               ← v3.0.0, all scripts + deps
+├── .env.example                               ← Template for all environment variables
 │
-├── content-pipeline/                      ← Phase 2 — AI content engine
-│   ├── generator.js                       ← Claude sonnet-4-6 article generator
-│   ├── seo-optimizer.js                   ← SEO score (0–100) + title/meta generation
-│   ├── publisher.js                       ← WordPress REST API publisher
-│   ├── scheduler.js                       ← Mon/Wed/Fri pipeline runner
-│   └── templates/                         ← review.md, comparison.md, top-list.md, tutorial.md
+├── content-pipeline/                          ← AI content engine
+│   ├── generator.js                           ← Claude sonnet-4-6 article generator
+│   ├── seo-optimizer.js                       ← SEO score + title/meta generation
+│   ├── publisher.js                           ← WordPress REST API publisher
+│   ├── scheduler.js                           ← Mon/Wed/Fri pipeline runner
+│   └── templates/                             ← review.md, comparison.md, top-list.md, tutorial.md
 │
-├── automation/                            ← Phase 3 — Automation layer
-│   ├── social-poster.js                   ← Reddit (snoowrap) + Pinterest (API v5)
-│   ├── affiliate-tracker.js               ← Commission ledger + HTML email reports
-│   ├── email-sequences/                   ← welcome.md, nurture.md, promo.md
-│   └── lead-magnet/ai-tools-guide.md      ← "The Ultimate AI Tools Guide 2026"
+├── automation/                                ← Automation layer
+│   ├── social-poster.js                       ← Reddit + Pinterest
+│   ├── affiliate-tracker.js                   ← Commission ledger + HTML email reports
+│   ├── convertkit-setup.js                    ← CK form + WP sidebar + /free-guide page
+│   ├── appsumo-deals-fetcher.js               ← Builds /deals page from AppSumo deals
+│   ├── gumroad-publisher.js                   ← AI Tools guide → Gumroad $9.99
+│   ├── voiceover-generator.js                 ← TTS via msedge-tts
+│   ├── youtube-publisher.js                   ← YouTube Data API v3 uploader
+│   ├── trend-detector.js                      ← Trending topic detector
+│   ├── email-sequences/                       ← welcome.md, nurture.md, promo.md
+│   └── lead-magnet/ai-tools-guide.md
 │
-├── analytics/                             ← Phase 4 — Analytics
-│   ├── dashboard.js                       ← GA4 + ConvertKit + WP + ledger dashboard
-│   ├── kpis.md                            ← KPI targets, measurements, recovery actions
-│   └── reports/                           ← Auto-generated weekly JSON reports
+├── analytics/                                 ← Analytics + reporting
+│   ├── dashboard.js                           ← GA4 + ConvertKit + WP + ledger dashboard
+│   ├── earnings-report.js                     ← Combined revenue report (all streams)
+│   └── reports/                               ← Auto-generated weekly JSON reports
 │
-├── docs/                                  ← Documentation
-│   └── content-strategy.md               ← 50 keywords, 3-month calendar, SEO rules
+├── scripts/                                   ← One-shot setup + maintenance scripts
+│   ├── create-redirects.js                    ← /go/* affiliate redirect pages
+│   ├── rebuild-homepage.js                    ← Rebuild homepage with live post cards
+│   ├── site-upgrade.js                        ← Dark theme CSS + global JS injection
+│   ├── sparkloop-widget.html                  ← Upscribe embed (paste to /newsletter-confirmed)
+│   ├── adsense-checker.js                     ← Manual AdSense readiness check
+│   ├── health-check.js                        ← Full platform health check
+│   └── create-sales-page.js                   ← /get-the-guide Gumroad sales page
 │
-├── architecture.md                        ← System design
-├── monetization.md                        ← Affiliate programs and revenue strategy
-├── scaling-roadmap.md                     ← Month-by-month growth plan
-├── setup-guide.md                         ← Step-by-step deployment guide
+├── docs/                                      ← Documentation
+│   ├── content-strategy.md                    ← 50 keywords, 3-month calendar, SEO rules
+│   ├── adsense-readiness.md                   ← AdSense preflight checklist + Payoneer routing
+│   └── newsletter-sponsorships.md             ← SparkLoop + Paved + Beehiiv activation guide
 │
-└── .github/workflows/                     ← Phase 5 — CI/CD
-    ├── content-generation.yml             ← Daily 06:00 UTC
-    ├── social-posting.yml                 ← Daily 09:00 UTC
-    ├── analytics-report.yml               ← Monday 08:00 UTC
-    └── claude-review.yml                  ← On every PR
+├── templates/
+│   └── sponsored-email.md                     ← FTC-compliant sponsored newsletter template
+│
+└── .github/workflows/                         ← CI/CD (10 workflows)
+    ├── content-generation.yml
+    ├── social-posting.yml
+    ├── analytics-report.yml
+    ├── claude-review.yml
+    ├── trend-detection.yml
+    ├── voiceover-generator.yml
+    ├── video-assembler.yml
+    ├── master-orchestrator.yml
+    ├── adsense-readiness-check.yml             ← Notifies at 10 posts
+    └── subscriber-milestone.yml               ← Notifies at 500 + 1,000 subs
 ```
-
----
-
-## GitHub Actions Cron Schedule
-
-| Workflow | Trigger | Purpose |
-|---|---|---|
-| `content-generation.yml` | Daily 06:00 UTC | Generate + publish article (Mon/Wed/Fri active) |
-| `social-posting.yml` | Daily 09:00 UTC | Post to Reddit and Pinterest in parallel |
-| `analytics-report.yml` | Monday 08:00 UTC | Weekly dashboard + email + commit JSON report |
-| `claude-review.yml` | Every PR | Security, quality, and CLAUDE.md compliance review |
-
-All workflows support manual dispatch via **Actions → Select workflow → Run workflow**.
 
 ---
 
@@ -247,34 +290,18 @@ All workflows support manual dispatch via **Actions → Select workflow → Run 
 | 9 | 108 | 2,000 | $800–$2,500 | 45,000–80,000 |
 | 12 | 144 | 5,000 | $2,500–$8,000 | 90,000–150,000 |
 
-Full KPI definitions, measurement sources, and recovery actions: [analytics/kpis.md](analytics/kpis.md)
-
 ---
 
 ## Documentation
 
 | Doc | Description |
 |---|---|
-| [Architecture](architecture.md) | Full system design and data flow |
-| [Setup Guide](setup-guide.md) | Step-by-step deployment to production |
-| [Monetization](monetization.md) | Affiliate programs, commission rates, revenue strategy |
-| [Scaling Roadmap](scaling-roadmap.md) | Month-by-month growth plan through Month 12 |
-| [Content Strategy](docs/content-strategy.md) | 50 keywords, 3-month calendar, SEO rules |
-| [KPI Targets](analytics/kpis.md) | KPI definitions, targets, recovery actions |
-| [Changelog](CHANGELOG.md) | Full version history v1.0.0 → v2.0.0 |
-
----
-
-## Contributing
-
-All changes go through feature branches and PRs. Claude Code reviews every PR automatically via `claude-review.yml`.
-
-```bash
-git checkout -b feature/your-feature-name
-# make changes using Claude Code
-git push origin feature/your-feature-name
-# open PR → automated review runs within seconds
-```
+| [CHECKLIST.md](CHECKLIST.md) | Master task checklist — single source of truth |
+| [docs/adsense-readiness.md](docs/adsense-readiness.md) | AdSense preflight checklist + Payoneer payout routing |
+| [docs/newsletter-sponsorships.md](docs/newsletter-sponsorships.md) | SparkLoop + Paved + Beehiiv Boosts activation guide |
+| [templates/sponsored-email.md](templates/sponsored-email.md) | FTC-compliant sponsored email template + rate card |
+| [docs/content-strategy.md](docs/content-strategy.md) | 50 keywords, 3-month calendar, SEO rules |
+| [analytics/kpis.md](analytics/kpis.md) | KPI definitions, targets, recovery actions |
 
 ---
 
@@ -284,4 +311,4 @@ MIT — see [LICENSE](LICENSE)
 
 ---
 
-*MAKING MONEY IS THE ONLY WAY— Gamma Stream Platform v2.0.0*
+*Gamma Stream Platform v3.0.0 — built autonomously with Claude Code*

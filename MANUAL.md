@@ -71,12 +71,22 @@ Once approved:
 
 ---
 
-## STEP 5 — WordPress (2 copy-paste steps)
+## STEP 5 — WordPress automation (run these commands)
 
-### Dark theme
-1. Open `scripts/theme.css`, copy everything
-2. Go to: https://gammacash.online/wp-admin/customize.php
-3. Click **Additional CSS** → paste → **Publish**
+### Dark theme (now automated)
+```bash
+npm run inject-css
+```
+Tries 3 injection strategies (FSE global-styles → custom_css → plugin fallback).
+If it prints "MANUAL STEPS", paste `scripts/theme.css` into WP Customizer → Additional CSS.
+
+### Plugins: Rank Math SEO, Wordfence, LiteSpeed Cache (now automated)
+```bash
+npm run install-plugins
+```
+Installs all 3 via WP REST API. Then:
+- Rank Math: https://gammacash.online/wp-admin/admin.php?page=rank-math-wizard
+- Wordfence: https://gammacash.online/wp-admin/admin.php?page=Wordfence
 
 ### Hero animations
 1. Open `scripts/hero-motion.js`, copy everything
@@ -104,13 +114,15 @@ Once approved:
 ## STEP 7 — AdSense (do NOT apply before 10 posts)
 
 Current posts: **3** (Hello World deleted) — pipeline auto-publishes Mon/Wed/Fri.
-**Estimated ready: ~2026-05-14**
+**Estimated ready: ~2026-05-14** — `adsense-readiness-check` workflow emails you automatically.
 
-1. Run `npm run adsense-check` to verify 10+ posts and all required pages
-2. Apply at: https://www.google.com/adsense/start/
+1. Wait for the automated email from `adsense-readiness-check` workflow (~2026-05-14)
+2. Apply at: https://www.google.com/adsense/start/ (use Moroccan operator's Google account)
    - Site URL: https://gammacash.online
    - Language: English
 3. Wait 1–14 days for approval
+4. Once approved: add `ADSENSE_PUBLISHER_ID=ca-pub-XXXX` to `.env` + GitHub Secrets
+5. Run: `npm run activate-adsense` — auto-installs plugins and injects the AdSense snippet
 
 ---
 
@@ -134,12 +146,15 @@ npm run health-check
 ---
 
 ## GitHub Secrets still needed
-| Secret | Unblocks |
-|---|---|
-| `CONVERTKIT_API_KEY` | Email list |
-| `CONVERTKIT_FORM_ID` | Analytics report subscriber count |
-| `GUMROAD_ACCESS_TOKEN` | Digital product sales |
-| `PINTEREST_APP_ID` | Auto-pinning (pending approval) |
-| `PINTEREST_APP_SECRET` | Auto-pinning |
-| `PINTEREST_REFRESH_TOKEN` | Auto-pinning |
-| `PINTEREST_BOARD_ID` | Auto-pinning |
+| Secret | Unblocks | How to activate |
+|---|---|---|
+| `CONVERTKIT_API_KEY` | Email list | Family member creates ConvertKit → `npm run convertkit` |
+| `CONVERTKIT_FORM_ID` | Analytics report subscriber count | Output of `npm run convertkit` |
+| `GUMROAD_ACCESS_TOKEN` | Digital product sales | Family member creates Gumroad → `npm run gumroad:paid` |
+| `ADSENSE_PUBLISHER_ID` | Display ad revenue | Wait for `adsense-readiness-check` email → apply → `npm run activate-adsense` |
+| `APPSUMO_AFFILIATE_ID` | AppSumo commissions | Sign up at appsumo.com/affiliates → `npm run deals:update` |
+| `PINTEREST_APP_ID` | Auto-pinning (pending approval) | After Pinterest approval → `node scripts/pinterest-auth.js` |
+| `PINTEREST_APP_SECRET` | Auto-pinning | Same as above |
+| `PINTEREST_REFRESH_TOKEN` | Auto-pinning | Output of `pinterest-auth.js` |
+| `PINTEREST_BOARD_ID` | Auto-pinning | Output of `pinterest-auth.js` |
+| `MEDIUM_INTEGRATION_TOKEN` | Medium cross-posting | Create at medium.com/me/settings → Integration tokens |
