@@ -35,7 +35,8 @@
     "deals:dry": "node automation/appsumo-deals-fetcher.js --dry-run",
     "inject-css": "node scripts/inject-theme-css.js",
     "install-plugins": "node scripts/install-plugins.js",
-    "activate-adsense": "node scripts/activate-adsense.js"
+    "activate-adsense": "node scripts/activate-adsense.js",
+    "dashboard:web": "node scripts/build-dashboard.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

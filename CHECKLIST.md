@@ -2,7 +2,7 @@
 
 > **Single source of truth.** Check a box the moment a task is done.
 > Update STATUS.md after every session. Commit both files together.
-> Last updated: 2026-04-30 (session 5)
+> Last updated: 2026-04-30 (session 6)
 
 ---
 
@@ -217,6 +217,16 @@
 - [ ] Apply at beehiiv.com → Grow → Boosts → Get Boosted
 - [ ] Payout: Payoneer USD virtual account (US ACH from Paved)
 - [ ] Revenue at 1,000 subs: $100–$240/mo from Paved; $1–$3/boost from Beehiiv
+
+---
+
+## Phase G — Live Web Dashboard ✅ done 2026-04-30
+
+- [x] `scripts/build-dashboard.js` — full dark-theme analytics dashboard, uploads to WP as private page ✅
+- [x] `.github/workflows/dashboard-update.yml` — rebuilds dashboard daily at 10:30 UTC ✅
+- [x] `npm run dashboard:web` script added ✅
+- Dashboard URL (WP admin login required): https://gammacash.online/live-dashboard/
+- Shows: revenue cards, GA4 traffic, email list, content count, KPI progress bars, top pages, revenue by program, stream status checklist
 
 ---
 

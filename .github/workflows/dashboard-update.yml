@@ -1,0 +1,41 @@
+name: Dashboard Update
+
+on:
+  schedule:
+    # Daily at 10:30 UTC — after analytics-report (08:00) and content pipeline (06:00)
+    - cron: '30 10 * * *'
+  workflow_dispatch:
+
+jobs:
+  build-dashboard:
+    name: Build & Upload Live Dashboard
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - run: npm ci
+
+      - name: Build and upload dashboard
+        env:
+          WORDPRESS_URL: ${{ secrets.WORDPRESS_URL }}
+          WORDPRESS_USERNAME: ${{ secrets.WORDPRESS_USERNAME }}
+          WORDPRESS_PASSWORD: ${{ secrets.WORDPRESS_PASSWORD }}
+          GA4_PROPERTY_ID: ${{ secrets.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+          CONVERTKIT_API_KEY: ${{ secrets.CONVERTKIT_API_KEY }}
+          GUMROAD_ACCESS_TOKEN: ${{ secrets.GUMROAD_ACCESS_TOKEN }}
+          APPSUMO_AFFILIATE_ID: ${{ secrets.APPSUMO_AFFILIATE_ID }}
+          ADSENSE_PUBLISHER_ID: ${{ secrets.ADSENSE_PUBLISHER_ID }}
+          SPARKLOOP_API_KEY: ${{ secrets.SPARKLOOP_API_KEY }}
+          PINTEREST_APP_ID: ${{ secrets.PINTEREST_APP_ID }}
+          MEDIUM_INTEGRATION_TOKEN: ${{ secrets.MEDIUM_INTEGRATION_TOKEN }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          PEXELS_API_KEY: ${{ secrets.PEXELS_API_KEY }}
+        run: node scripts/build-dashboard.js
