@@ -671,19 +671,32 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 // ─── Upload to WordPress ──────────────────────────────────────────────────────
 
 async function uploadDashboard(html) {
-  const pages = await wp(`/wp/v2/pages?slug=${DASHBOARD_SLUG}&per_page=1`);
+  // Must search both private and publish status — default search only returns publish.
+  const [privPages, pubPages] = await Promise.all([
+    wp(`/wp/v2/pages?slug=${DASHBOARD_SLUG}&status=private&per_page=1`, 'GET', null, { ignoreError: true }),
+    wp(`/wp/v2/pages?slug=${DASHBOARD_SLUG}&per_page=1`, 'GET', null, { ignoreError: true }),
+  ]);
+  const existing = (privPages?.length ? privPages : null) ?? (pubPages?.length ? pubPages : null);
+
   const body = {
     title: '⚡ GammaCash — Live Dashboard',
     content: `<!-- wp:html -->${html}<!-- /wp:html -->`,
     status: 'private',
     slug: DASHBOARD_SLUG,
   };
-  if (pages && pages.length > 0) {
-    const updated = await wp(`/wp/v2/pages/${pages[0].id}`, 'POST', body);
-    return { action: 'updated', id: updated.id, link: updated.link };
+
+  if (existing && existing.length > 0) {
+    const updated = await wp(`/wp/v2/pages/${existing[0].id}`, 'POST', body);
+    const link = `${BASE_URL}/?page_id=${updated.id}`;
+    console.log(`[build-dashboard] Updated page ID ${updated.id} — view (admin login required): ${link}`);
+    return { action: 'updated', id: updated.id, link };
   }
+
   const created = await wp('/wp/v2/pages', 'POST', body);
-  return { action: 'created', id: created.id, link: created.link };
+  const link = `${BASE_URL}/?page_id=${created.id}`;
+  console.log(`[build-dashboard] Created page ID ${created.id} — view (admin login required): ${link}`);
+  console.log(`[build-dashboard] Permalink (once WP flushes): ${BASE_URL}/${DASHBOARD_SLUG}/`);
+  return { action: 'created', id: created.id, link };
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────

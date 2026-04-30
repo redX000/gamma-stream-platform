@@ -36,7 +36,8 @@
     "inject-css": "node scripts/inject-theme-css.js",
     "install-plugins": "node scripts/install-plugins.js",
     "activate-adsense": "node scripts/activate-adsense.js",
-    "dashboard:web": "node scripts/build-dashboard.js"
+    "dashboard:web": "node scripts/build-dashboard.js",
+    "fix-header": "node scripts/fix-header.js"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",
