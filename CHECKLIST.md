@@ -2,7 +2,7 @@
 
 > **Single source of truth.** Check a box the moment a task is done.
 > Update STATUS.md after every session. Commit both files together.
-> Last updated: 2026-04-30 (session 6)
+> Last updated: 2026-04-30 (session 7)
 
 ---
 
@@ -223,10 +223,33 @@
 ## Phase G — Live Web Dashboard ✅ done 2026-04-30
 
 - [x] `scripts/build-dashboard.js` — full dark-theme analytics dashboard, uploads to WP as private page ✅
-- [x] `.github/workflows/dashboard-update.yml` — rebuilds dashboard daily at 10:30 UTC ✅
+- [x] `.github/workflows/dashboard-update.yml` — rebuilds dashboard daily at 10:30 UTC (11th workflow) ✅
 - [x] `npm run dashboard:web` script added ✅
+- [x] Dashboard page ID 56 created at https://gammacash.online/?page_id=56 ✅
 - Dashboard URL (WP admin login required): https://gammacash.online/live-dashboard/
 - Shows: revenue cards, GA4 traffic, email list, content count, KPI progress bars, top pages, revenue by program, stream status checklist
+
+---
+
+## Phase H — Site Header & Visual Fixes ✅ done 2026-04-30 (session 7)
+
+- [x] `scripts/fix-header.js` built — injects corrected CSS into FSE global-styles via WP REST API ✅
+- [x] `npm run fix-header` script added ✅
+- [x] **Header compactness** — `header.wp-block-template-part` with `padding:0 !important`, inner group padding override ✅
+- [x] **Site title gradient** — `.wp-block-site-title a` → Orbitron font, green-to-cyan gradient ✅
+- [x] **Navigation specificity** — `:root .wp-block-navigation` beats WP's own `:root :where(...)` rules ✅
+- [x] **Submenu dark background** — `html body .wp-block-navigation__submenu-container` with `background:#000000 !important` ✅
+- [x] **Submenu text** — white text, green border, hover highlight — fully visible ✅
+- [x] WP `wp_strip_all_tags()` sanitiser guard added — strips any HTML-like patterns before PUT ✅
+- [x] Idempotent V1/V2/V3 marker stripping — re-runs always produce a clean single injection ✅
+
+**Key technical discoveries (saves future debugging):**
+- WP global-styles post ID is **6** on this site — found via sequential scan 1–40
+- `[data-type="header"]` attribute does NOT exist in TT5 rendered HTML — use `header.wp-block-template-part`
+- Inner group div has inline `padding-top/bottom` — only `!important` in CSS overrides inline styles
+- WP's own nav rules use `:root :where()` (zeroes specificity) — beat them with `:root .class` (higher specificity)
+- WP REST API CSS validation uses `wp_strip_all_tags()` — ANY `<tag>` in CSS (even in comments) triggers 400 error
+- Submenu white-bg fix required `html body` prefix selector chain to beat TT5 theme specificity
 
 ---
 

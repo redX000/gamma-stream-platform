@@ -3,7 +3,7 @@
 > Fully autonomous AI-powered affiliate income platform — AI & SaaS tools niche
 
 [![System Status](https://img.shields.io/badge/System%20Status-LIVE-brightgreen)](https://github.com/redX000/gamma-stream-platform)
-[![Version](https://img.shields.io/badge/version-3.0.0-blue)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-3.1.0-blue)](CHANGELOG.md)
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/features/actions)
 [![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-orange)](https://claude.ai/code)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
@@ -21,6 +21,8 @@ Once deployed, the system runs daily without manual input:
 - Tracks affiliate revenue across all programs in a local ledger
 - Reports weekly KPIs and earnings to your inbox every Monday
 - Monitors AdSense readiness and subscriber milestones — emails you exactly when to act
+- Rebuilds a live analytics dashboard daily at `/live-dashboard/` (GA4 + revenue + KPIs)
+- Maintains a polished dark-theme site with compact header, gradient site title, and working nav dropdowns
 
 ---
 
@@ -32,8 +34,10 @@ Once deployed, the system runs daily without manual input:
 | Phase 2 — Content Pipeline | generator.js, templates, seo-optimizer.js, publisher.js, scheduler.js | ✅ Complete |
 | Phase 3 — Automation | social-poster.js, email sequences, affiliate-tracker.js, lead magnet | ✅ Complete |
 | Phase 4 — Analytics | dashboard.js, earnings-report.js, kpis.md, weekly report pipeline | ✅ Complete |
-| Phase 5 — GitHub Actions CI/CD | 10 workflows — content, video, social, analytics, monitoring | ✅ Complete |
+| Phase 5 — GitHub Actions CI/CD | 11 workflows — content, video, social, analytics, monitoring, dashboard | ✅ Complete |
 | Phase 6 — Passive Income Streams | AppSumo, AdSense, SparkLoop, Paved/Beehiiv — scaffolded + monitored | ✅ Complete |
+| Phase 7 — Live Web Dashboard | Dark-theme analytics dashboard at /live-dashboard/, rebuilt daily | ✅ Complete |
+| Phase 8 — Site Header & Visual Fixes | Compact header, gradient title, dark submenu dropdowns via FSE CSS injection | ✅ Complete |
 
 ---
 
@@ -190,14 +194,26 @@ npm run rebuild-homepage                # Rebuild homepage with live post cards 
 ```bash
 npm run dashboard                       # Live console snapshot
 npm run dashboard:report                # Console + save JSON + email
+npm run dashboard:web                   # Build + upload live web dashboard to /live-dashboard/
 npm run earnings:email                  # Combined revenue report (all streams)
 npm run health-check                    # Full platform health check
 npm run adsense-check                   # Manual AdSense readiness check
 ```
 
+### Site Design
+
+```bash
+npm run fix-header                      # Fix header height, site title gradient, submenu dark bg
+npm run inject-css                      # Inject full dark theme CSS globally (FSE → custom_css fallback)
+npm run site-upgrade                    # Dark theme CSS + global JS injection
+npm run rebuild-homepage                # Rebuild homepage with live post cards + stats
+npm run install-plugins                 # Install Rank Math SEO + Wordfence + LiteSpeed Cache
+npm run activate-adsense                # Inject AdSense auto-ads snippet + install plugins
+```
+
 ---
 
-## GitHub Actions Workflows (10 total)
+## GitHub Actions Workflows (11 total)
 
 | Workflow | Schedule | Purpose |
 |---|---|---|
@@ -211,6 +227,7 @@ npm run adsense-check                   # Manual AdSense readiness check
 | `master-orchestrator.yml` | Sundays 10:00 UTC | Full weekly pipeline run |
 | `adsense-readiness-check.yml` | Daily 07:00 UTC | Email notification when 10-post AdSense threshold met |
 | `subscriber-milestone.yml` | Daily 08:00 UTC | Email at 500 subs (SparkLoop) + 1,000 subs (Paved) |
+| `dashboard-update.yml` | Daily 10:30 UTC | Rebuild + upload live analytics dashboard to /live-dashboard/ |
 
 ---
 
@@ -252,6 +269,11 @@ gamma-stream-platform/
 │   ├── create-redirects.js                    ← /go/* affiliate redirect pages
 │   ├── rebuild-homepage.js                    ← Rebuild homepage with live post cards
 │   ├── site-upgrade.js                        ← Dark theme CSS + global JS injection
+│   ├── inject-theme-css.js                    ← Injects dark theme CSS (FSE → custom_css → plugin)
+│   ├── install-plugins.js                     ← Installs Rank Math, Wordfence, LiteSpeed Cache
+│   ├── activate-adsense.js                    ← Injects AdSense auto-ads snippet + installs plugins
+│   ├── fix-header.js                          ← Compact header, gradient title, dark submenu via FSE
+│   ├── build-dashboard.js                     ← Builds + uploads dark-theme analytics dashboard
 │   ├── sparkloop-widget.html                  ← Upscribe embed (paste to /newsletter-confirmed)
 │   ├── adsense-checker.js                     ← Manual AdSense readiness check
 │   ├── health-check.js                        ← Full platform health check
@@ -275,7 +297,8 @@ gamma-stream-platform/
     ├── video-assembler.yml
     ├── master-orchestrator.yml
     ├── adsense-readiness-check.yml             ← Notifies at 10 posts
-    └── subscriber-milestone.yml               ← Notifies at 500 + 1,000 subs
+    ├── subscriber-milestone.yml               ← Notifies at 500 + 1,000 subs
+    └── dashboard-update.yml                   ← Rebuilds live dashboard daily at 10:30 UTC
 ```
 
 ---
@@ -311,4 +334,4 @@ MIT — see [LICENSE](LICENSE)
 
 ---
 
-*Gamma Stream Platform v3.0.0 — built autonomously with Claude Code*
+*Gamma Stream Platform v3.1.0 — built autonomously with Claude Code*

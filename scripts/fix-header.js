@@ -5,89 +5,109 @@ dotenv.config();
 
 const BASE_URL = process.env.WORDPRESS_URL?.replace(/\/$/, '') || 'https://gammacash.online';
 
-const MARKER_START = '/* GC-HEADER-FIX-V1-START */';
-const MARKER_END   = '/* GC-HEADER-FIX-V1-END */';
+const MARKER_START = '/* GC-HEADER-FIX-V3-START */';
+const MARKER_END   = '/* GC-HEADER-FIX-V3-END */';
+
+// Strip any prior version markers
+const MARKER_START_V1 = '/* GC-HEADER-FIX-V1-START */';
+const MARKER_END_V1   = '/* GC-HEADER-FIX-V1-END */';
+const MARKER_START_V2 = '/* GC-HEADER-FIX-V2-START */';
+const MARKER_END_V2   = '/* GC-HEADER-FIX-V2-END */';
 
 const HEADER_CSS = `
 ${MARKER_START}
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Audiowide&display=swap');
 
 /* ── Header compact ─────────────────────────────────────────── */
-.site-header,
-.wp-block-template-part[data-type="header"],
-header.site-header {
-  padding: 12px 24px !important;
+header.wp-block-template-part {
+  padding: 0 !important;
   min-height: auto !important;
+  max-height: none !important;
 }
 
-.site-title,
-.wp-block-site-title a,
-.wp-block-site-title {
+/* Override inline padding-top/bottom on the inner group div */
+header.wp-block-template-part .wp-block-group,
+header.wp-block-template-part > * {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+/* ── Site title gradient ────────────────────────────────────── */
+p.wp-block-site-title a,
+.wp-block-site-title a {
   font-size: clamp(18px, 2vw, 24px) !important;
   line-height: 1.2 !important;
   white-space: nowrap !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-family: 'Orbitron', 'Audiowide', var(--gc-font-head, system-ui), sans-serif !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-family: 'Orbitron', 'Audiowide', system-ui, sans-serif !important;
   font-weight: 700 !important;
   background: linear-gradient(90deg, #00ff88 0%, #00d4ff 50%, #00ff88 100%) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
   letter-spacing: 1px !important;
+  text-decoration: none !important;
 }
 
-.wp-block-navigation {
+/* ── Navigation — beat WP's :root :where(.wp-block-navigation) rules ── */
+/* :root .wp-block-navigation has higher specificity than :root :where(...) */
+:root .wp-block-navigation {
   font-size: 14px !important;
-  gap: 16px !important;
+  gap: 8px !important;
 }
 
-.wp-block-navigation__container {
+:root .wp-block-navigation__container {
   flex-wrap: nowrap !important;
   gap: 4px !important;
+  align-items: center !important;
 }
 
-.wp-block-navigation-item__content {
+:root .wp-block-navigation-item__content {
   padding: 6px 10px !important;
   font-size: 13px !important;
 }
 
 @media (max-width: 768px) {
-  .site-header,
-  .wp-block-template-part[data-type="header"] {
-    max-height: 120px !important;
+  header.wp-block-template-part {
+    max-height: 130px !important;
+    overflow: visible !important;
   }
-  .wp-block-navigation {
+  :root .wp-block-navigation {
     font-size: 12px !important;
-    gap: 8px !important;
+    gap: 4px !important;
   }
-  .wp-block-navigation-item__content {
+  :root .wp-block-navigation-item__content {
     padding: 4px 8px !important;
   }
 }
 
-/* ── Submenu dropdown ─────────────────────────────────────────── */
-.wp-block-navigation__submenu-container,
-.wp-block-navigation .has-child .wp-block-navigation__submenu-container {
-  background-color: #0a0a0a !important;
+/* ── Submenu dropdown — dark bg, green border, white text ──── */
+/* Use html body prefix to beat TT5 theme rules that set white background */
+html body .wp-block-navigation__submenu-container,
+html body .wp-block-navigation .wp-block-navigation__submenu-container,
+html body .wp-block-navigation .has-child .wp-block-navigation__submenu-container {
+  background: #000000 !important;
+  background-color: #000000 !important;
   border: 1px solid #00ff88 !important;
   border-radius: 8px !important;
   box-shadow: 0 4px 20px rgba(0, 255, 136, 0.2) !important;
   padding: 8px !important;
+  color: #ffffff !important;
 }
 
-.wp-block-navigation__submenu-container .wp-block-navigation-item__content,
-.wp-block-navigation__submenu-container a {
+html body .wp-block-navigation__submenu-container .wp-block-navigation-item__content,
+html body .wp-block-navigation__submenu-container a {
   color: #ffffff !important;
   padding: 8px 16px !important;
   border-radius: 4px !important;
   display: block !important;
-  transition: background 0.2s ease !important;
   background: transparent !important;
+  background-color: transparent !important;
 }
 
-.wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover,
-.wp-block-navigation__submenu-container a:hover {
+html body .wp-block-navigation__submenu-container .wp-block-navigation-item__content:hover,
+html body .wp-block-navigation__submenu-container a:hover {
+  background: rgba(0, 255, 136, 0.15) !important;
   background-color: rgba(0, 255, 136, 0.15) !important;
   color: #00ff88 !important;
 }
@@ -161,20 +181,26 @@ async function main() {
   const gs = await wp(`/wp/v2/global-styles/${gsId}`);
   let currentCss = gs.styles?.css || '';
 
-  // Remove any previous version of this fix so the update is idempotent
-  const markerRegex = new RegExp(
-    `${MARKER_START.replace(/\//g, '\\/').replace(/\*/g, '\\*')}[\\s\\S]*?${MARKER_END.replace(/\//g, '\\/').replace(/\*/g, '\\*')}`,
-    'g'
-  );
-  const stripped = currentCss.replace(markerRegex, '').trimEnd();
+  // Remove any previous version of this fix (V1 or V2) so the update is idempotent
+  function escapeMarker(s) { return s.replace(/\//g, '\\/').replace(/\*/g, '\\*'); }
+  const mkRe = (s, e) => new RegExp(`${escapeMarker(s)}[\\s\\S]*?${escapeMarker(e)}`, 'g');
+  const stripped = currentCss
+    .replace(mkRe(MARKER_START, MARKER_END), '')
+    .replace(mkRe(MARKER_START_V2, MARKER_END_V2), '')
+    .replace(mkRe(MARKER_START_V1, MARKER_END_V1), '')
+    .trimEnd();
   const newCss = stripped + '\n\n' + HEADER_CSS.trim();
 
-  const wasPresent = currentCss.includes(MARKER_START);
-  console.log(`[fix-header] ${wasPresent ? 'Updating' : 'Injecting'} header + submenu CSS (${newCss.length} chars total)...`);
+  const wasPresent = currentCss.includes(MARKER_START) || currentCss.includes(MARKER_START_V2) || currentCss.includes(MARKER_START_V1);
+
+  // WP uses wp_strip_all_tags() — rejects ANY HTML-like <tag> inside CSS
+  const safeCss = newCss.replace(/<[a-zA-Z\/!][^>]*>/g, '');
+
+  console.log(`[fix-header] ${wasPresent ? 'Updating' : 'Injecting'} header + submenu CSS (${safeCss.length} chars total)...`);
 
   await wp(`/wp/v2/global-styles/${gsId}`, 'PUT', {
     settings: gs.settings || {},
-    styles: { ...(gs.styles || {}), css: newCss },
+    styles: { ...(gs.styles || {}), css: safeCss },
   });
 
   console.log('[fix-header] ✅ Done!');
