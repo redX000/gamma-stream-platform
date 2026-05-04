@@ -5,7 +5,7 @@
 [![System Status](https://img.shields.io/badge/System%20Status-LIVE-brightgreen)](https://github.com/redX000/gamma-stream-platform)
 [![Version](https://img.shields.io/badge/version-3.1.0-blue)](CHANGELOG.md)
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-blue)](https://github.com/features/actions)
-[![Built with Claude Code](https://img.shields.io/badge/Built%20with-Claude%20Code-orange)](https://claude.ai/code)
+[![Built with Claude Code](https://img.shields.io/badge/Built%20with-HUNGER-orange)](HUNGER)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 ---
@@ -334,4 +334,4 @@ MIT — see [LICENSE](LICENSE)
 
 ---
 
-*Gamma Stream Platform v3.1.0 — built autonomously with Claude Code*
+*Gamma Stream Platform v3.1.0 — BUILT WITH THE DREAM OF BEING RICH*
