@@ -1,10 +1,15 @@
 {
-  "fetchedAt": "2026-04-30T07:28:38.607Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-05-06T07:35:33.252Z",
+  "topicCount": 2,
   "topics": [
     {
-      "topic": "smokey bones restaurant chain closing",
+      "topic": "apple siri ai lawsuit settlement",
       "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "caro claire burke",
+      "score": 10,
       "source": "google-trends"
     }
   ]
