@@ -1,15 +1,10 @@
 {
-  "fetchedAt": "2026-05-06T07:35:33.252Z",
-  "topicCount": 2,
+  "fetchedAt": "2026-05-09T07:08:38.331Z",
+  "topicCount": 1,
   "topics": [
     {
-      "topic": "apple siri ai lawsuit settlement",
+      "topic": "denver airport",
       "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "caro claire burke",
-      "score": 10,
       "source": "google-trends"
     }
   ]
