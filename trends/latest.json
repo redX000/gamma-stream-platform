@@ -1,15 +1,10 @@
 {
-  "fetchedAt": "2026-05-10T07:25:56.824Z",
-  "topicCount": 2,
+  "fetchedAt": "2026-05-12T07:42:51.858Z",
+  "topicCount": 1,
   "topics": [
     {
-      "topic": "russia ukraine war",
+      "topic": "alaskaair",
       "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "aipac",
-      "score": 25,
       "source": "google-trends"
     }
   ]
