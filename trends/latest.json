@@ -1,10 +1,20 @@
 {
-  "fetchedAt": "2026-05-30T07:41:44.744Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-05-31T08:14:58.017Z",
+  "topicCount": 3,
   "topics": [
     {
-      "topic": "hyeseong kim",
+      "topic": "blockchain technology",
       "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "alaskaair",
+      "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "artificial intelligence news",
+      "score": 40,
       "source": "google-trends"
     }
   ]
