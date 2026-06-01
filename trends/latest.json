@@ -1,20 +1,10 @@
 {
-  "fetchedAt": "2026-05-31T08:14:58.017Z",
-  "topicCount": 3,
+  "fetchedAt": "2026-06-01T10:21:35.381Z",
+  "topicCount": 1,
   "topics": [
     {
-      "topic": "blockchain technology",
+      "topic": "fundraiser",
       "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "alaskaair",
-      "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "artificial intelligence news",
-      "score": 40,
       "source": "google-trends"
     }
   ]
