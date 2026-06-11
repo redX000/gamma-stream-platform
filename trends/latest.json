@@ -1,20 +1,10 @@
 {
-  "fetchedAt": "2026-06-10T08:49:57.175Z",
-  "topicCount": 3,
+  "fetchedAt": "2026-06-11T09:12:25.783Z",
+  "topicCount": 1,
   "topics": [
     {
-      "topic": "earthquake hawaii",
+      "topic": "influencer marketing",
       "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "apple iphone 17 pro max",
-      "score": 20,
-      "source": "google-trends"
-    },
-    {
-      "topic": "dean cain",
-      "score": 10,
       "source": "google-trends"
     }
   ]
