@@ -1,9 +1,14 @@
 {
-  "fetchedAt": "2026-06-30T08:30:23.346Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-07-01T08:50:09.446Z",
+  "topicCount": 2,
   "topics": [
     {
-      "topic": "haitians",
+      "topic": "apple iphone 18 pro",
+      "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "météo cette semaine",
       "score": 100,
       "source": "google-trends"
     }
