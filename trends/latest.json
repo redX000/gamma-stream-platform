@@ -1,10 +1,15 @@
 {
-  "fetchedAt": "2026-07-05T07:57:05.581Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-07-07T08:23:32.031Z",
+  "topicCount": 2,
   "topics": [
     {
-      "topic": "waikiki fireworks",
+      "topic": "openai",
       "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "artificial intelligence",
+      "score": 50,
       "source": "google-trends"
     }
   ]
