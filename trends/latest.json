@@ -1,15 +1,10 @@
 {
-  "fetchedAt": "2026-07-14T07:10:16.961Z",
-  "topicCount": 2,
+  "fetchedAt": "2026-07-15T07:14:29.769Z",
+  "topicCount": 1,
   "topics": [
     {
       "topic": "météo demain",
       "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "influencer marketing",
-      "score": 40,
       "source": "google-trends"
     }
   ]
