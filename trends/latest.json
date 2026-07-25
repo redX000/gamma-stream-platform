@@ -1,14 +1,9 @@
 {
-  "fetchedAt": "2026-07-23T07:33:12.995Z",
-  "topicCount": 2,
+  "fetchedAt": "2026-07-25T07:17:34.302Z",
+  "topicCount": 1,
   "topics": [
     {
-      "topic": "halo campaign evolved",
-      "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "paige bueckers",
+      "topic": "hawaii hurricane fausto",
       "score": 100,
       "source": "google-trends"
     }
