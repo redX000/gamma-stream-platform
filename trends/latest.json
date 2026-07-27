@@ -1,10 +1,15 @@
 {
-  "fetchedAt": "2026-07-26T07:35:25.855Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-07-27T08:30:48.177Z",
+  "topicCount": 2,
   "topics": [
     {
-      "topic": "apple iphone upgrade program",
+      "topic": "abigail breslin",
       "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "alaskaair",
+      "score": 40,
       "source": "google-trends"
     }
   ]
