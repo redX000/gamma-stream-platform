@@ -1,15 +1,15 @@
 {
-  "fetchedAt": "2026-07-27T08:30:48.177Z",
+  "fetchedAt": "2026-07-28T07:39:05.641Z",
   "topicCount": 2,
   "topics": [
     {
-      "topic": "abigail breslin",
+      "topic": "kaia gerber",
       "score": 100,
       "source": "google-trends"
     },
     {
-      "topic": "alaskaair",
-      "score": 40,
+      "topic": "oc fair",
+      "score": 20,
       "source": "google-trends"
     }
   ]
