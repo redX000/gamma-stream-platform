@@ -1,15 +1,10 @@
 {
-  "fetchedAt": "2026-07-28T07:39:05.641Z",
-  "topicCount": 2,
+  "fetchedAt": "2026-07-31T07:50:33.678Z",
+  "topicCount": 1,
   "topics": [
     {
-      "topic": "kaia gerber",
+      "topic": "apple iphone 18 pro max",
       "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "oc fair",
-      "score": 20,
       "source": "google-trends"
     }
   ]
