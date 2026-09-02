@@ -1,15 +1,10 @@
 {
-  "fetchedAt": "2026-09-01T09:47:26.567Z",
-  "topicCount": 2,
+  "fetchedAt": "2026-09-02T09:19:44.189Z",
+  "topicCount": 1,
   "topics": [
     {
       "topic": "fundraiser",
       "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "space exploration technologies corp.",
-      "score": 20,
       "source": "google-trends"
     }
   ]
