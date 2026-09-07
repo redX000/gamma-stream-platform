@@ -1,9 +1,14 @@
 {
-  "fetchedAt": "2026-09-06T09:10:33.475Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-09-07T09:58:29.891Z",
+  "topicCount": 2,
   "topics": [
     {
-      "topic": "haitians",
+      "topic": "hurricane tracker hawaii",
+      "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "artificial intelligence news",
       "score": 100,
       "source": "google-trends"
     }
