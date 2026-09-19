@@ -1,10 +1,15 @@
 {
-  "fetchedAt": "2026-09-16T09:43:23.026Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-09-19T09:13:00.381Z",
+  "topicCount": 2,
   "topics": [
     {
-      "topic": "technology news",
+      "topic": "paint news",
       "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "technology news",
+      "score": 50,
       "source": "google-trends"
     }
   ]
