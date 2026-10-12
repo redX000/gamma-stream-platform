@@ -1,10 +1,20 @@
 {
-  "fetchedAt": "2026-10-07T11:34:23.178Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-10-12T12:48:25.736Z",
+  "topicCount": 3,
   "topics": [
     {
-      "topic": "ainsley earhardt",
+      "topic": "micron technology",
       "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "daisy edgar jones",
+      "score": 50,
+      "source": "google-trends"
+    },
+    {
+      "topic": "microsoft windows event ai announcements",
+      "score": 20,
       "source": "google-trends"
     }
   ]
