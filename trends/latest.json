@@ -1,20 +1,10 @@
 {
-  "fetchedAt": "2026-10-12T12:48:25.736Z",
-  "topicCount": 3,
+  "fetchedAt": "2026-10-15T09:38:33.609Z",
+  "topicCount": 1,
   "topics": [
     {
-      "topic": "micron technology",
+      "topic": "ukraine war",
       "score": 100,
-      "source": "google-trends"
-    },
-    {
-      "topic": "daisy edgar jones",
-      "score": 50,
-      "source": "google-trends"
-    },
-    {
-      "topic": "microsoft windows event ai announcements",
-      "score": 20,
       "source": "google-trends"
     }
   ]
