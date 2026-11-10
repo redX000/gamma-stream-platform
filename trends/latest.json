@@ -1,10 +1,15 @@
 {
-  "fetchedAt": "2026-11-09T13:39:20.770Z",
-  "topicCount": 1,
+  "fetchedAt": "2026-11-10T13:16:51.033Z",
+  "topicCount": 2,
   "topics": [
     {
-      "topic": "what did dave chappelle say about charlie kirk",
+      "topic": "anthropic ipo",
       "score": 100,
+      "source": "google-trends"
+    },
+    {
+      "topic": "income",
+      "score": 25,
       "source": "google-trends"
     }
   ]
